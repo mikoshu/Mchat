@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> 
+<title>填问卷点击出视频2-3</title>
+<script src="js/zepto.min.js"></script>
+<script src="js/layer_mobile/layer.js"></script>
+
+<link rel="Stylesheet" type="text/css" href="css/style.css" />
+<link rel="Stylesheet" type="text/css" href="css/m_2.css" />
+<link rel="Stylesheet" type="text/css" href="css/mobile.css" />
+
+</head>
+
+<body>
+
+<style>
+
+#video1{
+width:90%;
+height:90%;
+}
+
+@media only screen and (min-width:320px){
+.layui-m-layercont{
+padding:0px 30px;
+}
+
+}
+@media only screen and (min-width:500px){
+.layui-m-layercont{
+padding:0px 30px;
+}
+}
+@media only screen and (min-width:700px){
+.layui-m-layercont{
+padding:0px 100px;
+}
+}
+@media only screen and (min-width:1000px){
+.layui-m-layercont{
+padding:0px 160px;
+}
+}
+</style>
+<script>
+Zepto(function($) {  
+    layer.open({
+		title: [
+		  '视频',
+		  'background-color: #00c2bc; color:#fff;'
+		]
+		,style: ''
+		,
+		 btn: '关闭',
+		 content: '<video id="video1"  controls="controls" autoplay="autoplay"><source src="images/2.mp4" type="video/mp4"><source src="images/2.mp4" type="video/ogg"></video>'
+    });
+
+
+	$('.m_pass').on('click',function  () {
+		document.getElementById("m_pass_img").src="images/m_pass.jpg";
+		document.getElementById("m_nopass_img").src="images/m_nopass.jpg";
+	});
+	
+	$('.m_nopass').on('click',function  () {
+		document.getElementById("m_pass_img").src="images/m_nopass.jpg";
+		document.getElementById("m_nopass_img").src="images/m_pass.jpg";
+	});
+});
+</script>
+
+<div>
+    <div id="m_guardian">
+    <p>< 返回</p>
+    <p>填写问卷</p>
+    </div>
+    
+    <div id="m_test_name">
+    <p>施测者：李明</p>
+    <p>月龄组： 36&nbsp;&nbsp; </p>
+    </div>
+
+
+
+    <div class="m_mid">
+        <div class="m_question">
+            <p>1、如果你指向房间内的某样物体，你的孩子会看它吗？（例如，你指着一个玩具或动物，你的孩子会看这个玩具或动物吗？）</p>
+        </div>
+        
+        
+        
+        <div class="m_top_20">
+            <p class="m_q1"><a href="2.填问卷2-2.html"><img src="images/m_q_1.jpg" /></a></p>
+            <p class="m_q2"><a href="2.填问卷点击出视频2-3.html"><img src="images/m_q_2.jpg" /></a></p>        
+        </div>
+        
+
+        <div style="padding:10px;margin-top:20px;">
+            <p class="m_pass"><img id="m_pass_img" src="images/m_pass.jpg"  align="absmiddle" />通过</p>
+            <p class="m_nopass"><img id="m_nopass_img" src="images/m_nopass.jpg" align="absmiddle"  />不通过</p>
+        </div>
+        
+        <div class="c_l"></div>
+          
+    </div>
+    
+
+    
+    <div class="m_foot">
+        <p><a href="#"><span class="m_foot_l b_white f_blue">上一条</span></a></p>
+        <p><a href="#"><span class="m_foot_r b_blue f_white">下一条</span></a></p>
+    </div>
+</div>
+
+</body>
+</html>

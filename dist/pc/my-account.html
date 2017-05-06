@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>8</title>
+<script src="js/jquery.min.js"></script>
+<script src="js/all.js"></script>
+<!--[if lte IE 9]><script src="js/selectivizr-min.js"></script><![endif]-->
+<link rel="Stylesheet" type="text/css" href="css/style.css" />
+<link rel="Stylesheet" type="text/css" href="css/pc_2.css" />
+<style>
+
+
+ .article_list{
+	 margin-left:3px;
+	 width:940px;
+	 padding-top:60px;
+	 height:100%; 
+	 overflow:auto; 
+	 float:left
+	 
+	 
+ }
+ .article_list_title{
+	 text-align:center;			 
+	 color:#666666;
+	 height:30px;
+ }
+ .article_list_date{
+	 text-align:center;			 
+	 color:#d1d0ce;
+	 height:40px;
+ }
+
+
+.click_check{
+	background-color:#f2f1df !important;
+}
+
+.article_list_content{
+   width:890px;
+   margin:0 auto;
+}
+.article_list_th{
+   color:#000;
+   font-weight:bold;
+   height:45px;
+   line-height:45px;
+   text-align:center;
+}
+.article_list_th p{
+   float:left;
+   background-color:#f8f8f8;
+ 
+}
+.article_list_th p:nth-child(1){
+	width:33.3%;
+}
+.article_list_th p:nth-child(2){
+	width:33.3%;
+}
+.article_list_th p:nth-child(3){
+	width:33.3%;
+}
+
+
+
+
+
+ul{
+	list-style-type:none;
+}
+.article_list_th_ul{
+   text-align:center;
+   color:#666;
+}					
+
+.article_ul li{
+   height:45px;
+   line-height:45px;
+   
+   
+}
+.article_ul li:nth-child(odd){
+   background-color:#ffffff;
+  
+}
+.article_ul li:nth-child(even){
+   background-color:#f8f8f8;
+}
+.article_list_th_ul span{
+   float:left;
+
+}
+.article_list_th_ul span:nth-child(1){
+	width:33.3%;
+
+}
+.article_list_th_ul span:nth-child(2){
+	width:33.3%;
+}
+.article_list_th_ul span:nth-child(3){
+	width:33.3%;
+}
+
+
+
+/*8*/
+.a_current{
+	color:#f48625 !important;
+}
+.article_info_date a{
+	margin-right:20px;
+}
+.article_list hr{
+    border:1px dashed #ccc;
+}
+.a_read{
+	color:#666;
+}
+.a_read p{
+	height:30px;
+	line-height:30px;
+	font-size:14px;
+}
+/*8*/
+
+</style>
+
+
+</head>
+
+<body>
+
+
+<div id="content">
+
+   
+        <script>
+$(function(){ 
+
+
+
+
+    $("#tap2").click(function(){
+		$(this).removeClass("tap2");
+	    $(this).addClass("tap1");
+		
+		$("#tap1").removeClass("tap1");
+		$("#tap1").addClass("tap2");
+		
+		$("#tap3").addClass("click_check");
+		
+		$(".article_info").hide();
+		$(".article_list").show();
+	});
+	
+    $("#tap1").click(function(){
+		
+		$(this).removeClass("tap2");
+		$(this).removeClass("tap1");
+		
+	    $(this).addClass("tap1");
+	   
+	   
+		$("#tap2").removeClass("tap1");
+		$("#tap2").removeClass("tap2");	
+		$("#tap2").addClass("tap2");	
+		
+		$("#tap3").removeClass("click_check");	
+
+        $(".article_list").hide();	
+		$(".article_info").show();
+			
+		//$("#tap2").addClass("click_no_check");
+	});
+}); 
+		</script>
+        <div class="r_content">
+            <div class="r_title">
+                <p id="tap1" class="tap1">账户设置</p>
+                <p id="tap2" class="tap2">操作记录</p>
+                <p id="tap3" class="tap3"></p>
+            </div>
+            <div class="r_article">
+
+            
+                <div class="article_list" style="display:none">
+                    <p class="article_info_date"><a href="#" class="a_current">最近登录详情</a> <a href="#">最近异常登录详情</a></p>
+                    
+                   <div class="article_list_content">
+
+                   <div class="article_list_th">
+                     <p>城市和IP</p>
+                     <p>登录信息</p>
+                     <p>登录时间</p>
+                   </div>
+                   
+                   <div class="article_list_th_ul">
+                       <ul class="article_ul">
+                         <li>
+                           <span>广州(14.123.209.239)</span>
+                           <span>登录M-CHAT</span>
+                           <span>2014-11-5</span>
+                         </li>
+                         <li>
+                           <span>广州(14.123.209.239)</span>
+                           <span>登录M-CHAT</span>
+                           <span>2014-11-5</span>
+                         </li>
+                         <li>
+                           <span>广州(14.123.209.239)</span>
+                           <span>登录M-CHAT</span>
+                           <span>2014-11-5</span>
+                         </li>
+                         <li>
+                           <span>广州(14.123.209.239)</span>
+                           <span>登录M-CHAT</span>
+                           <span>2014-11-5</span>
+                         </li>
+                         <li>
+                           <span>广州(14.123.209.239)</span>
+                           <span>登录M-CHAT</span>
+                           <span>2014-11-5</span>
+                         </li>
+                         <li>
+                           <span>广州(14.123.209.239)</span>
+                           <span>登录M-CHAT</span>
+                           <span>2014-11-5</span>
+                         </li>
+                       </ul>
+                   </div>
+ 
+
+                   <hr class="r_hr m_top_50" />
+
+                   <div class="s_page m_top_30" style="height:60px;">
+                         <div class="s_page_num">
+                           <span><a href="#"><上一页</a></span>
+                           <span><a href="#">1</a></span>
+                           <span class="s_page_current">2</span>
+                           <span><a href="#">3</a></span>
+                           <span><a href="#">4</a></span>
+                           <span><a href="#">5</a></span>
+                           <span><a href="#">6</a></span>
+                           <span><a href="#">7</a></span>
+                           <span><a href="#">8</a></span>
+                           <span><a href="#">...</a></span>
+                           <span><a href="#">20</a></span>
+                           <span><a href="#">下一页></a></span>
+                         </div>
+                   </div>
+                 
+                   <hr />
+                    
+                     
+                   <div class="a_read m_top_50">
+                      <p>登录信息显示规则</p>
+                      <p>1、每页只显示该账号一个月内的最近十次登录信息。</p>
+                      <p>2、如果在做平台升级，可能出现登录地点不准确的情况。</p>
+                      <p>3、您可以通过以上信息核对登录时间。</p>
+                   </div>
+ 
+                  
+                   </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.account_f{
+	clear:left;
+}
+.account_f p{
+	float:left;
+	height:40px;
+	line-height:40px;
+	
+}
+	
+.account_f p:nth-child(1){
+	width:40%;
+	text-align:right;
+	color:#333333;
+}
+.account_f p:nth-child(2){
+	width:30%;
+	color:#acacaa;
+}
+.account_f p:nth-child(3){
+	width:30%;
+}
+.account_f_input{
+	border:1px #eeeeee solid;
+	height:40px;
+	background-color:#fff !important;
+}
+
+.account_f_btn{
+	background-color:#feab48;
+	border:1px #fc9d3b solid;
+	color:#fbf9f6;
+	padding:4px 15px;
+	margin-top:0px;
+    -moz-border-radius:5px;
+    border-radius: 5px;
+	cursor:pointer;	
+}
+.account_f_btn:hover{
+	background-color:#ee8a14;
+
+}
+
+
+.article_info hr{
+	float:left;
+	border:1px dashed #ccc;
+	width:90%;
+	margin-left:5%;
+	margin-bottom:50px;
+}
+</style>
+
+
+            
+            
+                <div class="article_info" style="width:946px;">
+
+                   <div>
+                       <div class="account_f">
+                           <p>证书编号：</p>
+                           <p>T2016A</p>
+                           <p></p>
+                       </div>
+                       <div class="account_f">
+                           <p>身份证号码：</p>
+                           <p>123456665488754855</p>
+                           <p></p>
+                       </div>
+                       <div class="account_f">
+                           <p>登录账号：</p>
+                           <p><input  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div>
+                       <div class="account_f">
+                           <p>密码：</p>
+                           <p><input  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div>
+                       <div class="account_f">
+                           <p>Emai：</p>
+                           <p><input  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div>
+                       
+                       <hr class="r_hr m_top_50" />
+
+                       <div class="account_f ">
+                           <p>真实姓名：</p>
+                           <p><input  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div>
+                       
+                       <div class="account_f">
+                           <p>电话：</p>
+                           <p><input  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div>
+                       
+                       <div class="account_f">
+                           <p>性别：</p>
+                           <p><input  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div>
+                       
+                       <div class="account_f">
+                           <p>省份：</p>
+                           <p><input  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div>
+                       
+                       <div class="account_f">
+                           <p>城市：</p>
+                           <p><input  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div>
+                       
+                       <div class="account_f">
+                           <p>单位名称：</p>
+                           <p><input  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div>
+                       
+                       <div class="account_f">
+                           <p>每页显示条数设置：</p>
+                           <p><input  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div>          
+                   </div>
+            
+                    <div class="r_form_sub m_top_150">
+                        <p><input type="button" class="r_form_s r_form_submit" value="保存" /></p>
+                        <p><input type="button" class="r_form_s r_form_reset" value="取消" /></p>
+                    </div>
+                </div> 
+                    
+
+  
+                
+
+ 
+            </div>
+        </div>
+        
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<script>
+$(function(){ 
+    $('#tap2').click();
+});
+</script>
+
+</body>
+</html>

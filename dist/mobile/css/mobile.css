@@ -1,0 +1,46 @@
+.m_foot{
+	width:100%;
+	position:fixed;
+	bottom:0px;
+	background-color:#f1f2ee;
+}
+.m_foot p{
+	height:60px; 
+	line-height:60px;
+	width:50%;
+	float:left;
+	text-align:center;
+	font-size:1.8rem;
+	margin:10px 0;
+
+}
+.m_foot  p:nth-child(1){
+
+}
+.m_foot  p:nth-child(2){
+
+}
+.m_foot_l{
+	text-align:center;
+	-moz-border-radius:25px;
+	border-radius: 25px;
+	display:block;
+	width:70%;
+	margin:0 auto;
+}
+
+.m_foot_r{
+	text-align:center;
+	-moz-border-radius:25px;
+	border-radius: 25px;
+	display:block;
+	width:70%;
+	margin:0 auto;
+}
+
+@media only screen and (max-width:400px){
+.m_foot p{
+	height:40px; 
+	line-height:40px;
+}
+}

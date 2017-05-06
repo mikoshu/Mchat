@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="../js/jquery.min.js"></script>
+
+<link rel="Stylesheet" type="text/css" href="../css/style.css" />
+<link rel="Stylesheet" type="text/css" href="../css/pc_2.css" />
+
+<script type="text/javascript">
+$(function(){ 	
+	$(".p_form_submit").click(function(){
+	    //parent.location.reload();  //刷新父页面,通过AJAX提交表单
+	    parent.layer.close(1);    //关闭子页面
+	});
+	$(".p_form_reset").click(function(){
+	    //parent.location.reload();  //刷新父页面,通过AJAX提交表单
+	    parent.layer.close(1);    //关闭子页面
+	});
+});
+</script>
+<style>
+#p_content{
+	width:640px;
+}
+.p_title{
+	height:40px;
+	line-height:40px;
+	background-color:#fafaee;
+	border-top:2px #ffab49 solid;
+	color:#666;
+	font-size:16px;
+	font-weight:bold;
+}
+.p_title p{
+	margin-left:20px;
+}
+
+
+.p_form{
+	clear:both;
+	height:30px;
+	margin-top:5px;
+	line-height:35px;
+	color:#666;
+}
+.p_form div:nth-child(1){
+	width:25%;
+	text-align:right;
+	float:left;
+	margin-right:10px;
+}
+.p_form div:nth-child(2){
+	float:left;
+	width:70%;
+}
+.chat_input{
+	border:1px #eeeeee solid;
+	height:30px;
+	background-color:#fff !important;
+}
+
+.p_form select{
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+   
+    background: url(images/selectbg.jpg) no-repeat scroll right center transparent;
+    padding-right: 14px;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+
+
+.p_form_sub{
+	background-color:#f7f7f7; 
+	height:70px;
+}
+.p_form_s{
+	height:30px;
+	width:80px;
+	margin-top:20px;
+	line-height:30px;
+	text-align:center;
+	-moz-border-radius:5px;
+	border-radius: 5px;
+	float:right;
+	margin-right:10px;
+	cursor:pointer;
+}
+.p_form_submit{
+	background-color:#feab48;
+	color:#fff;	
+	border:1px #feab48 solid;	
+}
+.p_form_submit:hover{
+	background-color:#fb9113;
+	color:#fff;		
+}
+.p_form_reset{
+	background-color:#FFF;
+	color:#333;
+	border:1px #CCC solid;
+}
+.p_form_reset:hover{
+	background-color:#fed19c;
+	color:#fff;		
+}
+</style>
+</head>
+
+<body>
+
+<div id="p_content">
+
+    <div class="p_title"><p>完成问卷人的信息填写</p></div>
+
+
+    <div class="p_form">
+        <div>完成问卷人姓名:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <div class="p_form">
+        <div>与儿童的关系:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <div class="p_form">
+        <div>儿童出生时的体重:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <div class="p_form">
+        <div>通讯地址:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <div class="p_form">
+        <div>邮政编码:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <div class="p_form">
+        <div>联系电话:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    
+    <div class="p_form">
+        <p style=" text-align:center;font-size:14px;">若代替填写问卷请列出代替填写人的性名、与宝来宾席的关系或身份</p>
+    </div>
+    <div>
+        <p style="text-align:center;font-size:14px;">
+          <textarea class="chat_input" style="width:300px; height:100px;"></textarea>
+        </p>
+    </div>
+
+    
+    <div class="p_form">
+        <div>母亲文化程度:</div>
+        <div><select class="chat_input" style="width:300px"></select></div>
+    </div>
+    <div class="p_form">
+        <div>母亲职业:</div>
+        <div><select class="chat_input" style="width:300px"></select></div>
+    </div> 
+    <div class="p_form">
+        <div>父亲文化程度:</div>
+        <div><select class="chat_input" style="width:300px"></select></div>
+    </div> 
+    <div class="p_form">
+        <div>父亲职业:</div>
+        <div><select class="chat_input" style="width:300px"></select></div>
+    </div> 
+    <div class="p_form">
+        <div>主要照顾者文化程度:</div>
+        <div><select class="chat_input" style="width:300px"></select></div>
+    </div> 
+    <div class="p_form">
+        <div>母亲出生日期:</div>
+        <div><select class="chat_input" style="width:300px"></select></div>
+    </div> 
+    <div class="p_form">
+        <div>父亲出生日期:</div>
+        <div><select class="chat_input" style="width:300px"></select></div>
+    </div> 
+     <div class="p_form">
+        <div>婚姻状况:</div>
+        <div><select class="chat_input" style="width:300px"></select></div>
+    </div> 
+          
+          
+
+            
+      <div class="p_form_sub">
+          <p><input type="button" class="p_form_s p_form_submit" value="确认" /></p>
+          <p><input type="button" class="p_form_s p_form_reset" value="先不填写" /></p>
+      </div>   
+</div>
+
+</body>
+</html>

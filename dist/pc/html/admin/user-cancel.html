@@ -1,0 +1,325 @@
+<link rel="Stylesheet" type="text/css" href="../../css/pc_archives.css" />
+<style>
+
+.search_list_content{
+    margin-top:40px;
+    width:950px;
+}
+.search_list_th{
+   color:#FFF;
+   height:35px;
+   line-height:35px;
+   text-align:center;
+}
+.search_list_th p{
+   float:left;
+   background-color:#feaa48;
+ 
+}
+.search_list_th p:nth-child(1){
+	width:10%;
+}
+.search_list_th p:nth-child(2){
+	width:8%;
+}
+.search_list_th p:nth-child(3){
+	width:10%;
+}
+.search_list_th p:nth-child(4){
+	width:10%;
+}
+.search_list_th p:nth-child(5){
+	width:5%;
+}
+.search_list_th p:nth-child(6){
+	width:5%;
+}
+.search_list_th p:nth-child(7){
+	width:5%;
+}
+.search_list_th p:nth-child(8){
+	width:13%;
+}
+.search_list_th p:nth-child(9){
+	width:8%;
+}
+.search_list_th p:nth-child(10){
+	width:8%;
+}
+.search_list_th p:nth-child(11){
+	width:8%;
+}
+.search_list_th p:nth-child(12){
+	width:10%;
+}
+
+
+
+
+ul{
+	list-style-type:none;
+}
+.search_list_th_ul{
+   text-align:center;
+   color:#333333;
+}					
+
+.search_ul li{
+   height:30px;
+   line-height:30px;
+   overflow:hidden;
+   
+}
+.search_ul li:nth-child(odd){
+   background-color:#ffffff;
+  
+}
+.search_ul li:nth-child(even){
+   background-color:#f8f8f8;
+}
+.search_list_th_ul span{
+   float:left;
+   font-size:14px;
+}
+.search_list_th_ul span img{
+	margin-top:6px;
+}
+.search_list_th_ul span:nth-child(1){
+	width:10%;
+
+}
+.search_list_th_ul span:nth-child(2){
+	width:8%;
+}
+.search_list_th_ul span:nth-child(3){
+	width:10%;
+}
+.search_list_th_ul span:nth-child(4){
+	width:10%;
+}
+.search_list_th_ul span:nth-child(5){
+	width:5%;
+}
+.search_list_th_ul span:nth-child(6){
+	width:5%;
+}
+.search_list_th_ul span:nth-child(7){
+	width:5%;
+}
+.search_list_th_ul span:nth-child(8){
+	width:13%;
+}
+.search_list_th_ul span:nth-child(9){
+	width:8%;
+}
+.search_list_th_ul span:nth-child(10){
+	width:8%;
+}
+.search_list_th_ul span:nth-child(11){
+	width:8%;
+}
+.search_list_th_ul span:nth-child(12){
+	width:10%;
+}
+
+</style>
+
+
+        <div class="r_content">
+            <div class="r_search">
+               
+               <div class="r_search_l">
+                   <div>
+                       儿童姓名：<input class="chat_input" style="height:30px; width:200px;" type="text" id="name" />
+                   </div>
+                   <div>
+                       出生日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" />
+                   </div>
+                   
+                   
+               </div>
+               <div class="r_search_m">
+                   <div>
+                       报告编号：<input name="" class="chat_input" style="height:30px;width:200px" id="reportNo" />
+                   </div>
+                   <!-- <div>
+                       施测日期：<select name="" class="chat_input" style="height:30px;width:200px"  ></select>
+                   </div> -->
+               </div>
+               <div class="r_search_r">
+               <input id="search" type="button" class="r_search_r_btn" value="搜索" />
+               </div>
+               
+               
+            </div>
+            
+            <div class="r_article">     
+
+
+
+                   <div class="search_list_content">
+
+                     <div class="search_list_th">
+                       <p>报告编号</p>
+                       <p>姓名</p>
+                       <p>出生日期</p>
+                       <p>施测日期</p>
+                       <p>姓别</p>
+                       <p>问卷</p>
+                       <p>类型</p>
+                       <p>创建时间</p>
+                       <p>基本信息</p>
+                       <p>发育问卷</p>
+                       <p>信息汇总</p>
+                       <p>亲子活动</p>
+                     </div>
+                     
+                     <div class="search_list_th_ul">
+                         <ul class="search_ul" id="list">
+                           <li>
+                             <span>a1234567890</span>
+                             <span>刘开明</span>
+                             <span>2014-11-5</span>
+                             <span>2015-10-3</span>
+                             <span>男</span>
+                             <span>10</span>
+                             <span>M-CHAT</span>
+                             <span>2015-10-3</span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                           </li>
+                           
+                           <li>
+                             <span>a1234567890</span>
+                             <span>刘开明</span>
+                             <span>2014-11-5</span>
+                             <span>2015-10-3</span>
+                             <span>男</span>
+                             <span>10</span>
+                             <span>M-CHAT</span>
+                             <span>2015-10-3</span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                           </li>
+                           
+                           <li>
+                             <span>a1234567890</span>
+                             <span>刘开明</span>
+                             <span>2014-11-5</span>
+                             <span>2015-10-3</span>
+                             <span>男</span>
+                             <span>10</span>
+                             <span>M-CHAT</span>
+                             <span>2015-10-3</span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                           </li>
+                           
+                           <li>
+                             <span>a1234567890</span>
+                             <span>刘开明</span>
+                             <span>2014-11-5</span>
+                             <span>2015-10-3</span>
+                             <span>男</span>
+                             <span>10</span>
+                             <span>M-CHAT</span>
+                             <span>2015-10-3</span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+                           </li>
+                         </ul>
+                     </div>
+                   
+                     
+
+                     
+                     
+                     <div class="s_page m_top_90">
+                         <div class="s_page_num" id="page">
+                         </div>
+                     </div>
+                   
+                   
+                   </div>               
+
+ 
+            </div>
+     
+        </div>
+    </div>
+
+
+
+<script id="table" type="text/html" >
+  {{each recordList}}
+  <li>
+     <span>{{$value.reportNo}}</span>
+     <span>{{$value.testeeName}}</span>
+     <span>{{$value.birthYear+'-'+$value.birthMonth+'-'+$value.birthToday}}</span>
+     <span>--</span>
+     <span>{{['男','女'][$value.sex]}}</span>
+     <span>{{$value.cardType}}</span>
+     <span>--</span>
+     <span>{{$value.createTime}}</span>
+     <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+     <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+     <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+     <span><a href="#"><img src="../../images/s_2.png" /></a></span>
+     <span><a href="#"><img src="../../images/s_1.png" /></a></span>
+   </li>
+  {{/each}}
+</script>
+
+<script>
+  $(document).ready(function(){
+      $("#search").on('click',function(){
+        var obj = {
+          url: util.requestURL+'/web/v1/enterpriseMchat/listMchatScoreListPage',
+          type: 'POST',
+          data:{
+            pageNum: 1,
+            numPerPage: 10,
+            testeeName: $("#name").val(),
+            reportNo: $("#reportNo").val(),
+            deleted: 1,
+            birth: util.getDateStr($("#birth").val())
+          },
+          success: function(data){
+            if(data.code == 1){
+              var html = template.render($("#table").text(), data.data);
+              $("#list").html(html);
+              
+              $("#page").pagination({
+                  totalData: data.data.totalCount,
+                  showData: 10,
+                  pageCount: 10,
+                  current: data.data.currentPage,
+                  coping: true,
+                  callback: function(api){
+                    util.pageClient(obj,api.getCurrent())
+                  }
+
+              })
+            }else{
+              layer.msg(data.msg)
+            }
+            
+
+          }
+        }
+        util.client(obj);
+    })
+
+    $("#search").trigger('click');
+  });
+</script>
+
+

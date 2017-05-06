@@ -1,0 +1,177 @@
+<link rel="Stylesheet" type="text/css" href="../../css/pc_archives.css" />
+<style>
+
+.search_list_content{
+    margin-top:40px;
+    width:950px;
+}
+.search_list_th{
+   color:#FFF;
+   height:35px;
+   line-height:35px;
+   text-align:center;
+}
+.search_list_th p{
+   float:left;
+   background-color:#feaa48;
+ 
+}
+.search_list_th p:nth-child(1){
+	width:10%;
+}
+.search_list_th p:nth-child(2){
+	width:15%;
+}
+.search_list_th p:nth-child(3){
+	width:10%;
+}
+.search_list_th p:nth-child(4){
+	width:45%;
+}
+.search_list_th p:nth-child(5){
+	width:10%;
+}
+.search_list_th p:nth-child(6){
+	width:10%;
+}
+
+
+
+
+ul{
+	list-style-type:none;
+}
+.search_list_th_ul{
+   text-align:center;
+   color:#333333;
+}					
+
+.search_ul li{
+   height:30px;
+   line-height:30px;
+   
+   
+}
+.search_ul li:nth-child(odd){
+   background-color:#ffffff;
+  
+}
+.search_ul li:nth-child(even){
+   background-color:#f8f8f8;
+}
+.search_list_th_ul span{
+   float:left;
+   font-size:14px;
+}
+.search_list_th_ul span img{
+	margin-top:7px;
+}
+.search_list_th_ul span:nth-child(1){
+	width:10%;
+
+}
+.search_list_th_ul span:nth-child(2){
+	width:15%;
+}
+.search_list_th_ul span:nth-child(3){
+	width:10%;
+}
+.search_list_th_ul span:nth-child(4){
+	width:45%;
+}
+.search_list_th_ul span:nth-child(5){
+	width:10%;
+}
+.search_list_th_ul span:nth-child(6){
+	width:10%;
+}
+
+</style>
+
+        <div class="r_content">
+            <div class="r_search_6">
+            补充表格          
+            </div>
+            
+            <div class="r_article">     
+
+
+
+
+                   <div class="search_list_content" style="margin-top:0px;">
+
+                     <div class="search_list_th">
+                       <p>编号</p>
+                       <p>文档名称</p>
+                       <p>类别</p>
+                       <p>&nbsp;</p>
+                       <p>编辑</p>
+                       <p>下载</p>
+                     </div>
+                     
+                     <div class="search_list_th_ul">
+                         <ul class="search_ul">
+                           <li>
+                             <span>1</span>
+                             <span>M-CHAT是什么</span>
+                             <span>M-CHAT</span>
+                             <span>&nbsp;</span>
+                             <span><a href="#"><img src="../../images/s_3.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_4.png" /></a></span>
+                           </li>
+                           
+                           <li>
+                             <span>1</span>
+                             <span>M-CHAT是什么</span>
+                             <span>M-CHAT</span>
+                             <span>&nbsp;</span>
+                             <span><a href="#"><img src="../../images/s_3.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_4.png" /></a></span>
+                           </li>
+                           
+                           <li>
+                             <span>1</span>
+                             <span>M-CHAT是什么</span>
+                             <span>M-CHAT</span>
+                             <span>&nbsp;</span>
+                             <span><a href="#"><img src="../../images/s_3.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_4.png" /></a></span>
+                           </li>
+                           
+                           <li>
+                             <span>1</span>
+                             <span>M-CHAT是什么</span>
+                             <span>M-CHAT</span>
+                             <span>&nbsp;</span>
+                             <span><a href="#"><img src="../../images/s_3.png" /></a></span>
+                             <span><a href="#"><img src="../../images/s_4.png" /></a></span>
+                           </li>
+                         </ul>
+                     </div>  
+                     <div class="s_page m_top_90">
+                         <div class="s_page_num" id="page">
+                           
+                         </div>
+                     </div>
+                  
+                   </div>             
+ 
+            </div>
+            
+            
+
+            
+
+            
+            
+        </div>
+        
+
+
+
+    </div>
+
+
+
+
+

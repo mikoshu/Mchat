@@ -1,0 +1,299 @@
+
+<link rel="Stylesheet" type="text/css" href="../css/pc_archives.css" />
+<style>
+
+.search_list_content{
+    margin-top:40px;
+    width:950px;
+}
+.search_list_th{
+   color:#FFF;
+   height:35px;
+   line-height:35px;
+   text-align:center;
+}
+.search_list_th p{
+   float:left;
+   background-color:#feaa48;
+ 
+}
+.search_list_th p:nth-child(1){
+	width:10%;
+}
+.search_list_th p:nth-child(2){
+	width:16%;
+}
+.search_list_th p:nth-child(3){
+	width:12%;
+}
+.search_list_th p:nth-child(4){
+	width:12%;
+}
+.search_list_th p:nth-child(5){
+	width:14%;
+}
+.search_list_th p:nth-child(6){
+	width:10%;
+}
+.search_list_th p:nth-child(7){
+	width:16%;
+}
+.search_list_th p:nth-child(8){
+	width:10%;
+}
+
+
+
+
+ul{
+	list-style-type:none;
+}
+.search_list_th_ul{
+   text-align:center;
+   color:#333333;
+}					
+
+.search_ul li{
+   height:30px;
+   line-height:30px;
+   
+   
+}
+.search_ul li:nth-child(odd){
+   background-color:#ffffff;
+  
+}
+.search_ul li:nth-child(even){
+   background-color:#f8f8f8;
+}
+.search_list_th_ul span{
+   float:left;
+   font-size:14px;
+}
+.search_list_th_ul span img{
+	margin-top:10px;
+}
+.search_list_th_ul span:nth-child(1){
+	width:10%;
+
+}
+.search_list_th_ul span:nth-child(2){
+	width:16%;
+}
+.search_list_th_ul span:nth-child(3){
+	width:12%;
+}
+.search_list_th_ul span:nth-child(4){
+	width:12%;
+}
+.search_list_th_ul span:nth-child(5){
+	width:14%;
+}
+.search_list_th_ul span:nth-child(6){
+	width:10%;
+}
+.search_list_th_ul span:nth-child(7){
+	width:16%;
+}
+.search_list_th_ul span:nth-child(8){
+	width:10%;
+}
+</style>
+
+
+
+
+
+
+        <div class="r_content">
+            <div class="r_search">
+               
+               <div class="r_search_l">
+                   <div>
+                       儿童姓名：<input class="chat_input" style="height:30px; width:200px;" type="text" id="name" />
+                   </div>
+                   <div>
+                       出生日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" />
+                   </div>
+                   
+               </div>
+               <div class="r_search_m">
+                   <div>
+                       身份信息：<input class="chat_input" style="height:30px; width:200px;" type="text" id="cardNo" />
+                   </div>
+                   <!-- <div>
+                       施测日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" />
+                   </div> -->
+               </div>
+               <div class="r_search_r">
+               <input type="button" id="search" class="r_search_r_btn" value="搜索" />
+               </div>
+               
+               
+            </div>
+            
+            <div class="r_article">     
+
+
+                   <div class="search_list_content">
+
+                     <div class="search_list_th">
+                       <p>儿童姓名</p>
+                       <p>身份信息</p>
+                       <p>出生日期</p>
+                       <p>报告总数量</p>
+                       <p>我的施测数量</p>
+                       <p>性别</p>
+                       <p>创建时间</p>
+                       <p>查看</p>
+                     </div>
+                     
+                     <div class="search_list_th_ul">
+                         <ul class="search_ul" id="list">
+                           <li>
+                             <span>刘开明</span>
+                             <span>a1234567890</span>
+                             <span>2014-11-5</span>
+                             <span>1</span>
+                             <span>1</span>
+                             <span>男</span>
+                             <span>2017 11-11 12:36:21</span>
+                             <span><a href="#"><img src="../images/looks.png" /></a></span>
+                           </li>
+                           <li>
+                             <span>刘开明</span>
+                             <span>a1234567890</span>
+                             <span>2014-11-5</span>
+                             <span>1</span>
+                             <span>1</span>
+                             <span>男</span>
+                             <span>2017 11-11 12:36:21</span>
+                             <span><a href="#"><img src="../images/looks.png" /></a></span>
+                           </li>
+                           <li>
+                             <span>刘开明</span>
+                             <span>a1234567890</span>
+                             <span>2014-11-5</span>
+                             <span>1</span>
+                             <span>1</span>
+                             <span>男</span>
+                             <span>2017 11-11 12:36:21</span>
+                             <span><a href="#"><img src="../images/looks.png" /></a></span>
+                           </li>
+                           <li>
+                             <span>刘开明</span>
+                             <span>a1234567890</span>
+                             <span>2014-11-5</span>
+                             <span>1</span>
+                             <span>1</span>
+                             <span>男</span>
+                             <span>2017 11-11 12:36:21</span>
+                             <span><a href="#"><img src="../images/looks.png" /></a></span>
+                           </li>
+                           <li>
+                             <span>刘开明</span>
+                             <span>a1234567890</span>
+                             <span>2014-11-5</span>
+                             <span>1</span>
+                             <span>1</span>
+                             <span>男</span>
+                             <span>2017 11-11 12:36:21</span>
+                             <span><a href="#"><img src="../images/looks.png" /></a></span>
+                           </li>
+                           <li>
+                             <span>刘开明</span>
+                             <span>a1234567890</span>
+                             <span>2014-11-5</span>
+                             <span>1</span>
+                             <span>1</span>
+                             <span>男</span>
+                             <span>2017 11-11 12:36:21</span>
+                             <span><a href="#"><img src="../images/looks.png" /></a></span>
+                           </li>
+                         </ul>
+                     </div>
+
+
+                     <div class="s_page m_top_90">
+                         <div class="s_page_num" id="page">
+                          
+                         </div>
+                     </div>
+                   
+                   
+                   </div>               
+
+ 
+            </div>
+            
+            
+
+            
+
+            
+            
+        </div>
+      
+    </div>
+
+
+
+<script id="table" type="text/html" >
+  {{each recordList}}
+  <li>
+     <span>{{$value.testeeName}}</span>
+     <span>{{$value.cardNo}}</span>
+     <span>{{$value.birthYear+'-'+$value.birthMonth+'-'+$value.birthToday}}</span>
+     <span>--</span>
+     <span>--</span>
+     <span>{{['男','女'][$value.sex]}}</span>
+     <span>{{$value.createTime}}</span>
+     <span><a href="#"><img src="../images/looks.png" /></a></span>
+   </li>
+  {{/each}}
+</script>
+
+<script>
+  $(document).ready(function(){
+    
+    $("#search").on('click',function(){
+        var obj = {
+          url: util.requestURL+'/web/v1/medicMchat/listMchatScoreUnique',
+          type: 'POST',
+          data:{
+            pageNum: 1,
+            numPerPage: 10,
+            testeeName: $("#name").val(),
+            cardNo: $("#cardNo").val(),
+            birth: util.getDateStr($("#birth").val())
+          },
+          success: function(data){
+            if(data.code == 1){
+              var html = template.render($("#table").text(), data.data);
+              $("#list").html(html);
+              console.log(data.data.totalCount)
+              $("#page").pagination({
+                  totalData: data.data.totalCount,
+                  showData: 10,
+                  pageCount: 10,
+                  current: data.data.currentPage,
+                  coping: true,
+                  callback: function(api){
+                    util.pageClient(obj,api.getCurrent())
+                  }
+              })
+            }else{
+              layer.msg(data.msg);
+            }
+            
+
+          }
+        }
+        util.client(obj);
+    })
+
+    $("#search").trigger('click');
+
+  });
+</script>
+
