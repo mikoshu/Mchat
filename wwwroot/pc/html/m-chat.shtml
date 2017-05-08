@@ -98,7 +98,7 @@
 
     $("#logout").on('click',function(e){
       util.client({
-        url: util.requestURL+'/web/v1/enterprise/token/logout',
+        url: util.requestURL+'/web/v1/medic/token/logout',
         type: 'POST',
         success: function(data){
           if(data.code == 1){
