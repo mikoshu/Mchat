@@ -184,6 +184,7 @@ ul{
    height:30px;
    line-height:30px;
    overflow: hidden;
+   font-size:14px;
    
 }
 .article_ul li:nth-child(odd){
@@ -381,5 +382,15 @@ select::-ms-expand {
 	color:#fff;		
 }
 /**2-1**/
-
-
+.pwd-change{
+	padding:10px 20px 0px 20px;
+}
+.pwd-change li{
+	margin-top:10px;
+}
+.pwd-change span{
+	font-size:14px;
+	display: inline-block;
+	width:70px;
+	text-align: right;
+}

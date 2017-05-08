@@ -332,32 +332,32 @@ $(function(){
                        </div> -->
                        <div class="account_f">
                            <p>登录账号：</p>
-                           <p><input id="account"  class="account_f_input" style="height:30px; width:200px;" /></p>
-                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                           <p><input id="account" disabled="disabled" class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
                        </div>
                        <div class="account_f">
                            <p>密码：</p>
-                           <p><input id="password"  class="account_f_input" style="height:30px; width:200px;" /></p>
-                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                           <p><input id="password" disabled="disabled" class="account_f_input" value="******" style="height:30px; width:200px;" /></p>
+                           <p><input class="account_f_btn" type="button" id="changePwd" value="修改"  /></p>
                        </div>
                        <div class="account_f">
                            <p>Emai：</p>
                            <p><input id="email"  class="account_f_input" style="height:30px; width:200px;" /></p>
-                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                           <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
                        </div>
                        
                        <hr class="r_hr m_top_50" />
 
                        <div class="account_f ">
                            <p>真实姓名：</p>
-                           <p><input id="realname"  class="account_f_input" style="height:30px; width:200px;" /></p>
-                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                           <p><input id="realname" disabled="disabled" class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
                        </div>
                        
                        <div class="account_f">
                            <p>电话：</p>
-                           <p><input id="mobile"  class="account_f_input" style="height:30px; width:200px;" /></p>
-                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                           <p><input id="mobile" disabled="disabled" class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
                        </div>
                        
                        <!-- <div class="account_f">
@@ -380,8 +380,8 @@ $(function(){
                        
                        <div class="account_f">
                            <p>单位名称：</p>
-                           <p><input id="company"  class="account_f_input" style="height:30px; width:200px;" /></p>
-                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                           <p><input id="company" disabled="disabled" class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
                        </div>
                        
                       <!--  <div class="account_f">
@@ -391,10 +391,10 @@ $(function(){
                        </div>        -->   
                    </div>
             
-                    <div class="r_form_sub m_top_150">
+                   <!--  <div class="r_form_sub m_top_150">
                         <p><input type="button" class="r_form_s r_form_submit" value="保存" /></p>
                         <p><input type="button" class="r_form_s r_form_reset" value="取消" /></p>
-                    </div>
+                    </div> -->
                 </div> 
                     
 
@@ -405,6 +405,24 @@ $(function(){
             </div>
         </div>
     </div>
+
+<script id="temp" type="html/text" >
+  <ul class="pwd-change">
+    <li>
+      <span>旧密码：</span>
+      <input id="oldPwd" type="password" >
+    </li>
+    <li>
+      <span>新密码：</span>
+      <input id="newPwd" type="password" >
+    </li>
+    <li>
+      <span>确认密码：</span>
+      <input id="rePwd" type="password" >
+    </li>
+  </ul>
+</script>
+
 <script>
 $(function(){ 
     //$('#tap2').click();
@@ -425,7 +443,42 @@ $(function(){
                 layer.msg(data.msg);
             }
         }
-    })
+    });
+
+    $("#changePwd").on('click',function(e){
+      layer.open({
+        title: '修改密码',
+        content: $("#temp").html(),
+        btn:['确定'],
+        type: 1,
+        yes: function(index){
+            var oldPwd = $("#oldPwd").val();
+            var newPwd = $("#newPwd").val();
+            var rePwd = $("#rePwd").val();
+            if(newPwd != rePwd){
+              layer.msg('两次输入密码不一致，请重新输入！');
+            }else{
+              util.client({
+                url: util.requestURL+'/web/v1/enterprise/updateLoginPwd',
+                type: 'POST',
+                data: {
+                  oldPassword: oldPwd,
+                  newPassword: newPwd
+                },
+                success: function(resp){
+                  if(resp.code == 1){
+                    layer.msg('密码修改成功！');
+                    layer.close(index);
+                  }else{
+                    layer.msg(resp.msg);
+                  }
+                }
+              })
+            }
+         }
+
+      })
+    });
 });
 </script>
 
