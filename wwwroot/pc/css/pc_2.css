@@ -244,6 +244,9 @@ ul{
  color:#8f8f8f;
  text-indent:10px;
 }
+.announcement p a:hover{
+	color:#ccc;
+}
 .announcement_tip{
  border-top:2px #feab48 solid;
  color:#feab48;

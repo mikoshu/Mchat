@@ -26,7 +26,7 @@
 			
 			<div id="login_out">
 			    <div id="login_out_btn" class="b_white">
-				<a href="#"><img src="../images/out.png" align="absmiddle" />&nbsp;&nbsp;退出系统</a>
+				<a href="javascript:;" id="logout" ><img src="../images/out.png" align="absmiddle" />&nbsp;&nbsp;退出系统</a>
 				</div>
 			</div>
 		</div>
@@ -218,6 +218,19 @@ $(function(){
 	  $(".t_tab_p").removeClass("p_current");
 	  $(".p"+s).addClass("p_current");	  
   });
+  $("#logout").on('click',function(e){
+      util.client({
+        url: util.requestURL+'/web/v1/enterprise/token/logout',
+        type: 'POST',
+        success: function(data){
+          if(data.code == 1){
+            layer.msg('退出登录成功！');
+            setTimeout(function(){window.location.href = 'login.html';},1000)
+            
+          }
+        }
+      })
+    });
 });
 </script>
 </body>

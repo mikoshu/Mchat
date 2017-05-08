@@ -27,7 +27,7 @@
             
             <div id="login_out">
                 <div id="login_out_btn" class="b_white">
-                <a href="#"><img src="../images/out.png" align="absmiddle" />&nbsp;&nbsp;退出系统</a>
+                <a href="javascript:;" id="logout" ><img src="../images/out.png" align="absmiddle" />&nbsp;&nbsp;退出系统</a>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
     <!--jx_head E-->  
     <div id="head_mid">
         <div>
-            <div class="cho_sys f_l"><a href="#">选择系统</a></div>
+            <div class="cho_sys f_l"><a href="choose-system.html">选择系统</a></div>
             <div class="f_r head_date" id="date" >2017年3月10日，星期五，农历正月十五</div>
         </div>
     </div>
@@ -57,7 +57,7 @@
               </div>
               <!-- <p class="l_menu_3"><a href="#report-query">报告查询</a></p> -->
               <p class="l_menu_4"><a href="#my-account">我的账号</a></p>
-              <p class="l_menu_5"><a href="#create-report">创建报告</a></p>
+              <p class="l_menu_5"><a href="javascript:;">创建报告</a></p>
             </div>
             <div>
                 <img src="../images/bg2.jpg" />
@@ -96,6 +96,19 @@
       window.location.href = url;
     });
 
+    $("#logout").on('click',function(e){
+      util.client({
+        url: util.requestURL+'/web/v1/enterprise/token/logout',
+        type: 'POST',
+        success: function(data){
+          if(data.code == 1){
+            layer.msg('退出登录成功！');
+            setTimeout(function(){window.location.href = 'login.html';},1000)
+            
+          }
+        }
+      })
+    });
 
     $(window).bind('hashchange', function(e, triggered) { // 绑定hash值
             getHash();
