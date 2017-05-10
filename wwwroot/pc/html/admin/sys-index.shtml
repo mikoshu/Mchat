@@ -1,26 +1,44 @@
+<style>
+  .article_list_th p:nth-child(5) {
+    width: 15%;
+}
+.article_list_th p:nth-child(6) {
+    width: 15%;
+}
+.article_list_th p:nth-child(2) {
+    width: 25%;
+}
+.article_list_th_ul span:nth-child(2){
+  width:25%;
+}
+.article_list_th_ul span:nth-child(5){
+  width:15%;
+}
+.article_list_th_ul span:nth-child(6){
+  width:15%;
+}
+</style>
 <div class="r_title">
                 <p id="tap1" class="tap1">公告发布</p>
-                <p id="tap2" class="tap2">报告信息</p>
+                <p id="tap2" class="tap2">用户列表</p>
                 <p id="tap3" class="tap3"></p>
             </div>
             <div class="r_article">
             
             
                 <div class="article_list" style="display:none">
-                    <h4 class="article_list_title">报告信息</h4>
+                    <h4 class="article_list_title">用户列表</h4>
                     <p class="article_info_date" id="quality">M-CHAT报告：23 | 剩余M-CHAT报告：87</p>
                     
                    <div class="article_list_content">
 
                    <div class="article_list_th">
-                     <p>报告编号</p>
-                     <p>儿童姓名</p>
-                     <p>出生日期</p>
-                     <p>创建日期</p>
-                     <p>性别</p>
-                     <p>问卷</p>
-                     <p>类型</p>
-                     <p>下载</p>
+                     <p>用户姓名</p>
+                     <p>证书编号</p>
+                     <p>ASQ数量</p>
+                     <p>ASQ-SE数量</p>
+                     <p>查看与修改</p>
+                     <p>解除绑定</p>
                    </div>
                    
                    <div class="article_list_th_ul">
@@ -106,6 +124,35 @@ $(function(){
 }); 
     </script>
 
+<script id="pop" type="text/html">
+  <ul class="pwd-change check-msg">
+    <li>
+      <span>用户姓名：</span>
+      <p id="username"></p>
+    </li>
+    <li>
+      <span>身份证号码：</span>
+      <p id="cardNo"></p>
+    </li>
+    <li>
+      <span>证书编号：</span>
+      <p id="zs"></p>
+    </li>
+    <li class="ac-hide">
+      <span>请输入用户密码：</span>
+      <input id="userPwd" type="password" >
+    </li>
+    <li class="ac-hide">
+      <span>请再输入一次：</span>
+      <input id="rePwd" type="password" >
+    </li>
+    <li>
+      <span>请输入您的密码：</span>
+      <input id="Pwd" type="password" >
+    </li>
+  </ul>
+</script>
+
 <script id="ggList" type="text/html">
   {{each recordList}}
     <p><a class="ac-gg" data-id="{{$value.id}}" href="javascript:;">{{$index+1+'、'+$value.title}}</a></p>
@@ -115,14 +162,12 @@ $(function(){
 <script id="table" type="text/html" >
   {{each recordList}}
   <li>
-     <span>{{$value.reportNo}}</span>
-     <span>{{$value.testeeName}}</span>
-     <span>{{$value.birthYear+'-'+$value.birthMonth+'-'+$value.birthToday}}</span>
-     <span>{{$value.createTime}}</span>
-     <span>{{['男','女'][$value.sex]}}</span>
+     <span>{{$value.realName}} </span>
+     <span>{{$value.cardNo}} </span>
      <span>--</span>
-     <span>{{$value.cardType}}</span>
-     <span><a href="{{url+'/web/v1/enterpriseMchat/downloadReport?scoreNo='+$value.scoreNo}}"><img src="../../images/down1.png" /></a></span>
+     <span>--</span>
+     <span><a data-medicNo="{{$value.medicNo}}" class="ac-check" href="javascript:;">查看</a></span>
+     <span><a data-medicNo="{{$value.medicNo}}" class="ac-delete" href="javascript:;">解除绑定</a></span>
    </li>
   {{/each}}
 </script>
@@ -130,7 +175,7 @@ $(function(){
 <script>
   $(document).ready(function(){
         var obj = {
-          url: util.requestURL+'/web/v1/enterpriseMchat/listMchatScoreListPage',
+          url: util.requestURL+'/web/v1/enterprise/listMedic',
           type: 'POST',
           data:{
             pageNum: 1,
@@ -207,6 +252,94 @@ $(function(){
         $("body").delegate('.ac-gg','click',function(){
           var id = $(this).attr("data-id");
           getArticle(id);
+        });
+
+        $("body").delegate('.ac-check','click',function(){
+          var no = $(this).attr("data-medicNo");
+          util.client({
+            url: util.requestURL+'/web/v1/enterprise/getMedicInfoByMedicNo',
+            type: 'POST',
+            data:{
+              medicNo: no
+            },
+            success: function(data){
+              if(data.code == 1){
+                var data = data.data;
+                layer.open({
+                  title: '查看信息',
+                  content: $("#pop").html(),
+                  btn:['修改密码','取消'],
+                  type: 1,
+                  success: function(){
+                    $("#username").text(data.realName);
+                    $("#cardNo").text(data.cardNo);
+                    $("#zs").text("--");
+                  },
+                  yes: function(index){
+
+                    console.log(data)
+                  }
+                })
+              }else{
+                layer.msg(data.msg);
+              }
+            }
+          })
+        });
+
+        $("body").delegate('.ac-delete','click',function(){
+          var no = $(this).attr("data-medicNo");
+          util.client({
+            url: util.requestURL+'/web/v1/enterprise/getMedicInfoByMedicNo',
+            type: 'POST',
+            data:{
+              medicNo: no
+            },
+            success: function(data){
+              if(data.code == 1){
+                var data = data.data;
+                layer.open({
+                  title: '查看信息',
+                  content: $("#pop").html(),
+                  btn:['解除绑定','取消'],
+                  type: 1,
+                  success: function(){
+                    $("#username").text(data.realName);
+                    $("#cardNo").text(data.cardNo);
+                    $("#zs").text("--");
+                    $(".ac-hide").hide();
+                  },
+                  yes: function(index){
+                    var pwd = $("#Pwd").val();
+                    if(pwd == ''){
+                      layer.msg("请输入您的密码！");
+                      return false;
+                    }
+                    util.client({
+                      url: util.requestURL+'/web/v1/enterprise/dismissUser',
+                      type: 'POST',
+                      data: {
+                        managerPwd: pwd,
+                        medicNo: no
+                      },
+                      success: function(data){
+                        if(data.code == 1){
+                          layer.msg(data.msg);
+                          layer.close(index)
+                          util.pageClient(obj,util.currentPage);
+                        }else{
+                          layer.msg(data.msg);
+                        }
+                      }
+                    })
+                    console.log(data)
+                  }
+                })
+              }else{
+                layer.msg(data.msg);
+              }
+            }
+          })
         });
 
         function getArticle(id){

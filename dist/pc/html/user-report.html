@@ -139,14 +139,14 @@ ul{
                    <div>
                        儿童姓名：<input class="chat_input" style="height:30px; width:200px;" type="text" id="name" />
                    </div>
-                   <div>
+                   <!-- <div>
                        出生日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" />
-                   </div>
+                   </div> -->
                    
                </div>
                <div class="r_search_m">
                    <div>
-                       报告编号：<input class="chat_input" id="reportNo" style="height:30px; width:200px;" type="text" />
+                       身份信息：<input class="chat_input" id="cardNo" style="height:30px; width:200px;" type="text" />
                    </div>
                    <!-- <div>
                        施测日期：<select name="" class="chat_input" style="height:30px;width:200px"></select>
@@ -179,7 +179,7 @@ ul{
                      
                      <div class="search_list_th_ul">
                          <ul class="search_ul" id="list">
-                            <li>查询失败</li>
+                            <li>输入信息查找</li>
                            <!-- <li>
                              <span>a1234567890</span>
                              <span>刘开明</span>
@@ -230,6 +230,9 @@ ul{
 
 
 <script id="table" type="text/html" >
+  {{if recordList.length == 0}}
+  <li> 没有找到相关信息，请检查搜索条件！ </li>
+  {{else}}
   {{each recordList}}
   <li>
      <span>{{$value.reportNo}}</span>
@@ -247,21 +250,32 @@ ul{
      <span><a class="ac-delete" data-num="{{$value.scoreNo}}" href="javascript:;"><img src="../images/s_1.png" /></a></span>
    </li>
   {{/each}}
+  {{/if}}
 </script>
 
 <script>
   $(document).ready(function(){
       var obj = {}
       $("#search").on('click',function(){
+        var name = $("#name").val();
+        var cardNo = $("#cardNo").val();
+        if(name == ''){
+          layer.msg('儿童姓名不能为空！');
+          return false;
+        }
+        if(cardNo == ''){
+          layer.msg('身份信息不能为空！');
+          return false;
+        }
         obj = {
-          url: util.requestURL+'/web/v1/medicMchat/listMchatScore',
+          url: util.requestURL+'/web/v1/medicMchat/nationwideSearch',
           type: 'POST',
           data:{
             pageNum: 1,
             numPerPage: 10,
             testeeName: $("#name").val(),
-            reportNo: $("#reportNo").val(),
-            birth: util.getDateStr($("#birth").val())
+            cardNo: $("#cardNo").val(),
+            //birth: util.getDateStr($("#birth").val())
           },
           success: function(data){
             if(data.code == 1){
@@ -289,7 +303,7 @@ ul{
         util.client(obj);
     })
 
-    $("#search").trigger('click');
+    //$("#search").trigger('click');
     $("body").delegate('.ac-delete','click',function(e){
       var scoreNo = $(this).attr('data-num');
       console.log(scoreNo);

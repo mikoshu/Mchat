@@ -163,28 +163,39 @@ var util = {
     },
     client: function(obj){
         var index = layer.load(0, {shade: [0.8,'#000']});
+        var time = setTimeout(function(){
+            layer.close(index);
+            layer.msg('请求超时，请检查网络！')
+        },5000);
         obj.xhrFields = {withCredentials: true};
         if(!obj.data){
             obj.data = {};
         }
         obj.crossDomain = true;
-        obj.data.access_token = sessionStorage.token;
+        //obj.data.access_token = sessionStorage.token;
         obj.complete = function(e){
+            clearTimeout(time);
             layer.close(index);
         }
         $.ajax(obj);
+
     },
     pageClient: function(obj,page){
         var index = layer.load(0, {shade: [0.8,'#000']});
+        var time = setTimeout(function(){
+            layer.close(index);
+            layer.msg('请求超时，请检查网络！')
+        },5000);
         obj.xhrFields = {withCredentials: true};
         if(!obj.data){
             obj.data = {};
         }
         obj.crossDomain = true;
-        obj.data.access_token = sessionStorage.token;
+        //obj.data.access_token = sessionStorage.token;
         obj.data.pageNum =  page;
         util.currentPage = page;
         obj.complete = function(e){
+            clearTimeout(time);
             layer.close(index);
         }
         $.ajax(obj);

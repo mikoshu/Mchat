@@ -432,13 +432,13 @@ $(function(){
             if(data.code == 1){
               var data = data.data;
               $("#account").val(data.loginName);
-              $("#email").val(data.medicInfo.bindEmail);
+              $("#email").val(data.bindEmail);
               $("#realname").val(data.realName);
-              $("#mobile").val(data.mobileNo);
-              $("#sex").val(data.medicInfo.sex);
-              $("#province").val(data.medicInfo.province);
-              $("#city").val(data.medicInfo.city);
-              $("#company").val(data.enterpriseOperator.enterpriseName);
+              $("#mobile").val(data.bindMobileNo);
+              //$("#sex").val(data.medicInfo.sex);
+              //$("#province").val(data.medicInfo.province);
+              //$("#city").val(data.medicInfo.city);
+              $("#company").val(data.greeting);
             }else{
                 layer.msg(data.msg);
             }

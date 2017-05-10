@@ -196,7 +196,7 @@ ul{
 }
 .article_list_th_ul span{
    float:left;
-
+	height:30px;
 }
 .article_list_th_ul span:nth-child(1){
 	width:15%;
@@ -393,4 +393,10 @@ select::-ms-expand {
 	display: inline-block;
 	width:70px;
 	text-align: right;
+}
+.check-msg span{
+	width:120px;
+}
+.check-msg p{
+	display: inline-block;
 }

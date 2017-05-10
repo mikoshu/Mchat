@@ -172,7 +172,7 @@ var util = {
             obj.data = {};
         }
         obj.crossDomain = true;
-        obj.data.access_token = sessionStorage.token;
+        //obj.data.access_token = sessionStorage.token;
         obj.complete = function(e){
             clearTimeout(time);
             layer.close(index);
@@ -191,7 +191,7 @@ var util = {
             obj.data = {};
         }
         obj.crossDomain = true;
-        obj.data.access_token = sessionStorage.token;
+        //obj.data.access_token = sessionStorage.token;
         obj.data.pageNum =  page;
         util.currentPage = page;
         obj.complete = function(e){
