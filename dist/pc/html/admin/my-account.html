@@ -432,13 +432,13 @@ $(function(){
             if(data.code == 1){
               var data = data.data;
               $("#account").val(data.loginName);
-              $("#email").val('--');
-              $("#realname").val(data.realName);
-              $("#mobile").val(data.mobileNo);
-              $("#sex").val("--");
-              $("#province").val(data.enterpriseInfo.province);
-              $("#city").val(data.enterpriseInfo.city);
-              $("#company").val(data.enterpriseInfo.enterpriseName);
+              $("#email").val(data.busiContactEmail);
+              $("#realname").val(data.fullName);
+              $("#mobile").val(data.busiContactMobileNo);
+              //$("#sex").val("--");
+              //$("#province").val(data.enterpriseInfo.province);
+              //$("#city").val(data.enterpriseInfo.city);
+              $("#company").val(data.address);
             }else{
                 layer.msg(data.msg);
             }

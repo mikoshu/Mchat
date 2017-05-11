@@ -22,6 +22,7 @@
 	float:left; 
 	width:950px;
 	margin-left:3px;
+	position: relative;
 }
 .r_title{
 	height:38px;
@@ -400,3 +401,36 @@ select::-ms-expand {
 .check-msg p{
 	display: inline-block;
 }
+
+.ac-bind{
+	position: absolute;
+	right:20px;
+	top:360px;
+	width:196px;
+	line-height: 40px;
+	text-align: center;
+	background: #f48626;
+	color:#fff;
+	text-align: center;
+	border-radius: 4px;
+}
+
+.ac-bind:hover{
+	opacity:.8;
+}
+.ac-check img{
+	margin-top:10px;
+}
+.ac-delete img{
+	margin-top:5px;
+}
+
+
+
+
+
+
+
+
+
+

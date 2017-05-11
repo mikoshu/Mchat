@@ -177,6 +177,10 @@ var util = {
             clearTimeout(time);
             layer.close(index);
         }
+        obj.error = function(e){
+            console.log(e);
+            layer.msg(e.status +" " +e.statusText);
+        }
         $.ajax(obj);
 
     },
@@ -197,6 +201,9 @@ var util = {
         obj.complete = function(e){
             clearTimeout(time);
             layer.close(index);
+        }
+        obj.error = function(e){
+            layer.msg(e.status +" " +e.statusText);
         }
         $.ajax(obj);
     },

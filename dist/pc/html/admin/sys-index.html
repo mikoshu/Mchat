@@ -1,22 +1,13 @@
 <style>
-  .article_list_th p:nth-child(5) {
-    width: 15%;
+
+.article_list_th p{
+    width: 20%  !important;
 }
-.article_list_th p:nth-child(6) {
-    width: 15%;
+.article_list_th_ul span{
+  width:20% !important;
 }
-.article_list_th p:nth-child(2) {
-    width: 25%;
-}
-.article_list_th_ul span:nth-child(2){
-  width:25%;
-}
-.article_list_th_ul span:nth-child(5){
-  width:15%;
-}
-.article_list_th_ul span:nth-child(6){
-  width:15%;
-}
+
+
 </style>
 <div class="r_title">
                 <p id="tap1" class="tap1">公告发布</p>
@@ -34,9 +25,8 @@
 
                    <div class="article_list_th">
                      <p>用户姓名</p>
-                     <p>证书编号</p>
-                     <p>ASQ数量</p>
-                     <p>ASQ-SE数量</p>
+                     <p>身份编号</p>
+                     <p>登录账号</p>
                      <p>查看与修改</p>
                      <p>解除绑定</p>
                    </div>
@@ -82,6 +72,8 @@
                     
                     
                 </div>   
+
+                <a class="ac-bind" href="javascript:;">快速绑定用户</a>
                 
 
  
@@ -153,6 +145,27 @@ $(function(){
   </ul>
 </script>
 
+<script id="bind" type="text/html">
+  <ul class="pwd-change check-msg">
+    <li>
+      <span>用户姓名：</span>
+      <input id="adName" type="text" >
+    </li>
+    <li>
+      <span>身份证号码：</span>
+      <input id="adCard" type="text" >
+    </li>
+    <li>
+      <span>证书编号：</span>
+      <input id="adNo" type="text" >
+    </li>
+    <li>
+      <span>请输入您的密码：</span>
+      <input id="adPwd" type="password" >
+    </li>
+  </ul>
+</script>
+
 <script id="ggList" type="text/html">
   {{each recordList}}
     <p><a class="ac-gg" data-id="{{$value.id}}" href="javascript:;">{{$index+1+'、'+$value.title}}</a></p>
@@ -162,12 +175,23 @@ $(function(){
 <script id="table" type="text/html" >
   {{each recordList}}
   <li>
-     <span>{{$value.realName}} </span>
-     <span>{{$value.cardNo}} </span>
-     <span>--</span>
-     <span>--</span>
-     <span><a data-medicNo="{{$value.medicNo}}" class="ac-check" href="javascript:;">查看</a></span>
-     <span><a data-medicNo="{{$value.medicNo}}" class="ac-delete" href="javascript:;">解除绑定</a></span>
+     <span>
+       {{if $value.realName}}
+        {{$value.realName}}
+      {{else}}
+        --
+      {{/if}}
+     </span>
+     <span>
+      {{if $value.cardNo}}
+        {{'**************'+$value.cardNo.substr($value.cardNo.length-4,$value.cardNo.length)}}
+      {{else}}
+        --
+      {{/if}}
+     </span>
+     <span>{{$value.loginName}} </span>
+     <span><a data-medicNo="{{$value.medicNo}}" class="ac-check" href="javascript:;"><img src="../../images/looks.png" /></a></span>
+     <span><a data-medicNo="{{$value.medicNo}}" class="ac-delete" href="javascript:;"><img src="../../images/s_1.png" /></a></span>
    </li>
   {{/each}}
 </script>
@@ -276,7 +300,7 @@ $(function(){
                     $("#zs").text("--");
                   },
                   yes: function(index){
-
+              
                     console.log(data)
                   }
                 })
@@ -338,6 +362,43 @@ $(function(){
               }else{
                 layer.msg(data.msg);
               }
+            }
+          })
+        });
+
+        $("body").delegate('.ac-bind', 'click', function(event) {
+          layer.open({
+            title: '绑定新用户',
+            content: $("#bind").html(),
+            btn: ['确定','取消'],
+            type: 1,
+            yes: function(index){
+              var name = $("#adName").val();
+              var card = $("#adCard").val();
+              var no = $("#adNo").val();
+              var pwd = $("#adPwd").val();
+              if(name == "" || card == "" || no == "" || pwd == ""){
+                layer.msg("填写参数不能为空！");
+                return false;
+              }
+              util.client({
+                url: util.requestURL+'/web/v1/enterprise/boundMedic',
+                type: 'POST',
+                data: {
+                  realName: name,
+                  cardNo: card,
+                  managerPwd: pwd,
+                  scoreNo: no
+                },
+                success: function(data){
+                  layer.msg(data.msg);
+                  if(data.code == 1){
+                    util.pageClient(obj,1);
+                    layer.close(index);
+                  }
+
+                }
+              })
             }
           })
         });
