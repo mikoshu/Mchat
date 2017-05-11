@@ -173,8 +173,8 @@ ul{
       <p id="zs"></p>
     </li>
     <li class="ac-hide">
-      <span>请输入用户密码：</span>
-      <input id="userPwd" type="password" >
+      <span>请输入新密码：</span>
+      <input id="newPwd" type="password" >
     </li>
     <li class="ac-hide">
       <span>请再输入一次：</span>
@@ -273,7 +273,28 @@ ul{
                     $("#zs").text("--");
                   },
                   yes: function(index){
-              
+                    var newPwd = $("#newPwd").val();
+                    var rePwd = $("#rePwd").val();
+                    var Pwd = $("#Pwd").val();
+                    if(newPwd != rePwd){
+                      layer.msg("两次输入密码不一致！");
+                      return false;
+                    }
+                    util.client({
+                      url: util.requestURL+'/web/v1/enterprise/updateMedicLoginPwd',
+                      type: 'POST',
+                      data:{
+                        newPassword: newPwd,
+                        managerPwd: Pwd,
+                        medicNo: data.medicNo
+                      },
+                      success: function(resp){
+                        if(resp.code == 1){
+                          layer.close(index);
+                        }
+                        layer.msg(resp.msg);
+                      }
+                    })
                     console.log(data)
                   }
                 })

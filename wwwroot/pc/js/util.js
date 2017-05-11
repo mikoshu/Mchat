@@ -178,7 +178,6 @@ var util = {
             layer.close(index);
         }
         obj.error = function(e){
-            console.log(e);
             layer.msg(e.status +" " +e.statusText);
         }
         $.ajax(obj);
