@@ -174,6 +174,10 @@ var util = {
         obj.crossDomain = true;
         //obj.data.access_token = sessionStorage.token;
         obj.complete = function(e){
+            if(e.responseJSON.code == '10002'){
+                layer.msg('登录超时，请重新登录！');
+                window.location.href = "../html/login.html";
+            }
             clearTimeout(time);
             layer.close(index);
         }
@@ -198,6 +202,10 @@ var util = {
         obj.data.pageNum =  page;
         util.currentPage = page;
         obj.complete = function(e){
+            if(e.responseJSON.code == '10002'){
+                layer.msg('登录超时，请重新登录！');
+                window.location.href = "../html/login.html";
+            }
             clearTimeout(time);
             layer.close(index);
         }
