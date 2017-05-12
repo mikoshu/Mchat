@@ -57,7 +57,7 @@
               </div>
               <!-- <p class="l_menu_3"><a href="#report-query">报告查询</a></p> -->
               <p class="l_menu_4"><a href="#my-account">我的账号</a></p>
-              <p class="l_menu_5"><a href="javascript:;">创建报告</a></p>
+              <p class="l_menu_5"><a href="#create-report">创建报告</a></p>
             </div>
             <div>
                 <img src="../images/bg2.jpg" />

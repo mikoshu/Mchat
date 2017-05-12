@@ -14,13 +14,24 @@
               
               <div class="r_form">
                   <div>性别:</div>
-                  <div><select class="chat_input" style="width:350px"></select></div>
+                  <div>
+                    <select class="chat_input" style="width:350px">
+                      <option value="男">男</option>
+                      <option value="女">女</option>
+                    </select>
+                  </div>
               </div>
               
               <div class="r_form">
                   <div>身份信息:</div>
                   <div>
-                  <select name="" class="chat_input" style="width:120px"></select>
+                  <select name="" class="chat_input" style="width:120px">
+                    <option value="0">儿童身份证</option>
+                    <option value="1">父亲身份证</option>
+                    <option value="2">母亲身份证</option>
+                    <option value="3">诊疗卡号</option>
+                    <option value="9">其他</option>
+                  </select>
                   <input class="chat_input" style="width:225px" type="text" />
                   </div>
               </div> 
@@ -30,23 +41,23 @@
                   <div><input class="chat_input" style="width:350px" type="text" /></div>
               </div>
               
-              <div class="r_form">
+              <!-- <div class="r_form">
                   <div>&nbsp;</div>
                   <div><p class="check_history" style="width:125px;">检查历史档案</p></div>
-              </div>
+              </div> -->
               
               <BR />
               <div class="r_form">
                   <div>出生日期:</div>
-                  <div><select class="chat_input" style="width:350px"></select></div>
+                  <div><input class="chat_input Wdate" id="birthDay" onClick="WdatePicker()" style="width:350px; height:37px;"/></div>
               </div> 
               <div class="r_form">
                   <div>完成问卷日期:</div>
-                  <div><select class="chat_input" style="width:350px"></select></div>
+                  <div><input class="chat_input Wdate" id="testDay" onClick="WdatePicker()" style="width:350px; height:37px;"/></div>
               </div> 
               <div class="r_form">
                   <div>&nbsp;</div>
-                  <div><p class="check_history f_l" style="width:125px;">计算年龄</p><p>&nbsp;&nbsp;&nbsp;&nbsp;儿童生活年龄：一月一天</p></div>
+                  <div><p class="check_history f_l" style="width:125px;" id="getAge">计算年龄</p><p>&nbsp;&nbsp;&nbsp;&nbsp;儿童生活年龄：<span id="age"></span></p></div>
               </div>
               
               <BR />
@@ -60,8 +71,59 @@
               <div class="r_form">
                   <div>出生时情况(多选):</div>
                   <div>
-                  <select class="chat_input"  style="width:350px">
-                  </select>
+                  <!-- <input class="chat_input"  style="width:350px" /> -->
+                    
+                  <ul class="m-select-info-c">
+                    <li>
+                      <label>
+                        <input value="0" type="checkbox">
+                        足月
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input value="1" type="checkbox">
+                        早产
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input value="2" type="checkbox">
+                        顺产
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input value="3" type="checkbox">
+                        剖腹产
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input value="4" type="checkbox">
+                        产钳助产
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input value="5" type="checkbox">
+                        吸引器助产
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input value="6" type="checkbox">
+                        双胎
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input value="7" type="checkbox">
+                        其他异常情况
+                      </label>
+                    </li>
+                    
+                  </ul>
                   </div>
               </div>
               <div class="r_form">
@@ -78,7 +140,7 @@
               <BR />
               <div class="r_form">
                   <div>&nbsp;</div>
-                  <div><p class="check_history f_l"  style="width:350px;">+增加填写问卷人信息填写</p></div>
+                  <div><p class="check_history f_l" id="add" style="width:350px;">+增加填写问卷人信息填写</p></div>
               </div>
                 
 
@@ -96,3 +158,203 @@
     </div>
 
 
+<script id="pop" type="text/html">
+<div id="p_content">
+    <!-- <div class="p_title"><p>完成问卷人的信息填写</p></div> -->
+    <div class="p_form">
+        <div>完成问卷人姓名:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <div class="p_form">
+        <div>与儿童的关系:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <div class="p_form">
+        <div>儿童出生时的体重:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <div class="p_form">
+        <div>通讯地址:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <div class="p_form">
+        <div>邮政编码:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <div class="p_form">
+        <div>联系电话:</div>
+        <div><input class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    
+    <div class="p_form">
+        <p style=" text-align:center;font-size:14px;">若代替填写问卷请列出代替填写人的性名、与宝来宾席的关系或身份</p>
+    </div>
+    <div>
+        <p style="text-align:center;font-size:14px;">
+          <textarea class="chat_input" style="width:300px; height:100px;"></textarea>
+        </p>
+    </div>
+    <div class="p_form">
+        <div>母亲文化程度:</div>
+        <div>
+          <select class="chat_input" style="width:300px">
+              <option value="0">未选择</option>
+              <option value="1">小学</option>
+              <option value="8">完成部分初中课程</option>
+              <option value="2">初中毕业</option>
+              <option value="3">完成部分高中课程</option>
+              <option value="4">高中毕业</option>
+              <option value="5">完成部分大学课程(至少一年)</option>
+              <option value="6">大学毕业(大专或大学)</option>
+              <option value="7">硕士毕业或以上</option>
+          </select>
+        </div>
+    </div>
+    <div class="p_form">
+        <div>母亲职业:</div>
+        <div>
+          <select class="chat_input job-type" style="width:143px">
+            <option value="">未选择</option>
+            <option value="1">第一大类</option>
+            <option value="2">第二大类</option>
+            <option value="3">第三大类</option>
+            <option value="4">第四大类</option>
+            <option value="5">第五大类</option>
+            <option value="6">第六大类</option>
+            <option value="7">第七大类</option>
+            <option value="8">第八大类</option>
+            <option value="9">第九大类</option>
+            <option value="10">第十大类</option>
+          </select>
+          <select class="chat_input" style="width:150px">
+            <option value="">先选择职业类型</option>
+          </select>
+        </div>
+    </div> 
+    <div class="p_form">
+        <div>父亲文化程度:</div>
+        <div>
+          <select class="chat_input" style="width:300px">
+            <option value="0">未选择</option>
+              <option value="1">小学</option>
+              <option value="8">完成部分初中课程</option>
+              <option value="2">初中毕业</option>
+              <option value="3">完成部分高中课程</option>
+              <option value="4">高中毕业</option>
+              <option value="5">完成部分大学课程(至少一年)</option>
+              <option value="6">大学毕业(大专或大学)</option>
+              <option value="7">硕士毕业或以上</option>
+          </select>
+        </div>
+    </div> 
+    <div class="p_form">
+        <div>父亲职业:</div>
+        <div>
+          <select class="chat_input job-type" style="width:143px">
+            <option value="">未选择</option>
+            <option value="1">第一大类</option>
+            <option value="2">第二大类</option>
+            <option value="3">第三大类</option>
+            <option value="4">第四大类</option>
+            <option value="5">第五大类</option>
+            <option value="6">第六大类</option>
+            <option value="7">第七大类</option>
+            <option value="8">第八大类</option>
+            <option value="9">第九大类</option>
+            <option value="10">第十大类</option>
+          </select>
+          <select class="chat_input" style="width:150px">
+            <option value="">先选择职业类型</option>
+          </select>
+        </div>
+    </div> 
+    <div class="p_form">
+        <div>主要照顾者文化程度:</div>
+        <div>
+          <select class="chat_input" style="width:300px">
+            <option value="0">未选择</option>
+              <option value="1">小学</option>
+              <option value="8">完成部分初中课程</option>
+              <option value="2">初中毕业</option>
+              <option value="3">完成部分高中课程</option>
+              <option value="4">高中毕业</option>
+              <option value="5">完成部分大学课程(至少一年)</option>
+              <option value="6">大学毕业(大专或大学)</option>
+              <option value="7">硕士毕业或以上</option>
+          </select>
+        </div>
+    </div> 
+    <div class="p_form">
+        <div>母亲出生日期:</div>
+        <div><input class="chat_input Wdate" onClick="WdatePicker()" style="width:300px" /></div>
+    </div> 
+    <div class="p_form">
+        <div>父亲出生日期:</div>
+        <div><input class="chat_input Wdate" onClick="WdatePicker()" style="width:300px" /></div>
+    </div> 
+     <div class="p_form">
+        <div>婚姻状况:</div>
+        <div>
+        <select class="chat_input" style="width:300px">
+        <option value="0">未选择</option>
+              <option value="1">未婚</option>
+              <option value="2">已婚</option>
+              <option value="3">离异</option>  
+        </select>
+        </div>
+    </div>       
+     <!--  <div class="p_form_sub">
+          <p><input type="button" class="p_form_s p_form_submit" value="确认" /></p>
+          <p><input type="button" class="p_form_s p_form_reset" value="先不填写" /></p>
+      </div>    -->
+</div>
+</script>
+
+<script>
+  $(document).ready(function(){
+
+    var jobData = {
+        Career1 : ['请选择','按日计酬的散工','公共空间清洁工','家庭清洁工','农场工人','食品零售','后厨食物制备工','餐馆楼面杂工'],
+        Career2 : ['请选择','垃圾收集工','快餐厨子','出租车司机','鞋类销售员','流水线工人','泥瓦匠','行李搬运工'],
+        Career3 : ['请选择','油漆工','建筑技工','售货员','卡车司机','厨师','销售柜台','办公室文员'],
+        Career4 : ['请选择','汽车修理工','打字员','锁匠','农场工','木工','前台接待/总机','建筑工人','理发/发型师'],
+        Career5 : ['请选择','机械师/机工','乐手/音乐制作人','簿记员/档案管理员','秘书','保险销售员','家具木工','人事管理','焊工'],
+        Career6 : ['请选择','部门主管','图书管理员','航空机械师','视觉艺术工作者','电工','行政管理人员','现役军人','采购员'],
+        Career7 : ['请选择','护士','熟练技工','医疗卫生专业技术员','顾问/咨询师','经理/经纪','警察','消防员','财务经理','物理治疗师','作业治疗师','言语治疗师'],
+        Career8 : ['请选择','机械工程师','原子能工程师','电子工程师','教育行政人员','兽医','军官','中学教师','小学教师','特殊教育教师'],
+        Career9 : ['请选择','医生','律师','大学任教老师','化工工程师','航天工程师','法官','首席执行官','高级管理人员','公务员','心理师','药剂师','会计师'],
+        Career10 : ['请选择','未受雇佣','其它']
+    }
+    
+
+
+
+    $("#add").on('click',function(){
+        layer.open({
+          title: "增加填写问卷人信息填写",
+          content: $("#pop").html(),
+          area: ["620px","auto"],
+          btn: ["确定","先不填写"]
+
+        })
+    });
+
+    
+
+    $("body").delegate('.job-type','change',function(){
+      var type = $(this).val();
+      $this = $(this);
+      if(type != ''){
+        var html = '';
+        jobData['Career'+type].map(function(val,i){
+          html += '<option value="'+i+'" >'+val+'</option>';
+        });
+        $this.next().html(html);
+
+      }
+      
+    });
+
+
+  });
+</script>
