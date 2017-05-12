@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>问卷调查</title>
-    <link rel="stylesheet" href="../css/style.scss">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-c">
     <div class="question">
