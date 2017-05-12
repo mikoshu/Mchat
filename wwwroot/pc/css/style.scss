@@ -366,11 +366,11 @@ font-size:14px;
 	background: #f0eff5;
 }
 .question{
-	.main{
-		width:1080px;
+	.q-main{
+		width:800px;
 		margin:0 auto auto auto;
 	}
-	.head{
+	.q-head{
 		height:60px;
 		line-height: 60px;
 		.msg{
@@ -412,9 +412,9 @@ font-size:14px;
 			}
 		}
 	}
-	.content{
+	.q-content{
 		position: relative;
-		height:650px;
+		height:400px;
 		.tab-con{
 			position: absolute;
 			display: none;
@@ -422,7 +422,7 @@ font-size:14px;
 			left:0;
 			width:100%;
 			img{
-				width:600px;
+				width:350px;
 				display:block;
 				margin:0px auto auto auto;
 			}
@@ -434,8 +434,8 @@ font-size:14px;
 			margin: 0 50px;
 		}
 	}
-	.btn{
-		margin-top:40px;
+	.q-btn{
+		margin-top:10px;
 		text-align: center;
 		padding:20px;
 		a{
@@ -546,6 +546,8 @@ select::-ms-expand {
 	color:#fff;		
 }
 }
+
+
 
 
 

@@ -9,15 +9,15 @@
 
               <div class="r_form">
                   <div>儿童姓名:</div>
-                  <div><input class="chat_input" style="width:350px" type="text" /></div>
+                  <div><input class="chat_input" id="testeeName" style="width:350px" type="text" /></div>
               </div>
               
               <div class="r_form">
                   <div>性别:</div>
                   <div>
-                    <select class="chat_input" style="width:350px">
-                      <option value="男">男</option>
-                      <option value="女">女</option>
+                    <select class="chat_input" id="sex" style="width:350px">
+                      <option value="0">男</option>
+                      <option value="1">女</option>
                     </select>
                   </div>
               </div>
@@ -25,14 +25,14 @@
               <div class="r_form">
                   <div>身份信息:</div>
                   <div>
-                  <select name="" class="chat_input" style="width:120px">
+                  <select name="" id="cardType" class="chat_input" style="width:120px">
                     <option value="0">儿童身份证</option>
                     <option value="1">父亲身份证</option>
                     <option value="2">母亲身份证</option>
                     <option value="3">诊疗卡号</option>
                     <option value="9">其他</option>
                   </select>
-                  <input class="chat_input" style="width:225px" type="text" />
+                  <input class="chat_input" id="cardNo" style="width:225px" type="text" />
                   </div>
               </div> 
               
@@ -64,8 +64,8 @@
               <div class="r_form">
                   <div>宝宝的孕周:</div>
                   <div>
-                  <input class="chat_input r_form_week" style="width:155px" type="text" />
-                  <input class="chat_input r_form_day" style="width:155px" type="text" />
+                  <input id="gestationalWeeks" class="chat_input r_form_week" style="width:155px" type="text" />
+                  <input id="gestationalDays" class="chat_input r_form_day" style="width:155px" type="text" />
                   </div>
               </div>         
               <div class="r_form">
@@ -76,49 +76,49 @@
                   <ul class="m-select-info-c">
                     <li>
                       <label>
-                        <input value="0" type="checkbox">
+                        <input class="births" value="0" type="checkbox">
                         足月
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input value="1" type="checkbox">
+                        <input class="births" value="1" type="checkbox">
                         早产
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input value="2" type="checkbox">
+                        <input class="births" value="2" type="checkbox">
                         顺产
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input value="3" type="checkbox">
+                        <input class="births" value="3" type="checkbox">
                         剖腹产
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input value="4" type="checkbox">
+                        <input class="births" value="4" type="checkbox">
                         产钳助产
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input value="5" type="checkbox">
+                        <input class="births" value="5" type="checkbox">
                         吸引器助产
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input value="6" type="checkbox">
+                        <input class="births" value="6" type="checkbox">
                         双胎
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input value="7" type="checkbox">
+                        <input class="births" value="7" type="checkbox">
                         其他异常情况
                       </label>
                     </li>
@@ -149,7 +149,7 @@
             
             
             <div class="r_form_sub">
-                <p><input type="button" class="r_form_s r_form_submit" value="确认" /></p>
+                <p><input type="button" id="sure" class="r_form_s r_form_submit" value="确认" /></p>
                 <p><input type="button" class="r_form_s r_form_reset" value="取消" /></p>
             </div>
             
@@ -157,33 +157,176 @@
         </div>
     </div>
 
+<script id="q" type="text/html">
+  <div class="question">
+        <div class="q-main">
+            <div class="q-head">
+                <div class="msg">
+                    儿童姓名: 
+                    <span>测试小号</span>
+                </div>
+                <ul class="tab-head">
+                    <li class="active">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>11</li>
+                    <li>12</li>
+                    <li>13</li>
+                    <li>14</li>
+                    <li>15</li>
+                    <li>16</li>
+                    <li>17</li>
+                    <li>18</li>
+                    <li>19</li>
+                    <li>20</li>
+                </ul>
+            </div>
+            <div class="q-content">
+                <div class="tab-con" style="display: block;">
+                    <p>1. 如果你指向房间内的某样物体，你的孩子会看它吗？（例如，你指着一个玩具或动物，你的孩子会看这个玩具或动物吗？）</p>
+                    <img src="../images/pic/1.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>2. 你有没有想过你的孩子可能是聋的？</p>
+                    <img src="../images/pic/2.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>3. 你的孩子会玩假装游戏吗？（例如，假装从空的杯子中喝水，假装打电话，假装喂娃娃或毛绒玩具？）</p>
+                    <img src="../images/pic/3.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>4. 你的孩子喜欢爬东西吗？（如家具、游乐场设施、或楼梯）</p>
+                    <img src="../images/pic/4.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>5. 你的孩子会在离自己眼睛近的地方做出不正常的手指运动吗？（例如，你的孩子会在眼睛前摆动手指吗？）</p>
+                    <img src="../images/pic/5.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>6. 你的孩子会用一根手指指东西表示需要或寻求帮助吗？（例如，指着他/她够不到的一块点心或玩具）</p>
+                    <img src="../images/pic/6.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>7. 你的孩子会用一根手指指东西，向你展示有趣的东西吗？（例如，指向天空中的飞机或马路上的卡车）</p>
+                    <img src="../images/pic/7.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>8. 你的孩子对其他孩子感兴趣吗？（例如，你的孩子会看其他孩子，对他们笑，走向他们吗？）</p>
+                    <img src="../images/pic/8.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>9.你的孩子会把东西拿给你或举着东西给你看吗——不是寻求帮助，而只是分享？（例如，给你看花、毛绒玩具动物或玩具卡车）</p>
+                    <img src="../images/pic/9.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>10. 你叫孩子名字的时候，他/她会有反应吗？（例如，你叫他/她的名字，他/她会抬头、说话或咿呀说话，或者停下正在做的事？）</p>
+                    <img src="../images/pic/10.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>11. 你对你的孩子笑的时候，他/她会回笑吗？</p>
+                    <img src="../images/pic/11.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>12. 你的孩子会因为日常噪音而感到不安吗？（例如，你的孩子会因为吸尘器或大分贝音乐而尖叫或哭吗？）</p>
+                    <img src="../images/pic/12.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>13. 你的孩子会走路吗？</p>
+                    <img src="../images/pic/13.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>14. 当你对着他/她说话，和他/她玩耍，或者给他/她穿衣服时，他/她会与你对视吗？</p>
+                    <img src="../images/pic/14.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>15. 你的孩子会模仿会模仿你做的事吗？（例如，挥手再见、鼓掌或者发出有趣的声音）</p>
+                    <img src="../images/pic/15.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>16. 如果你转头看某样东西，你的孩子也会向四周看，看你在看什么吗？</p>
+                    <img src="../images/pic/16.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>17. 你的孩子会试图让你去看他/她吗？（例如，你的孩子会看着你等待夸奖，或者说“看”、“看我”吗？）</p>
+                    <img src="../images/pic/17.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>18. 当你告诉你的孩子去做某事时，他/她能理解吗？（例如，如果你不用手指，你的孩子能理解“把书放在椅子上”或“给我拿毯子”吗？）</p>
+                    <img src="../images/pic/18.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>19. 如果发生了新鲜事，你的孩子会看你的脸，来看你有什么感觉吗？（例如，如果他/她听到了奇怪或有趣的声音，他/她会看你的脸吗？）</p>
+                    <img src="../images/pic/19.gif" alt="">
+                </div>
+                <div class="tab-con">
+                    <p>20. 你的孩子喜欢运动吗？（例如，在你的膝盖上摇晃或弹跳）</p>
+                    <img src="../images/pic/20.gif" alt="">
+                </div>
+                
+            </div>
+            <div class="choose">
+                <label>
+                    <input id="yes" type="radio" value="Y" name="question">
+                    是
+                </label>
+                <label>
+                    <input id="no" type="radio" value="N" name="question">
+                    否
+                </label>
+                
+            </div>
+            <div class="q-btn">
+                <a id="last" href="javascript:;">上一题</a>
+                <a id="next" href="javascript:;">下一题</a>
+            </div>
+        </div>
+        
+    </div>
+
+</script>
 
 <script id="pop" type="text/html">
 <div id="p_content">
     <!-- <div class="p_title"><p>完成问卷人的信息填写</p></div> -->
     <div class="p_form">
         <div>完成问卷人姓名:</div>
-        <div><input class="chat_input" style="width:300px" type="text" /></div>
+        <div><input class="chat_input" id="consignorName" style="width:300px" type="text" /></div>
     </div>
     <div class="p_form">
         <div>与儿童的关系:</div>
-        <div><input class="chat_input" style="width:300px" type="text" /></div>
+        <div>
+          <select class="chat_input" id="consignorType" style="width:300px" type="text" >
+            <option selected="selected"  value="0">未选择</option>
+            <option  value="1">父母</option>
+            <option  value="2">祖父母</option>
+            <option  value="3">照看人</option>
+            <option  value="4">老师</option>
+            <option  value="5">其他</option>
+          </select>
+        </div>
     </div>
     <div class="p_form">
         <div>儿童出生时的体重:</div>
-        <div><input class="chat_input" style="width:300px" type="text" /></div>
+        <div><input class="chat_input" id="weight" style="width:300px" type="text" /></div>
     </div>
     <div class="p_form">
         <div>通讯地址:</div>
-        <div><input class="chat_input" style="width:300px" type="text" /></div>
+        <div><input class="chat_input" id="address" style="width:300px" type="text" /></div>
     </div>
     <div class="p_form">
         <div>邮政编码:</div>
-        <div><input class="chat_input" style="width:300px" type="text" /></div>
+        <div><input class="chat_input" id="zip" style="width:300px" type="text" /></div>
     </div>
     <div class="p_form">
         <div>联系电话:</div>
-        <div><input class="chat_input" style="width:300px" type="text" /></div>
+        <div><input id="tel" class="chat_input" style="width:300px" type="text" /></div>
     </div>
     
     <div class="p_form">
@@ -191,13 +334,13 @@
     </div>
     <div>
         <p style="text-align:center;font-size:14px;">
-          <textarea class="chat_input" style="width:300px; height:100px;"></textarea>
+          <textarea id="remarks" class="chat_input" style="width:300px; height:100px;"></textarea>
         </p>
     </div>
     <div class="p_form">
         <div>母亲文化程度:</div>
         <div>
-          <select class="chat_input" style="width:300px">
+          <select id="motnerCultureDegree" class="chat_input" style="width:300px">
               <option value="0">未选择</option>
               <option value="1">小学</option>
               <option value="8">完成部分初中课程</option>
@@ -213,7 +356,7 @@
     <div class="p_form">
         <div>母亲职业:</div>
         <div>
-          <select class="chat_input job-type" style="width:143px">
+          <select id="motherCareerCategory" class="chat_input job-type" style="width:143px">
             <option value="">未选择</option>
             <option value="1">第一大类</option>
             <option value="2">第二大类</option>
@@ -226,7 +369,7 @@
             <option value="9">第九大类</option>
             <option value="10">第十大类</option>
           </select>
-          <select class="chat_input" style="width:150px">
+          <select id="motherCareer" class="chat_input" style="width:150px">
             <option value="">先选择职业类型</option>
           </select>
         </div>
@@ -234,7 +377,7 @@
     <div class="p_form">
         <div>父亲文化程度:</div>
         <div>
-          <select class="chat_input" style="width:300px">
+          <select id="fatherCultureDegree" class="chat_input" style="width:300px">
             <option value="0">未选择</option>
               <option value="1">小学</option>
               <option value="8">完成部分初中课程</option>
@@ -250,7 +393,7 @@
     <div class="p_form">
         <div>父亲职业:</div>
         <div>
-          <select class="chat_input job-type" style="width:143px">
+          <select id="fatherCareerCategory" class="chat_input job-type" style="width:143px">
             <option value="">未选择</option>
             <option value="1">第一大类</option>
             <option value="2">第二大类</option>
@@ -263,7 +406,7 @@
             <option value="9">第九大类</option>
             <option value="10">第十大类</option>
           </select>
-          <select class="chat_input" style="width:150px">
+          <select id="fatherCareer" class="chat_input" style="width:150px">
             <option value="">先选择职业类型</option>
           </select>
         </div>
@@ -271,7 +414,7 @@
     <div class="p_form">
         <div>主要照顾者文化程度:</div>
         <div>
-          <select class="chat_input" style="width:300px">
+          <select id="caregiversCultureDegree" class="chat_input" style="width:300px">
             <option value="0">未选择</option>
               <option value="1">小学</option>
               <option value="8">完成部分初中课程</option>
@@ -286,16 +429,16 @@
     </div> 
     <div class="p_form">
         <div>母亲出生日期:</div>
-        <div><input class="chat_input Wdate" onClick="WdatePicker()" style="width:300px" /></div>
+        <div><input id="motherBirthDay" class="chat_input Wdate" onClick="WdatePicker()" style="width:300px" /></div>
     </div> 
     <div class="p_form">
         <div>父亲出生日期:</div>
-        <div><input class="chat_input Wdate" onClick="WdatePicker()" style="width:300px" /></div>
+        <div><input id="fatherBirthDay" class="chat_input Wdate" onClick="WdatePicker()" style="width:300px" /></div>
     </div> 
      <div class="p_form">
         <div>婚姻状况:</div>
         <div>
-        <select class="chat_input" style="width:300px">
+        <select id="maritalStatus" class="chat_input" style="width:300px">
         <option value="0">未选择</option>
               <option value="1">未婚</option>
               <option value="2">已婚</option>
@@ -326,19 +469,77 @@
         Career10 : ['请选择','未受雇佣','其它']
     }
     
-
+    var obj1 = {};
+    var obj2 = {};
+    var obj3 = {};
 
 
     $("#add").on('click',function(){
+        var height = window.innerHeight;
+        height = height < 770 ? height+'px' : 'auto';
+        console.log(height);
         layer.open({
           title: "增加填写问卷人信息填写",
           content: $("#pop").html(),
-          area: ["620px","auto"],
-          btn: ["确定","先不填写"]
+          area: ["620px",height],
+          btn: ["确定","先不填写"],
+          yes: function(index){
+            var consignorName = $("#consignorName").val();
+            var consignorType = $("#consignorType").val();
+            var weight = $("#weight").val();
+            var address = $("#address").val();
+            var zip = $("#zip").val();
+            var tel = $("#tel").val();
+            var remarks = $("#remarks").val();
+            var motnerCultureDegree = $("#motnerCultureDegree").val();
+            var motherCareerCategory = $("#motherCareerCategory").val();
+            var motherCareer = $("#motherCareer").val();
+            var fatherCultureDegree = $("#fatherCultureDegree").val();
+            var fatherCareerCategory = $("#fatherCareerCategory").val();
+            var fatherCareer = $("#fatherCareer").val();
+            var caregiversCultureDegree = $("#caregiversCultureDegree").val();
+            var motherBirthDay = $("#motherBirthDay").val();
+            var fatherBirthDay = $("#fatherBirthDay").val();
+            var maritalStatus = $("#maritalStatus").val();
+            obj2 = {
+              consignorName: consignorName,
+              consignorType: consignorType,
+              weight: weight,
+              address: address,
+              zip: zip,
+              tel: tel,
+              remarks: remarks,
+              motnerCultureDegree: motnerCultureDegree,
+              motherCareerCategory: motherCareerCategory,
+              motherCareer: motherCareer,
+              fatherCultureDegree: fatherCultureDegree,
+              fatherCareerCategory: fatherCareerCategory,
+              fatherCareer: fatherCareer,
+              caregiversCultureDegree: caregiversCultureDegree,
+              motherBirthDay: motherBirthDay,
+              fatherBirthDay: fatherBirthDay,
+              maritalStatus: maritalStatus
+            }
+            layer.close(index);
+          },
+          success: function(){
+            for(key in obj2){
+              $("#"+key).val(obj2[key]);
+            }
+          }
 
         })
     });
 
+    $("body").delegate('#getAge','click',function(){
+      var birth = $("#birthDay").val();
+      if(birth == ''){
+        layer.msg('请填写出生时间');
+        return false;
+      }
+      var age = util.getAge(birth);
+      $("#age").text(age);
+    });
     
 
     $("body").delegate('.job-type','change',function(){
@@ -354,6 +555,148 @@
       }
       
     });
+
+    $("body").delegate('#sure','click',function(){
+      var testeeName = $("#testeeName").val();
+      var sex = $("#sex").val();
+      var cardType = $("#cardType").val();
+      var cardNo = $("#cardNo").val();
+      var birthDay = $("#birthDay").val();
+      var testDay = $("#testDay").val();
+      var gestationalWeeks = $("#gestationalWeeks").val();
+      var gestationalDays = $("#gestationalDays").val();
+      var births = [];
+      $(".births:checked").each(function(i,dom){
+        births.push($(dom).val());
+      });
+      births = births.toString();
+      
+      obj1 = {
+        testeeName: testeeName,
+        sex: sex,
+        cardType: cardType,
+        cardNo: cardNo,
+        birthDay: birthDay,
+        birthYear: birthDay.split("-")[0],
+        birthMonth: birthDay.split("-")[1],
+        birthToday: birthDay.split("-")[2],
+        testDay: testDay,
+        testYear: testDay.split("-")[0],
+        testMonth: testDay.split("-")[1],
+        testToday: testDay.split("-")[2],
+        gestationalWeeks: gestationalWeeks,
+        gestationalDays: gestationalDays,
+        births: births,
+        level: 1
+      }
+      var obj = obj1;
+      for(key in obj2){
+        obj1[key] = obj2[key];
+      }
+      util.client({
+        url: util.requestURL+'/web/v1/medicMchat/verifyBasicInformation',
+        type: 'POST',
+        data: obj,
+        success: function(data){
+          if(data.code == 1){
+            showQuestion();
+          }
+          layer.msg(data.msg);
+        }
+      })
+
+    });
+
+    
+    
+    function showQuestion(){
+      var lay = layer.open({
+        title: '请回答下列问题以完善问卷',
+        content: $("#q").html(),
+        area: ["900px",'640px'],
+        type: 1,
+        success: function(l){
+          var $tab = $(".tab-head"),
+                $con = $(".tab-con"),
+                $last = $("#last"),
+                $next = $("#next"),
+                $choose = $(".choose"),
+                $yes = $("#yes"),
+                $no = $("#no"),
+                index = 0,
+                answer = obj3;
+            $tab.find('li').on('click',function(){
+                var eq = $(this).index();
+                index = eq;
+                toggle();
+            });
+
+            $next.on('click',function(e){
+                if(index == 19){
+                  var n = 0;
+                  for(key in answer){
+                    n += 1;
+                  }
+                  if(n == 20){
+                    
+                    var obj = obj1;
+                    for(key in obj3){
+                      obj1[key] = obj3[key];
+                    } 
+                    util.client({
+                      url: util.requestURL+'/web/v1/medicMchat/createMchatRevisedFollowReport',
+                      type: 'POST',
+                      data: obj,
+                      success: function(data){
+                        if(data.code == 1){
+                          layer.close(lay);
+                        }
+                        layer.msg(data.msg);
+                      }
+                    })
+                  }else{
+                    layer.msg('请回答完全部问题再提交！');
+                  }
+                  return false
+                }
+                index += 1;
+                toggle();
+            });
+
+            $last.on('click',function(e){
+                if(index == 0){
+                    return false
+                }
+                index -= 1;
+                toggle();
+            });
+
+            $choose.find('input').on('click',function(){
+                answer['topic_'+(index+1)] = $(this).val();
+            });
+
+            function toggle(){
+                $con.eq(index).fadeIn().siblings('div').fadeOut();
+                $tab.find('li').eq(index).addClass('active').siblings('li').removeClass('active');
+                $choose.find('input').prop('checked',false);
+                if(answer.hasOwnProperty(index+1)){
+                    answer[index+1] == 1 ? $yes.prop('checked','checked') :  $no.prop('checked','checked') ;
+                }
+                if(index == 19){
+                  $next.text("完成");
+                }else{
+                  $next.text("下一题");
+                }
+                for(key in answer){
+                    var eq = key.split("_")[1];
+                    $tab.find('li').eq(eq-1).addClass('al')
+                }
+                
+            }
+
+        }
+      })
+    }
 
 
   });
