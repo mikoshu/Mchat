@@ -36,10 +36,10 @@
                   </div>
               </div> 
               
-              <div class="r_form">
+              <!-- <div class="r_form">
                   <div>事件标题:</div>
                   <div><input class="chat_input" style="width:350px" type="text" /></div>
-              </div>
+              </div> -->
               
               <!-- <div class="r_form">
                   <div>&nbsp;</div>
@@ -126,10 +126,10 @@
                   </ul>
                   </div>
               </div>
-              <div class="r_form">
+              <!-- <div class="r_form">
                   <div>&nbsp;</div>
                   <div><p class="check_history f_l"  style="width:125px;">计算矫正年龄</p><p>&nbsp;&nbsp;&nbsp;&nbsp;早起矫正年龄：一月一天</p></div>
-              </div>
+              </div> -->
               
               <BR />
               <div class="r_form">
@@ -161,10 +161,7 @@
   <div class="question">
         <div class="q-main">
             <div class="q-head">
-                <div class="msg">
-                    儿童姓名: 
-                    <span>测试小号</span>
-                </div>
+                
                 <ul class="tab-head">
                     <li class="active">1</li>
                     <li>2</li>
@@ -644,7 +641,7 @@
                       obj1[key] = obj3[key];
                     } 
                     util.client({
-                      url: util.requestURL+'/web/v1/medicMchat/createMchatRevisedFollowReport',
+                      url: util.requestURL+'/web/v1/medicMchat/createMchatReport',
                       type: 'POST',
                       data: obj,
                       success: function(data){

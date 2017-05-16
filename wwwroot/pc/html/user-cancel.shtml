@@ -176,65 +176,7 @@ ul{
                      
                      <div class="search_list_th_ul">
                          <ul class="search_ul" id="list">
-                           <li>
-                             <span>a1234567890</span>
-                             <span>刘开明</span>
-                             <span>2014-11-5</span>
-                             <span>2015-10-3</span>
-                             <span>男</span>
-                             <span>10</span>
-                             <span>M-CHAT</span>
-                             <span>2015-10-3</span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                           </li>
-                           
-                           <li>
-                             <span>a1234567890</span>
-                             <span>刘开明</span>
-                             <span>2014-11-5</span>
-                             <span>2015-10-3</span>
-                             <span>男</span>
-                             <span>10</span>
-                             <span>M-CHAT</span>
-                             <span>2015-10-3</span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                           </li>
-                           
-                           <li>
-                             <span>a1234567890</span>
-                             <span>刘开明</span>
-                             <span>2014-11-5</span>
-                             <span>2015-10-3</span>
-                             <span>男</span>
-                             <span>10</span>
-                             <span>M-CHAT</span>
-                             <span>2015-10-3</span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                           </li>
-                           
-                           <li>
-                             <span>a1234567890</span>
-                             <span>刘开明</span>
-                             <span>2014-11-5</span>
-                             <span>2015-10-3</span>
-                             <span>男</span>
-                             <span>10</span>
-                             <span>M-CHAT</span>
-                             <span>2015-10-3</span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                           </li>
+                           <li>暂无内容</li>
                          </ul>
                      </div>
                    
@@ -268,7 +210,7 @@ ul{
      <span>{{['男','女'][$value.sex]}}</span>
      <span>{{$value.cardType}}</span>
      <span>--</span>
-     <span>{{$value.createTime}}</span>
+     <span>{{$imports.getTimeFromNum($value.createTime,1)}}</span>
      <span><a href="#"><img src="../images/s_2.png" /></a></span>
      <span><a href="#"><img src="../images/s_2.png" /></a></span>
      <span><a href="#"><img src="../images/s_2.png" /></a></span>
