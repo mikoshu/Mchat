@@ -1,20 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>3</title>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/all.js"></script>
-<!--[if lte IE 9]><script src="../js/selectivizr-min.js"></script><![endif]-->
-<link rel="Stylesheet" type="text/css" href="../css/style.css" />
-<link rel="Stylesheet" type="text/css" href="../css/pc_2.css" />
 <link rel="Stylesheet" type="text/css" href="../css/pc_archives.css" />
-</head>
-
-<body>
-
-
-
 <div id="content">
         <div class="r_content">
             <div class="r_search">
@@ -202,50 +186,6 @@ ul{
                              <span><a href="#"><img src="../images/s_2.png" /></a></span>
                            </li>
                            
-                           <li>
-                             <span>a1234567890</span>
-                             <span>刘开明</span>
-                             <span>2014-11-5</span>
-                             <span>2015-10-3</span>
-                             <span>男</span>
-                             <span>10</span>
-                             <span>M-CHAT</span>
-                             <span>2015-10-3</span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                           </li>
-                           
-                           <li>
-                             <span>a1234567890</span>
-                             <span>刘开明</span>
-                             <span>2014-11-5</span>
-                             <span>2015-10-3</span>
-                             <span>男</span>
-                             <span>10</span>
-                             <span>M-CHAT</span>
-                             <span>2015-10-3</span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                           </li>
-                           
-                           <li>
-                             <span>a1234567890</span>
-                             <span>刘开明</span>
-                             <span>2014-11-5</span>
-                             <span>2015-10-3</span>
-                             <span>男</span>
-                             <span>10</span>
-                             <span>M-CHAT</span>
-                             <span>2015-10-3</span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                             <span><a href="#"><img src="../images/s_2.png" /></a></span>
-                           </li>
                          </ul>
                      </div>
                    
@@ -278,15 +218,5 @@ ul{
 
 
     </div>
-
-
-
-
-
-
-
-
 </div>
 
-</body>
-</html>
