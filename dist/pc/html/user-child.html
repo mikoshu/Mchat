@@ -18,29 +18,24 @@
  
 }
 .search_list_th p:nth-child(1){
-	width:10%;
+	width:15%;
 }
 .search_list_th p:nth-child(2){
-	width:16%;
+	width:25%;
 }
 .search_list_th p:nth-child(3){
-	width:12%;
+	width:15%;
 }
 .search_list_th p:nth-child(4){
-	width:12%;
+	width:15%;
 }
 .search_list_th p:nth-child(5){
-	width:14%;
+	width:15%;
 }
 .search_list_th p:nth-child(6){
-	width:10%;
+	width:15%;
 }
-.search_list_th p:nth-child(7){
-	width:16%;
-}
-.search_list_th p:nth-child(8){
-	width:10%;
-}
+
 
 
 
@@ -74,30 +69,25 @@ ul{
 	margin-top:10px;
 }
 .search_list_th_ul span:nth-child(1){
-	width:10%;
+	width:15%;
 
 }
 .search_list_th_ul span:nth-child(2){
-	width:16%;
+	width:25%;
 }
 .search_list_th_ul span:nth-child(3){
-	width:12%;
+	width:15%;
 }
 .search_list_th_ul span:nth-child(4){
-	width:12%;
+	width:15%;
 }
 .search_list_th_ul span:nth-child(5){
-	width:14%;
+	width:15%;
 }
 .search_list_th_ul span:nth-child(6){
-	width:10%;
+	width:15%;
 }
-.search_list_th_ul span:nth-child(7){
-	width:16%;
-}
-.search_list_th_ul span:nth-child(8){
-	width:10%;
-}
+
 </style>
 
 
@@ -141,8 +131,8 @@ ul{
                        <p>儿童姓名</p>
                        <p>身份信息</p>
                        <p>出生日期</p>
-                       <p>报告总数量</p>
-                       <p>我的施测数量</p>
+                       <!-- <p>报告总数量</p>
+                       <p>我的施测数量</p> -->
                        <p>性别</p>
                        <p>创建时间</p>
                        <p>查看</p>
@@ -244,10 +234,8 @@ ul{
      <span>{{$value.testeeName}}</span>
      <span>{{$value.cardNo}}</span>
      <span>{{$value.birthYear+'-'+$value.birthMonth+'-'+$value.birthToday}}</span>
-     <span>--</span>
-     <span>--</span>
      <span>{{['男','女'][$value.sex]}}</span>
-     <span>{{$value.createTime}}</span>
+     <span>{{$imports.getTimeFromNum($value.createTime,1)}}</span>
      <span><a href="#"><img src="../images/looks.png" /></a></span>
    </li>
   {{/each}}

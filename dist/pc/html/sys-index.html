@@ -118,7 +118,7 @@ $(function(){
      <span>{{$value.reportNo}}</span>
      <span>{{$value.testeeName}}</span>
      <span>{{$value.birthYear+'-'+$value.birthMonth+'-'+$value.birthToday}}</span>
-     <span>{{$value.createTime}}</span>
+     <span>{{$imports.getTimeFromNum($value.createTime)}}</span>
      <span>{{['男','女'][$value.sex]}}</span>
      <span>--</span>
      <span>{{$value.cardType}}</span>
@@ -229,7 +229,7 @@ $(function(){
                 var data = data.data;
                 $("#title").text(data.title);
                 $("#article").html(data.content);
-                $("#time").text(data.editTime);
+                $("#time").text(util.getTimeFromNum(data.editTime,1));
                 $("#tap1").trigger('click');
 
               }else{  

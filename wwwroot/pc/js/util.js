@@ -1,3 +1,4 @@
+jQuery.support.cors=true;
 var util = {
     requestURL: 'http://aliyun.mikoshu.me:8055',
     getCurrentDateTime: function () { 

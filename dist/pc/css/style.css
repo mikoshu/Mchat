@@ -477,9 +477,8 @@ img {
   .question .q-head .msg {
     float: left; }
   .question .q-head .tab-head {
-    float: right;
     width: 499px;
-    margin-top: 18px;
+    margin: 18px auto auto auto;
     height: 24px;
     overflow: hidden;
     border-radius: 4px;
