@@ -255,19 +255,8 @@ ul{
                      
                      
                      <div class="s_page m_top_90">
-                         <div class="s_page_num">
-                           <span><a href="#"><上一页</a></span>
-                           <span><a href="#">1</a></span>
-                           <span class="s_page_current">2</span>
-                           <span><a href="#">3</a></span>
-                           <span><a href="#">4</a></span>
-                           <span><a href="#">5</a></span>
-                           <span><a href="#">6</a></span>
-                           <span><a href="#">7</a></span>
-                           <span><a href="#">8</a></span>
-                           <span><a href="#">...</a></span>
-                           <span><a href="#">20</a></span>
-                           <span><a href="#">下一页></a></span>
+                         <div class="s_page_num" id="page" >
+                           
                          </span>
                      </div>
                    
