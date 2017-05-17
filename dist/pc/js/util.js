@@ -255,5 +255,16 @@ var util = {
             return y + '-' + m + '-' + d
         }  
            
+   },
+   getQueryString: function(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        if(window.location.href.indexOf("?") > 0){
+            var r = window.location.href.split('?')[1].match(reg);
+            if(r!=null)return  unescape(r[2]); return null;
+        }else{
+            return '';
+        }
+        
+        
    }    
 }

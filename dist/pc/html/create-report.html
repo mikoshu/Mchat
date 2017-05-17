@@ -474,7 +474,6 @@
     $("#add").on('click',function(){
         var height = window.innerHeight;
         height = height < 770 ? height+'px' : 'auto';
-        console.log(height);
         layer.open({
           title: "增加填写问卷人信息填写",
           content: $("#pop").html(),
@@ -566,7 +565,7 @@
       $(".births:checked").each(function(i,dom){
         births.push($(dom).val());
       });
-      births = births.toString();
+      births = births.join(";");
       
       obj1 = {
         testeeName: testeeName,

@@ -130,7 +130,7 @@ $(function(){
 <script>
   $(document).ready(function(){
         var obj = {
-          url: util.requestURL+'/web/v1/medicMchat/listMchatScore',
+          url: util.requestURL+'/web/v1/medicMchat/listMchatScoreAndMchatScoreRevisedFollowListPage',
           type: 'POST',
           data:{
             pageNum: 1,
