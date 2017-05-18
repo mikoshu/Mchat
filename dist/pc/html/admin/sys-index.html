@@ -167,12 +167,17 @@ $(function(){
 </script>
 
 <script id="ggList" type="text/html">
+{{if recordList && recordList.length}}
   {{each recordList}}
     <p><a class="ac-gg" data-id="{{$value.id}}" href="javascript:;">{{$index+1+'、'+$value.title}}</a></p>
   {{/each}}
+{{else}}
+  <p>暂无公告信息！</p>
+{{/if}}
 </script>
 
 <script id="table" type="text/html" >
+{{if recordList && recordList.length}}
   {{each recordList}}
   <li>
      <span>
@@ -194,6 +199,9 @@ $(function(){
      <span><a data-medicNo="{{$value.medicNo}}" class="ac-delete" href="javascript:;"><img src="../../images/s_1.png" /></a></span>
    </li>
   {{/each}}
+{{else}}
+  <li>没有查询到相关信息，请检查搜索条件！</li>
+{{/if}}
 </script>
 
 <script>

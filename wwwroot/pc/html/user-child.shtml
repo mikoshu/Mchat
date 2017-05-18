@@ -170,6 +170,7 @@ ul{
 
 
 <script id="table" type="text/html" >
+{{if recordList && recordList.length}}
   {{each recordList}}
   <li>
      <span>{{$value.testeeName}}</span>
@@ -180,6 +181,9 @@ ul{
      <span><a class="ac-check" href="javascript:;" data-reportNo="{{$value.reportNo}}" ><img src="../images/looks.png" /></a></span>
    </li>
   {{/each}}
+{{else}}
+  <li>没有查询到相关信息，请检查搜索条件！</li>
+{{/if}}
 </script>
 
 <script>

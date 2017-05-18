@@ -189,6 +189,7 @@ ul{
 
 
 <script id="table" type="text/html" >
+{{if recordList && recordList.length}}
   {{each recordList}}
   <li>
      <span>
@@ -210,6 +211,9 @@ ul{
      <span><a data-medicNo="{{$value.medicNo}}" class="ac-delete" href="javascript:;"><img src="../../images/s_1.png" /></a></span>
    </li>
   {{/each}}
+{{else}}
+  <li>没有查询到相关信息，请检查搜索条件！</li>
+{{/if}}
 </script>
 
 <script>

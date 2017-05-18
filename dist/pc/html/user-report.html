@@ -18,29 +18,30 @@
  
 }
 .search_list_th p:nth-child(1){
-	width:18%;
+	width:20%;
 }
 .search_list_th p:nth-child(2){
-	width:8%;
+	width:10%;
 }
 .search_list_th p:nth-child(3){
-	width:9%;
+	width:15%;
 }
 .search_list_th p:nth-child(4){
-	width:9%;
+	width:15%;
 }
 .search_list_th p:nth-child(5){
-	width:5%;
+	width:10%;
 }
 .search_list_th p:nth-child(6){
-	width:5%;
+	width:10%;
 }
 .search_list_th p:nth-child(7){
-	width:5%;
+	width:10%;
 }
 .search_list_th p:nth-child(8){
-	width:11%;
+	width:10%;
 }
+
 .search_list_th p:nth-child(9){
 	width:8%;
 }
@@ -86,29 +87,29 @@ ul{
 }
 
 .search_list_th_ul span:nth-child(1){
-	width:18%;
+	width:20%;
 
 }
 .search_list_th_ul span:nth-child(2){
-	width:8%;
+	width:10%;
 }
 .search_list_th_ul span:nth-child(3){
-	width:9%;
+	width:15%;
 }
 .search_list_th_ul span:nth-child(4){
-	width:9%;
+	width:15%;
 }
 .search_list_th_ul span:nth-child(5){
-	width:5%;
+	width:10%;
 }
 .search_list_th_ul span:nth-child(6){
-	width:5%;
+	width:10%;
 }
 .search_list_th_ul span:nth-child(7){
-	width:5%;
+	width:10%;
 }
 .search_list_th_ul span:nth-child(8){
-	width:11%;
+	width:10%;
 }
 .search_list_th_ul span:nth-child(9){
 	width:8%;
@@ -162,13 +163,13 @@ ul{
                        <p>出生日期</p>
                        <p>施测日期</p>
                        <p>姓别</p>
-                       <p>问卷</p>
+                       <!-- <p>问卷</p>
                        <p>类型</p>
-                       <p>创建时间</p>
+                       <p>创建时间</p> -->
                        <p>基本信息</p>
                        <p>发育问卷</p>
                        <p>MCHAT报告</p>
-                       <p>作废</p>
+                       <!-- <p>作废</p> -->
                      </div>
                      
                      <div class="search_list_th_ul">
@@ -224,9 +225,7 @@ ul{
 
 
 <script id="table" type="text/html" >
-  {{if recordList.length == 0}}
-  <li> 没有找到相关信息，请检查搜索条件！ </li>
-  {{else}}
+{{if recordList && recordList.length}}
   {{each recordList}}
   <li>
      <span>{{$value.reportNo}}</span>
@@ -234,16 +233,18 @@ ul{
      <span>{{$value.birthYear+'-'+$value.birthMonth+'-'+$value.birthToday}}</span>
      <span>{{$value.testYear+'-'+$value.testMonth+'-'+$value.testToday}}</span>
      <span>{{['男','女'][$value.sex]}}</span>
-     <span>{{$value.cardType}}</span>
+     <!-- <span>{{$value.cardType}}</span>
      <span>--</span>
-     <span>{{$imports.getTimeFromNum($value.createTime,1)}}</span>
+     <span>{{$imports.getTimeFromNum($value.createTime,1)}}</span> -->
      <span><a data-index="{{$index}}" class="ac-check" href="javascript:;"><img class="looks" src="../images/looks.png" /></a></span>
      <span><a data-scoreNo="{{$value.scoreNo}}" class="ac-check-wj" href="javascript:;"><img class="looks" src="../images/looks.png" /></a></span>
      <span><a href="javascript:;"><img src="../images/s_2.png" /></a></span>
-     <span><a class="ac-delete" data-num="{{$value.scoreNo}}" href="javascript:;"><img src="../images/s_1.png" /></a></span>
+    <!--  <span><a class="ac-delete" data-num="{{$value.scoreNo}}" href="javascript:;"><img src="../images/s_1.png" /></a></span> -->
    </li>
   {{/each}}
-  {{/if}}
+{{else}}
+  <li>没有查询到相关信息，请检查搜索条件！</li>
+{{/if}}
 </script>
 <script src="../js/question.js"></script>
 <script id="checkPop" type="text/html" >
@@ -407,7 +408,6 @@ ul{
           scoreNo: scoreNo
         },
         success: function(data){
-          console.log(data);
           if(data.code == 1){
             layer.open({
               title: '问卷填写信息',
@@ -418,8 +418,9 @@ ul{
                 for(key in list){
                   if(key.indexOf('topic_') == 0){
                     var num = key.split('_')[1];
+                    var an = list[key] == 'Y' ? '是' :'否';
                     html += '<p> '+num+'.'+questions[num-1]+'</p>'+
-                            '<p> 回答： '+list[key]+'</p><br/>';
+                            '<p> 回答： '+an+'</p><br/>';
                   }
                 }
                 $("#wj").html(html);
