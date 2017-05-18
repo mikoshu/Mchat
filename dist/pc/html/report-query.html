@@ -160,7 +160,7 @@ ul{
       {{if $value.downloadCount}}
         {{$value.downloadCount}}
       {{else}}
-        <a class="table-btn" href="javascript:;">下载</a>
+        <a class="table-btn" href="{{$imports.requestURL+'/web/v1/medicMchat/downloadReport?scoreNo='+$value.scoreNo}}">下载</a>
       {{/if}}
     </span>
     <span>
@@ -699,6 +699,7 @@ function createReport(n,scoreNo){
                           data: answer,
                           success: function(data){
                             if(data.code == 1){
+                              window.location.href = util.requestURL+'/web/v1/medicMchat/downloadRevisedFollowReport?scoreNo='+data.data.scoreNo;
                               layer.close(lay);
                             }
                             layer.msg(data.msg);
