@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> 
+<title>问卷调查</title>
+<script src="../js/zepto.min.js"></script>
+
+
+
+
+<link rel="Stylesheet" type="text/css" href="../css/style.css" />
+<link rel="Stylesheet" type="text/css" href="../css/m_2.css" />
+<link rel="Stylesheet" type="text/css" href="../css/mobile.css" />
+
+
+</head>
+
+<body>
+
+<style>
+.gif{
+width:90%;
+height:90%;
+}
+@media only screen and (min-width:320px){
+.layui-m-layercont{
+padding:0px 30px;
+}
+}
+@media only screen and (min-width:500px){
+.layui-m-layercont{
+padding:0px 30px;
+}
+}
+@media only screen and (min-width:700px){
+.layui-m-layercont{
+padding:0px 100px;
+}
+}
+@media only screen and (min-width:1000px){
+.layui-m-layercont{
+padding:0px 160px;
+}
+}
+</style>
+<link rel="stylesheet" type="text/css" href="../js/mdialog.css">
+<script type="text/javascript" src="../js/mdialog.js"></script>
+
+<div>
+    <div id="m_guardian">
+    <p>< 返回</p>
+    <p>填写问卷</p>
+    </div>
+    
+    <div id="m_test_name">
+    <p>施测者：李明</p>
+    <p>年龄组： 36&nbsp;&nbsp; </p>
+    </div>
+
+
+
+    <div class="m_mid">
+        <div class="m_question">
+            <p id="question">1、如果你指向房间内的某样物体，你的孩子会看它吗？（例如，你指着一个玩具或动物，你的孩子会看这个玩具或动物吗？）</p>
+        </div>
+        
+        
+        
+        <div class="m_top_20">
+            <p class="m_q1"><a id="showPic" href="javascript:;"><img src="../images/m_q_1.jpg" /></a></p>
+            <p class="m_q2"><a id="showGif" href="javascript:;"><img src="../images/m_q_2.jpg" /></a></p>
+        </div>
+        
+
+        <div style="padding:10px;margin-top:20px;">
+            <p class="m_pass" data-value="Y" ><img id="m_pass_img" src="../images/m_nopass.jpg"  align="absmiddle" />是</p>
+            <p class="m_nopass" data-value="N" ><img id="m_nopass_img" src="../images/m_nopass.jpg" align="absmiddle"  />否</p>
+        </div>
+        
+        <div class="c_l"></div>
+          
+    </div>
+    
+
+    
+    <div class="m_foot">
+        <p><a href="javascript:;" id="last"><span class="m_foot_l b_white f_blue">上一条</span></a></p>
+        <p><a href="javascript:;" id="next"><span class="m_foot_r b_blue f_white">下一条</span></a></p>
+    </div>
+</div>
+
+
+<script src="../js/layer_mobile/layer.js"></script>
+<script src="../js/questions.js" ></script>
+<script>
+    $(document).ready(function(){
+        var index = 0;
+        var answer = {};
+        $("#showGif").on('click',function(){
+            layer.open({
+                title: [
+                  '视频',
+                  'background-color: #00c2bc; color:#fff;'
+                ]
+                ,style: ''
+                ,
+                 btn: '关闭',
+                 content: '<img class="gif" src="../images/pic/'+(index+1)+'.gif" alt="" />'
+            });
+        });
+
+        $("#showPic").on('click',function(){
+            layer.open({
+                title: [
+                  '流程表',
+                  'background-color: #00c2bc; color:#fff;'
+                ]
+                ,style: ''
+                ,
+                 btn: '关闭',
+                 content: '<div><img src="../images/m_pop.jpg" width="100%" height="100%" /></div>'
+            });
+
+        }); 
+
+        $("#last").on('click',function(){
+            if(index > 0){
+                index -= 1
+            }else{
+              layer.open({
+                content: '已经是第一题！'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+              });
+            }
+            checkChoose();
+            tabQuestion();
+            
+        });
+
+        $("#next").on('click',function(){
+            if(!check()){
+                return false
+            }
+            if(index < questions.length-1 && !answer.hasOwnProperty('topic_20')){
+                index += 1
+            }
+            if(answer.hasOwnProperty('topic_20')){
+                $(this).find('span').text('提交');
+                console.log(answer)
+            }
+            checkChoose();
+            tabQuestion();
+            
+        });
+
+        function tabQuestion(){
+            $("#question").text((index+1)+'.'+questions[index]);
+        }
+
+        $('.m_pass').on('click',function  () {
+            document.getElementById("m_pass_img").src="../images/m_pass.jpg";
+            document.getElementById("m_nopass_img").src="../images/m_nopass.jpg";
+            answer['topic_'+(index+1)] = $(this).attr('data-value');
+            if(answer.hasOwnProperty('topic_20')){
+                $("#next").find('span').text('提交');
+            }
+        });
+        
+        $('.m_nopass').on('click',function  () {
+            document.getElementById("m_pass_img").src="../images/m_nopass.jpg";
+            document.getElementById("m_nopass_img").src="../images/m_pass.jpg";
+            answer['topic_'+(index+1)] = $(this).attr('data-value');
+            if(answer.hasOwnProperty('topic_20')){
+                $("#next").find('span').text('提交');
+            }
+        });
+
+        function check(){
+            $('.m_nopass,.m_pass').find('img').attr('src','../images/m_nopass.jpg');
+            if(answer.hasOwnProperty('topic_'+(index+1))){
+                return true;
+            }else{
+
+                 layer.open({
+                    content: '请先答题'
+                    ,skin: 'msg'
+                    ,time: 2 //2秒后自动关闭
+                  });
+                return false;
+            }
+        }
+        function checkChoose(){
+            if(answer.hasOwnProperty('topic_'+(index+1))){
+                if(answer['topic_'+(index+1)] == 'Y'){
+                    document.getElementById("m_pass_img").src="../images/m_pass.jpg";
+                    document.getElementById("m_nopass_img").src="../images/m_nopass.jpg";
+                }else{
+                    document.getElementById("m_pass_img").src="../images/m_nopass.jpg";
+                    document.getElementById("m_nopass_img").src="../images/m_pass.jpg";
+                }
+            }
+        }
+
+
+        // new TipBox({
+        //     setTime: 3000,
+        //     type: 'success',
+        //     str: '提交成功',
+        //     hasBtn: true
+        // });  
+    });
+</script>
+
+</body>
+</html>

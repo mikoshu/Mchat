@@ -35,7 +35,7 @@
 	width:5%;
 }
 .search_list_th p:nth-child(7){
-	width:5%;
+	width:13%;
 }
 .search_list_th p:nth-child(8){
 	width:13%;
@@ -47,7 +47,7 @@
 	width:8%;
 }
 .search_list_th p:nth-child(11){
-	width:8%;
+	width:10%;
 }
 .search_list_th p:nth-child(12){
 	width:10%;
@@ -110,7 +110,7 @@ ul{
 	width:13%;
 }
 .search_list_th_ul span:nth-child(9){
-	width:8%;
+	width:13%;
 }
 .search_list_th_ul span:nth-child(10){
 	width:8%;
@@ -166,7 +166,7 @@ ul{
                        <p>施测日期</p>
                        <p>姓别</p>
                        <p>问卷</p>
-                       <p>类型</p>
+                       <!-- <p>类型</p> -->
                        <p>创建时间</p>
                        <p>基本信息</p>
                        <p>发育问卷</p>
@@ -216,7 +216,7 @@ ul{
      <span><a href="#"><img src="../images/s_2.png" /></a></span>
      <span><a href="#"><img src="../images/s_2.png" /></a></span>
      <span><a href="#"><img src="../images/s_2.png" /></a></span>
-     <span><a href="#"><img src="../images/s_1.png" /></a></span>
+     <!-- <span><a href="#"><img src="../images/s_1.png" /></a></span> -->
    </li>
   {{/each}}
 {{else}}
