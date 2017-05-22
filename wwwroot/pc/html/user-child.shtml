@@ -229,7 +229,7 @@ ul{
 
     $("body").delegate('.ac-check','click',function(){
       var reportNo = $(this).attr('data-reportNo');
-      window.location.href = '#report-query?reportNo='+reportNo;
+      window.location.href = '#user-report?reportNo='+reportNo;
     });
 
   });

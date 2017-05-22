@@ -54,7 +54,7 @@
                     <div class="announcement_tip">
                     <img src="../images/announcement.png" />&nbsp;公告
                     </div>
-                    <p class="announcement_more" style=""><a href="#">MORE ></a>&nbsp;&nbsp;</p>
+                    <p class="announcement_more" style=""><a id="nextPage" href="javascript:;">MORE ></a>&nbsp;&nbsp;</p>
                     
                     <div class="announcement_line" style="margin:0 5px;clear:both"></div>
                     
@@ -137,6 +137,8 @@ $(function(){
 
 <script>
   $(document).ready(function(){
+        var currentPage = 1;
+        var total = 0;
         var obj = {
           url: util.requestURL+'/web/v1/medicMchat/listMchatScoreAndMchatScoreRevisedFollowListPage',
           type: 'POST',
@@ -214,12 +216,40 @@ $(function(){
             if(data.code == 1){
               var html = template.render($("#ggList").text(), data.data);
               $("#gg").html(html);
+              total = data.data.totalCount;
               getArticle(data.data.recordList[0].id);
             }else{  
               layer.msg(data.msg);
             }
           }
-        })
+        });
+
+        $("body").delegate('#nextPage','click',function(){
+          if(6*currentPage < total){
+            util.client({ // 获取文章列表
+              url: util.requestURL+'/web/v1/medic/listArticle',
+              type: 'POST',
+              data: {
+                pageNum: currentPage+1,
+                numPerPage: 6
+              },
+              success: function(data){
+                if(data.code == 1){
+                  currentPage = data.data.currentPage;
+                  var html = template.render($("#ggList").text(), data.data);
+                  $("#gg").html(html);
+                  total = data.data.totalCount;
+                  //getArticle(data.data.recordList[0].id);
+                }else{  
+                  layer.msg(data.msg);
+                }
+              }
+            });
+          }else{
+            layer.msg('已经是最后一页了！');
+          }
+          
+        });
 
         $("body").delegate('.ac-gg','click',function(){
           var id = $(this).attr("data-id");
