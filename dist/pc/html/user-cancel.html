@@ -1,127 +1,9 @@
 <link rel="Stylesheet" type="text/css" href="../css/pc_archives.css" />
 <style>
-
 .search_list_content{
     margin-top:40px;
     width:950px;
 }
-.search_list_th{
-   color:#FFF;
-   height:35px;
-   line-height:35px;
-   text-align:center;
-}
-.search_list_th p{
-   float:left;
-   background-color:#feaa48;
- 
-}
-.search_list_th p:nth-child(1){
-	width:10%;
-}
-.search_list_th p:nth-child(2){
-	width:8%;
-}
-.search_list_th p:nth-child(3){
-	width:10%;
-}
-.search_list_th p:nth-child(4){
-	width:10%;
-}
-.search_list_th p:nth-child(5){
-	width:5%;
-}
-.search_list_th p:nth-child(6){
-	width:5%;
-}
-.search_list_th p:nth-child(7){
-	width:13%;
-}
-.search_list_th p:nth-child(8){
-	width:13%;
-}
-.search_list_th p:nth-child(9){
-	width:8%;
-}
-.search_list_th p:nth-child(10){
-	width:8%;
-}
-.search_list_th p:nth-child(11){
-	width:10%;
-}
-.search_list_th p:nth-child(12){
-	width:10%;
-}
-
-
-
-
-ul{
-	list-style-type:none;
-}
-.search_list_th_ul{
-   text-align:center;
-   color:#333333;
-}					
-
-.search_ul li{
-   height:30px;
-   line-height:30px;
-   overflow:hidden;
-   
-}
-.search_ul li:nth-child(odd){
-   background-color:#ffffff;
-  
-}
-.search_ul li:nth-child(even){
-   background-color:#f8f8f8;
-}
-.search_list_th_ul span{
-   float:left;
-   font-size:14px;
-}
-.search_list_th_ul span img{
-	margin-top:6px;
-}
-.search_list_th_ul span:nth-child(1){
-	width:10%;
-
-}
-.search_list_th_ul span:nth-child(2){
-	width:8%;
-}
-.search_list_th_ul span:nth-child(3){
-	width:10%;
-}
-.search_list_th_ul span:nth-child(4){
-	width:10%;
-}
-.search_list_th_ul span:nth-child(5){
-	width:5%;
-}
-.search_list_th_ul span:nth-child(6){
-	width:5%;
-}
-.search_list_th_ul span:nth-child(7){
-	width:5%;
-}
-.search_list_th_ul span:nth-child(8){
-	width:13%;
-}
-.search_list_th_ul span:nth-child(9){
-	width:13%;
-}
-.search_list_th_ul span:nth-child(10){
-	width:8%;
-}
-.search_list_th_ul span:nth-child(11){
-	width:8%;
-}
-.search_list_th_ul span:nth-child(12){
-	width:10%;
-}
-
 </style>
 
 
@@ -142,9 +24,12 @@ ul{
                    <div>
                        报告编号：<input name="" class="chat_input" style="height:30px;width:200px" id="reportNo" />
                    </div>
-                   <!-- <div>
-                       施测日期：<select name="" class="chat_input" style="height:30px;width:200px"  ></select>
-                   </div> -->
+                   <div>
+                       查询类型：<select id="type" name="" class="chat_input" style="height:30px;width:200px"  >
+                         <option value="1">MCHAT-R</option>
+                         <option value="2">MCHAT-R/F</option>
+                       </select>
+                   </div>
                </div>
                <div class="r_search_r">
                <input id="search" type="button" class="r_search_r_btn" value="搜索" />
@@ -158,27 +43,24 @@ ul{
 
 
                    <div class="search_list_content">
-
-                     <div class="search_list_th">
-                       <p>报告编号</p>
-                       <p>姓名</p>
-                       <p>出生日期</p>
-                       <p>施测日期</p>
-                       <p>姓别</p>
-                       <p>问卷</p>
-                       <!-- <p>类型</p> -->
-                       <p>创建时间</p>
-                       <p>基本信息</p>
-                       <p>发育问卷</p>
-                       <p>信息汇总</p>
-                       <p>亲子活动</p>
-                     </div>
+                    <table class="m-table" cellspacing="0" >
+                      <thead>
+                        <tr>
+                          <th>报告编号</th>
+                          <th id="t">MCHAT-R</th>
+                          <th>创建时间</th>
+                          <th>基本信息</th>
+                          <th>问卷信息</th>
+                          <th>下载</th>
+                        </tr>
+                      </thead>
+                      <tbody id="list">
+                        
+                      </tbody>
+                    </table>
                      
-                     <div class="search_list_th_ul">
-                         <ul class="search_ul" id="list">
-                           <li>暂无内容</li>
-                         </ul>
-                     </div>
+                     
+                     
                    
                      
 
@@ -203,32 +85,219 @@ ul{
 <script id="table" type="text/html" >
 {{if recordList && recordList.length}}
   {{each recordList}}
-  <li>
-     <span>{{$value.reportNo}}</span>
-     <span>{{$value.testeeName}}</span>
-     <span>{{$value.birthYear+'-'+$value.birthMonth+'-'+$value.birthToday}}</span>
-     <span>--</span>
-     <span>{{['男','女'][$value.sex]}}</span>
-     <span>{{$value.cardType}}</span>
-     <span>--</span>
-     <span>{{$imports.getTimeFromNum($value.createTime,1)}}</span>
-     <span><a href="#"><img src="../images/s_2.png" /></a></span>
-     <span><a href="#"><img src="../images/s_2.png" /></a></span>
-     <span><a href="#"><img src="../images/s_2.png" /></a></span>
-     <span><a href="#"><img src="../images/s_2.png" /></a></span>
-     <!-- <span><a href="#"><img src="../images/s_1.png" /></a></span> -->
-   </li>
+  <tr>
+     <td>{{$value.reportNo}}</td>
+     <!-- <span>{{$value.testeeName}}</span> -->
+     <td>
+      {{if $value.downloadCount}}
+        {{$value.downloadCount}}
+      {{else}}
+        <a class="table-btn" target="_blank" href="{{$imports.requestURL+'/web/v1/medicMchat/downloadReport?scoreNo='+$value.scoreNo}}">下载</a>
+      {{/if}}
+    </td>
+     <td>{{$imports.getTimeFromNum($value.createTime,1)}}</td>
+     <td><a data-index="{{$index}}" class="ac-check" href="javascript:;"><img class="looks" src="../images/looks.png" /></a></td>
+    <td><a data-scoreNo="{{$value.scoreNo}}" class="ac-check-wj" href="javascript:;"><img class="looks" src="../images/looks.png" /></a></td>
+    <td><a target="_blank" href="{{$imports.downloadURL+$value.scoreNo}}"><img class="looks" src="../images/s_2.png" /></a></td>
+   </tr>
   {{/each}}
 {{else}}
-  <li>没有查询到相关信息，请检查搜索条件！</li>
+  <tr><td colspan="5" >没有查询到相关信息，请检查搜索条件！</td></tr>
 {{/if}}
 </script>
 
+
+<script src="../js/question.js"></script>
+<script id="checkPop" type="text/html" >
+  <div class="r_form" id="check" >
+        <div>儿童姓名:</div>
+        <div><input class="chat_input" id="testeeName" style="width:350px" type="text" /></div>
+    </div>
+    
+    <div class="r_form">
+        <div>性别:</div>
+        <div>
+          <input class="chat_input" id="sex" style="width:350px" />
+        </div>
+    </div>
+    
+    <div class="r_form">
+        <div>身份信息:</div>
+        <div>
+        <input  id="cardType" class="chat_input" style="width:120px" />
+        <input class="chat_input" id="cardNo2" style="width:225px" type="text" />
+        </div>
+    </div> 
+    
+    <BR />
+    <div class="r_form">
+        <div>出生日期:</div>
+        <div><input class="chat_input" id="birthDay" style="width:350px; height:37px;"/></div>
+    </div> 
+    <div class="r_form">
+        <div>完成问卷日期:</div>
+        <div><input class="chat_input" id="testDay" style="width:350px; height:37px;"/></div>
+    </div> 
+   
+    <BR />
+    <div class="r_form">
+        <div>宝宝的孕周:</div>
+        <div>
+        <input id="gestationalWeeks" class="chat_input r_form_week" style="width:155px" type="text" />
+        <input id="gestationalDays" class="chat_input r_form_day" style="width:155px" type="text" />
+        </div>
+    </div>         
+    <div class="r_form">
+        <div>出生时情况:</div>
+        <div id="births"> 
+        </div>
+    </div>
+
+    <!-- <div class="r_form">
+        <div>完成问卷人姓名:</div>
+        <div><input class="chat_input" id="consignorName" style="width:350px" type="text" /></div>
+    </div> -->
+    <!-- <div class="r_form">
+        <div>与儿童的关系:</div>
+        <div>
+          <select class="chat_input" id="consignorType" style="width:300px" type="text" >
+            <option selected="selected"  value="0">未选择</option>
+            <option  value="1">父母</option>
+            <option  value="2">祖父母</option>
+            <option  value="3">照看人</option>
+            <option  value="4">老师</option>
+            <option  value="5">其他</option>
+          </select>
+        </div>
+    </div> -->
+    <div class="r_form">
+        <div>儿童出生时的体重:</div>
+        <div><input class="chat_input" id="weight" style="width:300px" type="text" /></div>
+    </div>
+    <div class="r_form">
+        <div>通讯地址:</div>
+        <div><input class="chat_input" id="address" style="width:300px" type="text" /></div>
+    </div>
+    <div class="r_form">
+        <div>邮政编码:</div>
+        <div><input class="chat_input" id="zip" style="width:300px" type="text" /></div>
+    </div>
+    <div class="r_form">
+        <div>联系电话:</div>
+        <div><input id="tel" class="chat_input" style="width:300px" type="text" /></div>
+    </div>
+    <!-- <div class="r_form">
+        <div>母亲文化程度:</div>
+        <div>
+          <select id="motnerCultureDegree" class="chat_input" style="width:300px">
+              <option value="0">未选择</option>
+              <option value="1">小学</option>
+              <option value="8">完成部分初中课程</option>
+              <option value="2">初中毕业</option>
+              <option value="3">完成部分高中课程</option>
+              <option value="4">高中毕业</option>
+              <option value="5">完成部分大学课程(至少一年)</option>
+              <option value="6">大学毕业(大专或大学)</option>
+              <option value="7">硕士毕业或以上</option>
+          </select>
+        </div>
+    </div> -->
+    <div class="r_form">
+        <div>母亲职业:</div>
+        <div id="motherCareerCategory"> 
+        </div>
+    </div>
+    <!-- <div class="r_form">
+        <div>父亲文化程度:</div>
+        <div>
+          <select id="fatherCultureDegree" class="chat_input" style="width:300px">
+            <option value="0">未选择</option>
+              <option value="1">小学</option>
+              <option value="8">完成部分初中课程</option>
+              <option value="2">初中毕业</option>
+              <option value="3">完成部分高中课程</option>
+              <option value="4">高中毕业</option>
+              <option value="5">完成部分大学课程(至少一年)</option>
+              <option value="6">大学毕业(大专或大学)</option>
+              <option value="7">硕士毕业或以上</option>
+          </select>
+        </div>
+    </div> -->
+    <div class="r_form">
+        <div>父亲职业:</div>
+        <div id="fatherCareerCategory"> 
+        </div>
+    </div>
+    <!-- <div class="r_form">
+        <div>主要照顾者文化程度:</div>
+        <div>
+          <select id="caregiversCultureDegree" class="chat_input" style="width:300px">
+            <option value="0">未选择</option>
+              <option value="1">小学</option>
+              <option value="8">完成部分初中课程</option>
+              <option value="2">初中毕业</option>
+              <option value="3">完成部分高中课程</option>
+              <option value="4">高中毕业</option>
+              <option value="5">完成部分大学课程(至少一年)</option>
+              <option value="6">大学毕业(大专或大学)</option>
+              <option value="7">硕士毕业或以上</option>
+          </select>
+        </div>
+    </div> -->
+   <!--  <div class="r_form">
+        <div>母亲出生日期:</div>
+        <div><input id="motherBirthDay" class="chat_input" style="width:300px" /></div>
+    </div>
+    <div class="r_form">
+        <div>父亲出生日期:</div>
+        <div><input id="fatherBirthDay" class="chat_input" style="width:300px" /></div>
+    </div>
+    <div class="r_form">
+        <div>婚姻状况:</div>
+        <div>
+        <select id="maritalStatus" class="chat_input" style="width:300px">
+        <option value="0">未选择</option>
+              <option value="1">未婚</option>
+              <option value="2">已婚</option>
+              <option value="3">离异</option>  
+        </select>
+        </div>
+    </div> -->
+    <div class="r_form">
+        <div>备注:</div>
+        <div id="remarks"> 
+        </div>
+    </div>
+
+
+
+</script>
+
+
 <script>
   $(document).ready(function(){
+      var respData = {};
+      var url = util.requestURL+'/web/v1/medicMchat/listMchatScoreAndMchatScoreRevisedFollowListPage';
+      var type = 1;
+      template.defaults.imports.downloadURL = util.requestURL+'/web/v1/medicMchat/downloadReport?scoreNo=';
+      $("#type").change(function(){
+        type = $(this).val();
+        if(type == 1){
+          $("#t").text('MCHAT-R');
+          url = util.requestURL+'/web/v1/medicMchat/listMchatScoreAndMchatScoreRevisedFollowListPage';
+          $("#search").trigger('click');
+          template.defaults.imports.downloadURL = util.requestURL+'/web/v1/medicMchat/downloadReport?scoreNo=';
+        }else{
+          $("#t").text('MCHAT-R/F');
+          url = util.requestURL+'/web/v1/medicMchat/listMchatScoreRevisedFollow';
+          $("#search").trigger('click');
+          template.defaults.imports.downloadURL = util.requestURL+'/web/v1/medicMchat/downloadRevisedFollowReport?scoreNo=';
+        }
+      })
+
       $("#search").on('click',function(){
         var obj = {
-          url: util.requestURL+'/web/v1/medicMchat/listMchatScoreAndMchatScoreRevisedFollowListPage',
+          url: url,
           type: 'POST',
           data:{
             pageNum: 1,
@@ -239,6 +308,7 @@ ul{
             birth: util.getDateStr($("#birth").val())
           },
           success: function(data){
+            respData = data;
             if(data.code == 1){
               var html = template.render($("#table").text(), data.data);
               $("#list").html(html);
@@ -265,6 +335,93 @@ ul{
     })
 
     $("#search").trigger('click');
+
+
+    $("body").delegate('.ac-check','click',function(){
+      var index = $(this).attr('data-index');
+      var height = parseInt(window.innerHeight);
+      height = height > 532 ? '532px' : height+'px';
+      var myLayer = layer.open({
+        title: '基本信息',
+        content: $("#checkPop").html(),
+        btn:['返回'],
+        area: ["700px",height],
+        success: function(){
+          var data = respData.data.recordList[index];
+          $("#testeeName").val(data.testeeName);
+          $("#sex").val(['男','女'][data.sex]);
+          $("#cardType").val(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','其他'][data.cardType]);
+          $("#cardNo2").val(data.cardNo);
+          $("#birthDay").val(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
+          $("#testDay").val(util.getTimeFromNum(data.createTime));
+          $("#gestationalWeeks").val(data.gestationalWeeks);
+          $("#gestationalDays").val(data.gestationalDays);
+          $("#consignorName").val(data.consignorName);
+          $("#consignorType").val(data.consignorType);
+          $("#weight").val(data.birthWeight);
+          $("#address").val(data.address);
+          $("#tel").val(data.tel);
+          $("#motnerCultureDegree").val(data.motnerCultureDegree);
+          $("#fatherCultureDegree").val(data.fatherCultureDegree);
+          $("#remark").text(data.remark);
+          $("#fatherCareerCategory").text('第'+data.fatherCareerCategory+'大类');
+          $("#motherCareerCategory").text('第'+data.motherCareerCategory+'大类');
+
+          if(data.births){
+            var births = data.births.split(';');
+            var map = ['足月','早产','顺产','剖腹产','产钳助产','吸引器助产','双胎','其他异常情况'];
+            var html = '';
+            births.map(function(val,i){
+              html += map[val]+' , ';
+            });
+            html = html.substring(0,html.length-2);
+            $("#births").text(html);
+          }
+          $(".r_form").find('input').attr('disabled','disabled');
+        }
+      })
+    });
+
+    $("body").delegate('.ac-check-wj','click',function(){
+      var scoreNo = $(this).attr('data-scoreNo');
+      var u = type == 1 ? 'getMchatQuestionnaireResponse' : 'getMchatQuestionnaireResponseRevisedFollow'
+      util.client({
+        url: util.requestURL+'/web/v1/medicMchat/'+u,
+        type: 'POST',
+        data: {
+          scoreNo: scoreNo
+        },
+        success: function(data){
+          if(data.code == 1){
+            layer.open({
+              title: '问卷填写信息',
+              content: '<div id="wj"></div>',
+              success: function(){
+                var list = data.data;
+                var html = '';
+                for(key in list){
+                  if(key.indexOf('topic_') == 0){
+                    var num = key.split('_')[1];
+                    var an = list[key] == 'Y' ? '是' : '否';
+                    html += '<p> '+num+'.'+questions[num-1]+'</p>'+
+                            '<p> 回答： '+an+'</p><br/>';
+                  }
+                }
+                $("#wj").html(html);
+              },
+              area: ["700px",'500px'],
+              btn: ["返回"]
+            })
+          }else{
+            layer.msg(data.msg);
+          }
+
+        }
+
+      })
+    });
+
+
   });
 </script>
 

@@ -71,59 +71,62 @@
               <div class="r_form">
                   <div>出生时情况(多选):</div>
                   <div>
-                  <!-- <input class="chat_input"  style="width:350px" /> -->
-                    
-                  <ul class="m-select-info-c">
+                  <div id="birthsBox" class="chat_input births-box"  style="width:350px" >
+                  <div id="birthsInput" style="width:100%" ></div>
+                  <ul class="m-select-info-c births-pop">
                     <li>
                       <label>
                         <input class="births" value="0" type="checkbox">
-                        足月
+                        <span>足月</span>
                       </label>
                     </li>
                     <li>
                       <label>
                         <input class="births" value="1" type="checkbox">
-                        早产
+                        <span>早产</span>
                       </label>
                     </li>
                     <li>
                       <label>
                         <input class="births" value="2" type="checkbox">
-                        顺产
+                        <span>顺产</span>
                       </label>
                     </li>
                     <li>
                       <label>
                         <input class="births" value="3" type="checkbox">
-                        剖腹产
+                        <span>剖腹产</span>
                       </label>
                     </li>
                     <li>
                       <label>
                         <input class="births" value="4" type="checkbox">
-                        产钳助产
+                        <span>产钳助产</span>
                       </label>
                     </li>
                     <li>
                       <label>
                         <input class="births" value="5" type="checkbox">
-                        吸引器助产
+                        <span>吸引器助产</span>
                       </label>
                     </li>
                     <li>
                       <label>
                         <input class="births" value="6" type="checkbox">
-                        双胎
+                        <span>双胎</span>
                       </label>
                     </li>
                     <li>
                       <label>
                         <input class="births" value="7" type="checkbox">
-                        其他异常情况
+                        <span>其他异常情况</span>
                       </label>
                     </li>
-                    
+                    <li>
+                      <a id="births-sure" href="javascript:;">确定</a>
+                    </li>
                   </ul>
+                  </div>
                   </div>
               </div>
               <!-- <div class="r_form">
@@ -601,6 +604,22 @@
         }
       })
 
+    });
+
+    $("body").delegate('#birthsBox','click',function(){
+      $(".births-pop").show();
+
+    })
+
+    $("body").delegate('#births-sure','click',function(e){
+      var html = '';
+      $(".births:checked").each(function(i,dom){
+        html += $(dom).next().text() + ',';
+      });
+      html = html.substring(0,html.length-1);
+      $("#birthsInput").text(html);
+      e.stopPropagation();
+      $(".births-pop").hide();
     });
 
     

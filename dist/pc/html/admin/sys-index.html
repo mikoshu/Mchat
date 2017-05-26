@@ -10,16 +10,18 @@
 
 </style>
 <div class="r_title">
-                <p id="tap1" class="tap1">公告发布</p>
-                <p id="tap2" class="tap2">用户列表</p>
+                <p id="tap2" class="tap1">用户列表</p>
+                <p id="tap1" class="tap2">公告发布</p>
                 <p id="tap3" class="tap3"></p>
             </div>
             <div class="r_article">
             
             
-                <div class="article_list" style="display:none">
-                    <h4 class="article_list_title">用户列表</h4>
-                    <p class="article_info_date" id="quality">M-CHAT报告：23 | 剩余M-CHAT报告：87</p>
+                <div class="article_list">
+                    <div class="clearfix">
+                    <h4 class="article_list_title f_l fl-10" >报告信息：</h4>
+                    <p class="article_info_date fl-10 f_l" id="quality">M-CHAT报告：23 | 剩余M-CHAT报告：87</p>
+                  </div>
                     
                    <div class="article_list_content">
 
@@ -47,7 +49,7 @@
                 </div>
 
             
-                <div class="article_info">
+                <div class="article_info" style="display:none">
                     <h4 id="title" class="article_info_title">发布公告的标题</h4>
                     <p class="article_info_date">发布时间：<span id="time">2016-07-04 00:00:00</span></p>
                     
@@ -62,7 +64,7 @@
                     <div class="announcement_tip">
                     <img src="../../images/announcement.png" />&nbsp;公告
                     </div>
-                    <p class="announcement_more" style=""><a href="#">MORE ></a>&nbsp;&nbsp;</p>
+                    <p class="announcement_more" style=""><a id="nextPage" href="javascript:;">MORE ></a>&nbsp;&nbsp;</p>
                     
                     <div class="announcement_line" style="margin:0 5px;clear:both"></div>
                     
@@ -206,6 +208,8 @@ $(function(){
 
 <script>
   $(document).ready(function(){
+        var currentPage = 1;
+        var total = 0;
         var obj = {
           url: util.requestURL+'/web/v1/enterprise/listMedic',
           type: 'POST',
@@ -272,6 +276,7 @@ $(function(){
           },
           success: function(data){
             if(data.code == 1){
+              total = data.data.totalCount;
               var html = template.render($("#ggList").text(), data.data);
               $("#gg").html(html);
               getArticle(data.data.recordList[0].id);
@@ -284,6 +289,7 @@ $(function(){
         $("body").delegate('.ac-gg','click',function(){
           var id = $(this).attr("data-id");
           getArticle(id);
+          $("#tap1").trigger('click');
         });
 
         $("body").delegate('.ac-check','click',function(){
@@ -395,6 +401,33 @@ $(function(){
           })
         });
 
+        $("body").delegate('#nextPage','click',function(){
+          if(6*currentPage < total){
+            util.client({ // 获取文章列表
+              url: util.requestURL+'/web/v1/enterprise/listArticle',
+              type: 'POST',
+              data: {
+                pageNum: currentPage+1,
+                numPerPage: 6
+              },
+              success: function(data){
+                if(data.code == 1){
+                  currentPage = data.data.currentPage;
+                  var html = template.render($("#ggList").text(), data.data);
+                  $("#gg").html(html);
+                  total = data.data.totalCount;
+                  //getArticle(data.data.recordList[0].id);
+                }else{  
+                  layer.msg(data.msg);
+                }
+              }
+            });
+          }else{
+            layer.msg('已经是最后一页了！');
+          }
+          
+        });
+
         $("body").delegate('.ac-bind', 'click', function(event) {
           layer.open({
             title: '绑定新用户',
@@ -444,7 +477,6 @@ $(function(){
                 $("#title").text(data.title);
                 $("#article").html(data.content);
                 $("#time").text(data.editTime);
-                $("#tap1").trigger('click');
 
               }else{  
                 layer.msg(data.msg);

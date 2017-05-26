@@ -6,6 +6,19 @@ a{
 	text-decoration:none;
     color:inherit;
 }
+
+.clearfix:after {
+  content: "";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
 img{border:0}
 .c_b{clear:both}
 .c_l{clear:left}
@@ -584,16 +597,63 @@ input{
 	th{
 		background:#feaa48;
 		color:#fff;
-
+		font-weight: normal;
+		font-size:16px;
 	}
 }
 
+.search_list_content{
+    margin-top:40px;
+    width:950px;
+}
+.births-box{
+	position:relative;
+	text-align:left !important;
+}
+.births-pop{
+	display:none;
+	position:absolute;
+	left:-1px;
+	top:35px;
+	width:350px;
+	background:#fff;
+	text-align:left;
+	border:1px solid #eee;
+	
+	label{
+		display:block;
+		padding-left:10px;
+		&:hover{
+			background:#eee;
+		}
+	}
+	a{
+		display:block;
+		margin:10px auto 10px auto;
+		background:#feab48;
+		border-radius:4px;
+		color:#fff;
+		width:60px;
+		text-align:center;
+		line-height:25px;
+		&:hover{
+			opacity:.8;
+		}
+	}
+}
 
+#birthsInput{
+	height:35px;
+	padding-left:6px;
+	overflow:hidden;
+	text-align:left;
+}
 
-
-
-
-
+.fl-10{
+	margin-left:10px;
+	color:#000 !important;
+	font-size:14px;
+}
 
 
 

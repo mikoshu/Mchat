@@ -72,6 +72,7 @@
 <script type="text/javascript">
   $(function(){ 
   template.defaults.imports.getTimeFromNum = util.getTimeFromNum;
+  template.defaults.imports.requestURL = util.requestURL;
     if(!sessionStorage.token){
       layer.alert('请先登录！');
       window.location.href = '../login.html';

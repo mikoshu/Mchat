@@ -163,7 +163,7 @@ var util = {
         }
     },
     client: function(obj){
-        var index = layer.load(0, {shade: [0.8,'#000']});
+        var index = layer.load(0);
         var time = setTimeout(function(){
             layer.close(index);
             layer.msg('请求超时，请检查网络！')
@@ -184,12 +184,15 @@ var util = {
         }
         obj.error = function(e){
             layer.msg(e.status +" " +e.statusText);
+            clearTimeout(time);
+            layer.close(index);
         }
         $.ajax(obj);
 
     },
     pageClient: function(obj,page){
-        var index = layer.load(0, {shade: [0.8,'#000']});
+        var index = layer.load(0);
+        //var index = layer.load(0, {shade: [0.1,'#fff']});
         var time = setTimeout(function(){
             layer.close(index);
             layer.msg('请求超时，请检查网络！')
@@ -212,6 +215,8 @@ var util = {
         }
         obj.error = function(e){
             layer.msg(e.status +" " +e.statusText);
+            clearTimeout(time);
+            layer.close(index);
         }
         $.ajax(obj);
     },
