@@ -12,7 +12,11 @@
 <script src="../js/jquery.pagination.min.js"></script>
 <script src="../js/My97DatePicker/WdatePicker.js" ></script>
 <script src="../js/util.js"></script>
-
+<style type="text/css">
+#content{
+	background-size:100%; 
+}
+</style>
 </head>
 
 <body>
@@ -76,8 +80,8 @@
     template.defaults.imports.requestURL = util.requestURL;
 
     if(!sessionStorage.token){
-      layer.alert('请先登录！');
-      window.location.href = 'login.html';
+//      layer.alert('请先登录！');
+//      window.location.href = 'login.html';
     }else{
       window.token = sessionStorage.token;
     }

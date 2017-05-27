@@ -197,9 +197,10 @@ $(function(){
 	  $(".t_m_p").removeClass("m_p_cureent");
 	  $(".m"+s).addClass("m_p_cureent");
   
-	  $(".m_read").removeClass("m_r_current");
-	  $(".r"+s).addClass("m_r_current");	
-  
+//	  $(".m_read").removeClass("m_r_current");
+//	  $(".r"+s).addClass("m_r_current");	
+      $(".m_read").hide().removeClass("m_r_current");
+	  $(".r"+s).hide().fadeIn(1500).addClass("m_r_current");
   });
   
   
@@ -208,8 +209,11 @@ $(function(){
 	  $(".t_m_p").removeClass("m_p_cureent");
 	  $(this).addClass("m_p_cureent");
 
-	  $(".m_read").removeClass("m_r_current");
-	  $(".r"+s).addClass("m_r_current");	
+	  //$(".m_read").removeClass("m_r_current");
+	  //$(".r"+s).addClass("m_r_current");
+	  
+      $(".m_read").hide().removeClass("m_r_current");
+	  $(".r"+s).hide().fadeIn(1500).addClass("m_r_current");
   
 	  $(".t_tab_a").removeClass("a_current");
 	  $(".a"+s).addClass("a_current");	

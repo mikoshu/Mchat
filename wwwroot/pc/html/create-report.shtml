@@ -570,6 +570,38 @@
       });
       births = births.join(";");
       
+      if(testeeName == ''){
+        layer.msg('儿童姓名不能为空！');
+        return false;
+      }
+      if(cardNo == ''){
+        layer.msg('身份信息不能为空！');
+        return false;
+      }
+      if(birthDay == ''){
+        layer.msg('出生日期不能为空！');
+        return false;
+      }
+      if(testDay == ''){
+        layer.msg('完成问卷日期不能为空！');
+        return false;
+      }
+
+      if(gestationalWeeks == ''){
+        layer.msg('宝宝孕周不能为空！');
+        return false;
+      }
+      if(gestationalDays == ''){
+        layer.msg('宝宝孕天不能为空！');
+        return false;
+      }
+
+      if(births == ''){
+        layer.msg('出生时情况不能为空！');
+        return false;
+      }
+      
+
       obj1 = {
         testeeName: testeeName,
         sex: sex,
