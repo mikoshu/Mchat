@@ -16,6 +16,9 @@
                    <div>
                        报告编号：<input id="reportNo" class="chat_input" style="height:30px; width:200px;" type="text" />
                    </div>
+                   <div>
+                       施测日期：<input id="testDate" class="chat_input Wdate" onClick="WdatePicker()" style="height:30px;width:200px" />
+                   </div>
                </div>
                <div class="r_search_r">
                <input type="button" id="search" class="r_search_r_btn" value="搜索" />
@@ -436,7 +439,8 @@
             testeeName: $("#name").val(),
             reportNo: $("#reportNo").val(),
             birth: util.getDateStr($("#birth").val()),
-            delete: 0
+            delete: 0,
+            testDate: util.getDateStr($("#testDate").val())
           },
           success: function(data){
             if(data.code == 1){

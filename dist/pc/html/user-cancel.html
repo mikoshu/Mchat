@@ -17,6 +17,9 @@
                    <div>
                        出生日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" />
                    </div>
+                   <div>
+                       施测日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDate" onClick="WdatePicker()" />
+                   </div>
                    
                    
                </div>
@@ -305,7 +308,8 @@
             testeeName: $("#name").val(),
             reportNo: $("#reportNo").val(),
             deleted: 1,
-            birth: util.getDateStr($("#birth").val())
+            birth: util.getDateStr($("#birth").val()),
+            testDate: util.getDateStr($("#testDate").val())
           },
           success: function(data){
             respData = data;

@@ -111,9 +111,9 @@ ul{
                    <div>
                        身份信息：<input class="chat_input" style="height:30px; width:200px;" type="text" id="cardNo" />
                    </div>
-                   <!-- <div>
-                       施测日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" />
-                   </div> -->
+                   <div>
+                       施测日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDay" onClick="WdatePicker()" />
+                   </div>
                </div>
                <div class="r_search_r">
                <input type="button" id="search" class="r_search_r_btn" value="搜索" />
@@ -198,7 +198,8 @@ ul{
             numPerPage: 10,
             testeeName: $("#name").val(),
             cardNo: $("#cardNo").val(),
-            birth: util.getDateStr($("#birth").val())
+            birth: util.getDateStr($("#birth").val()),
+            testDate: util.getDateStr($("#testDay").val())
           },
           success: function(data){
             if(data.code == 1){

@@ -60,9 +60,9 @@ ul{
                    <div>
                        报告编号：<input class="chat_input" id="reportNo" style="height:30px; width:200px;" type="text" />
                    </div>
-                   <!-- <div>
-                       施测日期：<select name="" class="chat_input" style="height:30px;width:200px"></select>
-                   </div> -->
+                   <div>
+                       施测日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDate" onClick="WdatePicker()" />
+                   </div>
                </div>
                <div class="r_search_r">
                <input id="search" type="button" class="r_search_r_btn" value="搜索" />
@@ -313,10 +313,8 @@ ul{
             numPerPage: 10,
             testeeName: $("#name").val(),
             reportNo: $("#reportNo").val(),
-            birth: util.getDateStr($("#birth").val())
-            // birthYear: '',
-            // birthMonth: '',
-            // birthToday: ''
+            birth: util.getDateStr($("#birth").val()),
+            testDate: util.getDateStr($("#testDate").val())
           },
           success: function(data){
             if(data.code == 1){
