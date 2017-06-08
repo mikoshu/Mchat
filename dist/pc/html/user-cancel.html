@@ -354,7 +354,7 @@
           var data = respData.data.recordList[index];
           $("#testeeName").val(data.testeeName);
           $("#sex").val(['男','女'][data.sex]);
-          $("#cardType").val(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','其他'][data.cardType]);
+          $("#cardType").val(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
           $("#cardNo2").val(data.cardNo);
           $("#birthDay").val(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
           $("#testDay").val(util.getTimeFromNum(data.createTime));

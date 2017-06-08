@@ -340,7 +340,7 @@
     <div class="p_form">
         <div>母亲文化程度:</div>
         <div>
-          <select id="motnerCultureDegree" class="chat_input" style="width:300px">
+          <select id="motherCultureDegree" class="chat_input" style="width:300px">
               <option value="0">未选择</option>
               <option value="1">小学</option>
               <option value="8">完成部分初中课程</option>
@@ -502,7 +502,7 @@
             var maritalStatus = $("#maritalStatus").val();
             obj2 = {
               consignorName: consignorName,
-              consignorType: consignorType,
+              patronnInfo: consignorType,
               weight: weight,
               address: address,
               zip: zip,

@@ -177,7 +177,7 @@ var util = {
         obj.complete = function(e){
             if(e.responseJSON.code == '10002'){
                 layer.msg('登录超时，请重新登录！');
-                window.location.href = "../html/login.html";
+                setTimeout(function(){window.location.href = "login.html";},1000);
             }
             clearTimeout(time);
             layer.close(index);
@@ -208,7 +208,7 @@ var util = {
         obj.complete = function(e){
             if(e.responseJSON.code == '10002'){
                 layer.msg('登录超时，请重新登录！');
-                window.location.href = "../html/login.html";
+                setTimeout(function(){window.location.href = "login.html";},1000);
             }
             clearTimeout(time);
             layer.close(index);

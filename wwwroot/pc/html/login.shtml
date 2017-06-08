@@ -172,7 +172,7 @@
       <div class="l_login">
       
           <div class="l_login_cho">
-              <p id="tab_1"><img src="../images/login_3.png"/>&nbsp;&nbsp;测试者登录</p>
+              <p id="tab_1"><img src="../images/login_3.png"/>&nbsp;&nbsp;施测者登录</p>
               <p id="tab_2"><img src="../images/login_4.png" />&nbsp;&nbsp;管理员登录</p>
           </div>
           

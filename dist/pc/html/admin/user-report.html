@@ -125,8 +125,8 @@ ul{
       {{/if}}
      </td>
      <td>{{$imports.getTimeFromNum($value.createTime,1)}}</td>
-     <td><a data-scoreNo="{{$value.scoreNo}}" class="ac-check" href="javascript:;"><img src="../../images/looks.png" /></a></td>
-     <td><a data-scoreNo="{{$value.scoreNo}}" class="ac-check-wj" href="javascript:;"><img src="../../images/looks.png" /></a></td>
+     <td><a data-scoreNo="{{$value.scoreNo}}" class="ac-check" href="javascript:;" ><img src="../../images/looks.png" /></a></td>
+     <td><a data-scoreNo="{{$value.scoreNo}}" class="ac-check-wj" href="javascript:;" ><img src="../../images/looks.png" /></a></td>
      <td><a target="_blank" href="{{$imports.requestURL+'/web/v1/enterpriseMchat/downloadReport?scoreNo='+$value.scoreNo}}"><img src="../../images/s_2.png" /></a></td>
    </tr>
   {{/each}}
@@ -386,7 +386,8 @@ ul{
               var data = data.data;
               $("#testeeName").val(data.testeeName);
               $("#sex").val(['男','女'][data.sex]);
-              $("#cardType").val(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','其他'][data.cardType]);
+              $("#cardType").val(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
+              console.log(data.cardType)
               $("#cardNo2").val(data.cardNo);
               $("#birthDay").val(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
               $("#testDay").val(util.getTimeFromNum(data.createTime));
