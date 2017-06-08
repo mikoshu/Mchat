@@ -68,11 +68,7 @@
     <td>{{$value.reportNo}}</td>
     <td>{{$value.testeeName}}</td>
     <td>
-      {{if $value.downloadCount}}
         {{$value.downloadCount}}
-      {{else}}
-        <a class="table-btn" target="_blank" href="{{$imports.requestURL+'/web/v1/medicMchat/downloadReport?scoreNo='+$value.scoreNo}}">下载</a>
-      {{/if}}
     </td>
     <td>
       {{if $value.mchatScoreRevisedFollow.length != 0}}
@@ -271,11 +267,11 @@
         </div>
     </div>
 
-    <!-- <div class="r_form">
+    <div class="r_form">
         <div>完成问卷人姓名:</div>
         <div><input class="chat_input" id="consignorName" style="width:350px" type="text" /></div>
-    </div> -->
-    <!-- <div class="r_form">
+    </div>
+    <div class="r_form">
         <div>与儿童的关系:</div>
         <div>
           <select class="chat_input" id="consignorType" style="width:300px" type="text" >
@@ -287,7 +283,7 @@
             <option  value="5">其他</option>
           </select>
         </div>
-    </div> -->
+    </div>
     <div class="r_form">
         <div>儿童出生时的体重:</div>
         <div><input class="chat_input" id="weight" style="width:300px" type="text" /></div>
@@ -304,7 +300,7 @@
         <div>联系电话:</div>
         <div><input id="tel" class="chat_input" style="width:300px" type="text" /></div>
     </div>
-    <!-- <div class="r_form">
+    <div class="r_form">
         <div>母亲文化程度:</div>
         <div>
           <select id="motnerCultureDegree" class="chat_input" style="width:300px">
@@ -319,13 +315,13 @@
               <option value="7">硕士毕业或以上</option>
           </select>
         </div>
-    </div> -->
+    </div>
     <div class="r_form">
         <div>母亲职业:</div>
         <div id="motherCareerCategory"> 
         </div>
     </div>
-    <!-- <div class="r_form">
+    <div class="r_form">
         <div>父亲文化程度:</div>
         <div>
           <select id="fatherCultureDegree" class="chat_input" style="width:300px">
@@ -340,13 +336,13 @@
               <option value="7">硕士毕业或以上</option>
           </select>
         </div>
-    </div> -->
+    </div>
     <div class="r_form">
         <div>父亲职业:</div>
         <div id="fatherCareerCategory"> 
         </div>
     </div>
-    <!-- <div class="r_form">
+    <div class="r_form">
         <div>主要照顾者文化程度:</div>
         <div>
           <select id="caregiversCultureDegree" class="chat_input" style="width:300px">
@@ -361,8 +357,8 @@
               <option value="7">硕士毕业或以上</option>
           </select>
         </div>
-    </div> -->
-   <!--  <div class="r_form">
+    </div>
+    <div class="r_form">
         <div>母亲出生日期:</div>
         <div><input id="motherBirthDay" class="chat_input" style="width:300px" /></div>
     </div>
@@ -380,7 +376,7 @@
               <option value="3">离异</option>  
         </select>
         </div>
-    </div> -->
+    </div>
     <div class="r_form">
         <div>备注:</div>
         <div id="remarks"> 
@@ -521,6 +517,7 @@
                 $("#births").text(html);
               }
               $(".r_form").find('input').attr('disabled','disabled');
+              $(".r_form").find('select').attr('disabled','disabled');
             }
           })
           
@@ -640,7 +637,7 @@
                 for(key in list){
                   if(key.indexOf('topic_') == 0){
                     var num = key.split('_')[1];
-                    var an = list[key] == 'Y' ? '是' : '否';
+                    var an = list[key] == 'Y' ? '通过' : '不通过';
                     html += '<p> '+num+'.'+questions[num-1]+'</p>'+
                             '<p> 回答： '+an+'</p><br/>';
                   }
@@ -687,34 +684,46 @@
 function createReport(n,scoreNo){
   var height = parseInt(window.innerHeight);
       height = height > 532 ? 'auto' : height+'px';
-      var myLayer = layer.open({
-        title: '基本信息',
-        content: $("#checkPop").html(),
-        btn:['创建','返回'],
-        area: ["700px",height],
-        success: function(){
-          var data = respData.data.recordList[n];
-          $("#testeeName").val(data.testeeName);
-          $("#sex").val(['男','女'][data.sex]);
-          $("#cardType").val(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','其他'][data.cardType]);
-          $("#cardNo2").val(data.cardNo);
-          $("#birthDay").val(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
-          $("#testDay").val(util.getTimeFromNum(data.createTime));
-          $("#gestationalWeeks").val(data.gestationalWeeks);
-          $("#gestationalDays").val(data.gestationalDays);
-          if(data.births){
-            var births = data.births.split(';');
-            var map = ['足月','早产','顺产','剖腹产','产钳助产','吸引器助产','双胎','其他异常情况'];
-            var html = '';
-            births.map(function(val,i){
-              html += map[val]+' , ';
-            });
-            html = html.substring(0,html.length-2);
-            $("#births").text(html);
-          }
-          $(".r_form").find('input').attr('disabled','disabled');
-        },
-        yes: function(){
+      // var myLayer = layer.open({
+      //   title: '基本信息',
+      //   content: $("#checkPop").html(),
+      //   btn:['创建','返回'],
+      //   area: ["700px","600px"],
+      //   success: function(){
+      //     var data = respData.data.recordList[n];
+      //     $("#testeeName").val(data.testeeName);
+      //         $("#sex").val(['男','女'][data.sex]);
+      //         $("#cardType").val(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
+      //         $("#cardNo2").val(data.cardNo);
+      //         $("#birthDay").val(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
+      //         $("#testDay").val(util.getTimeFromNum(data.createTime));
+      //         $("#gestationalWeeks").val(data.gestationalWeeks);
+      //         $("#gestationalDays").val(data.gestationalDays);
+      //         $("#consignorName").val(data.consignorName);
+      //         $("#consignorType").val(data.consignorType);
+      //         $("#weight").val(data.birthWeight);
+      //         $("#address").val(data.address);
+      //         $("#tel").val(data.tel);
+      //         $("#motnerCultureDegree").val(data.motnerCultureDegree);
+      //         $("#fatherCultureDegree").val(data.fatherCultureDegree);
+      //         $("#remark").text(data.remark);
+      //         $("#fatherCareerCategory").text('第'+data.fatherCareerCategory+'大类');
+      //         $("#motherCareerCategory").text('第'+data.motherCareerCategory+'大类');
+
+      //         if(data.births){
+      //           var births = data.births.split(';');
+      //           var map = ['足月','早产','顺产','剖腹产','产钳助产','吸引器助产','双胎','其他异常情况'];
+      //           var html = '';
+      //           births.map(function(val,i){
+      //             html += map[val]+' , ';
+      //           });
+      //           html = html.substring(0,html.length-2);
+      //           $("#births").text(html);
+      //         }
+      //     $(".r_form").find('input').attr('disabled','disabled');
+      //     $(".r_form").find('select').attr('disabled','disabled');
+      //   },
+      //   yes: function(){
           var lay = layer.open({
             title: '请回答下列问题以完善问卷',
             content: $("#q").html(),
@@ -799,8 +808,8 @@ function createReport(n,scoreNo){
 
             }
           })
-        }
-      })
+      //   }
+      // })
 }
 
   });

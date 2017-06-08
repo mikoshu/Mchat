@@ -10,7 +10,7 @@
                 <div class="article_list" style="display:none">
                   <div class="clearfix">
                     <h4 class="article_list_title f_l fl-10" >信息总览：</h4>
-                    <p class="article_info_date fl-10 f_l" id="quality">M-CHAT报告：23 | 剩余M-CHAT报告：87</p>
+                    <p class="article_info_date fl-10 f_l" id="quality">已创建报告总量：0 | 剩余可用数量：0</p>
                   </div>
                     
                     
@@ -195,8 +195,10 @@ $(function(){
                     scaleNo: val.scaleProducts.scaleNo
                   },
                   success: function(scale){
-                    html += val.scaleProducts.scaleName+'报告：'+val.consumption;
-                    html += ' | '+'剩余'+ val.scaleProducts.scaleName+'报告：'+scale.data.enterpriseScaleDosage.remainingAmount;
+                    //html += val.scaleProducts.scaleName+'报告：'+val.consumption;
+                    html += '已创建报告总量：'+val.consumption;
+                    //html += ' | '+'剩余'+ val.scaleProducts.scaleName+'报告：'+scale.data.enterpriseScaleDosage.remainingAmount;
+                    html += ' | '+'剩余可用数量：'+scale.data.enterpriseScaleDosage.remainingAmount;
                     $("#quality").html(html);
                   }
                 })

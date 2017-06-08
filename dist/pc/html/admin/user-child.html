@@ -119,20 +119,20 @@ ul{
 
 
                    <div class="search_list_content">
-
-                     <div class="search_list_th">
-                       <p>用户姓名</p>
-                       <p>身份编号</p>
-                       <p>登录账户</p>
-                       <p>查看与修改</p>
-                       <p>解除绑定</p>
-                     </div>
-                     
-                     <div class="search_list_th_ul">
-                         <ul class="search_ul" id="list">
-                           
-                         </ul>
-                     </div>
+                      <table class="m-table" cellspacing="0" >
+                      <thead>
+                        <tr>
+                          <th>用户姓名</th>
+                          <th>身份编号</th>
+                          <th>登录账户</th>
+                          <th>查看与修改</th>
+                          <th>解除绑定</th>
+                        </tr>
+                      </thead>
+                      <tbody id="list">
+                        
+                      </tbody>
+                    </table>
 
 
                      <div class="s_page m_top_90">
@@ -191,25 +191,25 @@ ul{
 <script id="table" type="text/html" >
 {{if recordList && recordList.length}}
   {{each recordList}}
-  <li>
-     <span>
+  <tr>
+     <td>
        {{if $value.realName}}
         {{$value.realName}}
       {{else}}
         --
       {{/if}}
-     </span>
-     <span>
+     </td>
+     <td>
       {{if $value.cardNo}}
         {{'**************'+$value.cardNo.substr($value.cardNo.length-4,$value.cardNo.length)}}
       {{else}}
         --
       {{/if}}
-     </span>
-     <span>{{$value.loginName}} </span>
-     <span><a data-medicNo="{{$value.medicNo}}" class="ac-check" href="javascript:;"><img src="../../images/looks.png" /></a></span>
-     <span><a data-medicNo="{{$value.medicNo}}" class="ac-delete" href="javascript:;"><img src="../../images/s_1.png" /></a></span>
-   </li>
+     </td>
+     <td>{{$value.loginName}} </td>
+     <td><a data-medicNo="{{$value.medicNo}}" class="ac-check" href="javascript:;"><img src="../../images/looks.png" /></a></td>
+     <td><a data-medicNo="{{$value.medicNo}}" class="ac-delete" href="javascript:;"><img src="../../images/s_1.png" /></a></td>
+   </tr>
   {{/each}}
 {{else}}
   <li>没有查询到相关信息，请检查搜索条件！</li>

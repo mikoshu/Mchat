@@ -92,15 +92,11 @@
      <td>{{$value.reportNo}}</td>
      <!-- <span>{{$value.testeeName}}</span> -->
      <td>
-      {{if $value.downloadCount}}
         {{$value.downloadCount}}
-      {{else}}
-        <a class="table-btn" target="_blank" href="{{$imports.requestURL+'/web/v1/medicMchat/downloadReport?scoreNo='+$value.scoreNo}}">下载</a>
-      {{/if}}
     </td>
      <td>{{$imports.getTimeFromNum($value.createTime,1)}}</td>
-     <td><a data-index="{{$index}}" class="ac-check" href="javascript:;"><img class="looks" src="../images/looks.png" /></a></td>
-    <td><a data-scoreNo="{{$value.scoreNo}}" class="ac-check-wj" href="javascript:;"><img class="looks" src="../images/looks.png" /></a></td>
+     <td><a data-scoreNo="{{$value.scoreNo}}" data-parentNo="{{$value.parentNo}}" class="ac-check" href="javascript:;"><img class="looks" src="../images/looks.png" /></a></td>
+    <td><a data-scoreNo="{{$value.scoreNo}}"  class="ac-check-wj" href="javascript:;"><img class="looks" src="../images/looks.png" /></a></td>
     <td><a target="_blank" href="{{$imports.downloadURL+$value.scoreNo}}"><img class="looks" src="../images/s_2.png" /></a></td>
    </tr>
   {{/each}}
@@ -156,11 +152,11 @@
         </div>
     </div>
 
-    <!-- <div class="r_form">
+    <div class="r_form">
         <div>完成问卷人姓名:</div>
         <div><input class="chat_input" id="consignorName" style="width:350px" type="text" /></div>
-    </div> -->
-    <!-- <div class="r_form">
+    </div>
+    <div class="r_form">
         <div>与儿童的关系:</div>
         <div>
           <select class="chat_input" id="consignorType" style="width:300px" type="text" >
@@ -172,7 +168,7 @@
             <option  value="5">其他</option>
           </select>
         </div>
-    </div> -->
+    </div>
     <div class="r_form">
         <div>儿童出生时的体重:</div>
         <div><input class="chat_input" id="weight" style="width:300px" type="text" /></div>
@@ -189,7 +185,7 @@
         <div>联系电话:</div>
         <div><input id="tel" class="chat_input" style="width:300px" type="text" /></div>
     </div>
-    <!-- <div class="r_form">
+    <div class="r_form">
         <div>母亲文化程度:</div>
         <div>
           <select id="motnerCultureDegree" class="chat_input" style="width:300px">
@@ -204,13 +200,13 @@
               <option value="7">硕士毕业或以上</option>
           </select>
         </div>
-    </div> -->
+    </div>
     <div class="r_form">
         <div>母亲职业:</div>
         <div id="motherCareerCategory"> 
         </div>
     </div>
-    <!-- <div class="r_form">
+    <div class="r_form">
         <div>父亲文化程度:</div>
         <div>
           <select id="fatherCultureDegree" class="chat_input" style="width:300px">
@@ -225,13 +221,13 @@
               <option value="7">硕士毕业或以上</option>
           </select>
         </div>
-    </div> -->
+    </div>
     <div class="r_form">
         <div>父亲职业:</div>
         <div id="fatherCareerCategory"> 
         </div>
     </div>
-    <!-- <div class="r_form">
+    <div class="r_form">
         <div>主要照顾者文化程度:</div>
         <div>
           <select id="caregiversCultureDegree" class="chat_input" style="width:300px">
@@ -246,8 +242,8 @@
               <option value="7">硕士毕业或以上</option>
           </select>
         </div>
-    </div> -->
-   <!--  <div class="r_form">
+    </div>
+    <div class="r_form">
         <div>母亲出生日期:</div>
         <div><input id="motherBirthDay" class="chat_input" style="width:300px" /></div>
     </div>
@@ -265,7 +261,7 @@
               <option value="3">离异</option>  
         </select>
         </div>
-    </div> -->
+    </div>
     <div class="r_form">
         <div>备注:</div>
         <div id="remarks"> 
@@ -342,7 +338,8 @@
 
 
     $("body").delegate('.ac-check','click',function(){
-      var index = $(this).attr('data-index');
+      var self = this;
+      var scoreNo = $(this).attr('data-scoreNo');
       var height = parseInt(window.innerHeight);
       height = height > 532 ? '532px' : height+'px';
       var myLayer = layer.open({
@@ -351,37 +348,53 @@
         btn:['返回'],
         area: ["700px",height],
         success: function(){
-          var data = respData.data.recordList[index];
-          $("#testeeName").val(data.testeeName);
-          $("#sex").val(['男','女'][data.sex]);
-          $("#cardType").val(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
-          $("#cardNo2").val(data.cardNo);
-          $("#birthDay").val(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
-          $("#testDay").val(util.getTimeFromNum(data.createTime));
-          $("#gestationalWeeks").val(data.gestationalWeeks);
-          $("#gestationalDays").val(data.gestationalDays);
-          $("#consignorName").val(data.consignorName);
-          $("#consignorType").val(data.consignorType);
-          $("#weight").val(data.birthWeight);
-          $("#address").val(data.address);
-          $("#tel").val(data.tel);
-          $("#motnerCultureDegree").val(data.motnerCultureDegree);
-          $("#fatherCultureDegree").val(data.fatherCultureDegree);
-          $("#remark").text(data.remark);
-          $("#fatherCareerCategory").text('第'+data.fatherCareerCategory+'大类');
-          $("#motherCareerCategory").text('第'+data.motherCareerCategory+'大类');
-
-          if(data.births){
-            var births = data.births.split(';');
-            var map = ['足月','早产','顺产','剖腹产','产钳助产','吸引器助产','双胎','其他异常情况'];
-            var html = '';
-            births.map(function(val,i){
-              html += map[val]+' , ';
-            });
-            html = html.substring(0,html.length-2);
-            $("#births").text(html);
+          type = $('#type').val();
+          if(type == 2){
+            scoreNo = $(self).attr('data-parentNo');
+            console.log(scoreNo)
           }
-          $(".r_form").find('input').attr('disabled','disabled');
+          util.client({
+            url: util.requestURL+'/web/v1/medicMchat/getMchatScoreByScoreNo',
+            type: 'POST',
+            data:{
+              scoreNo: scoreNo
+            },
+            success: function(data){
+              var data = data.data;
+              $("#testeeName").val(data.testeeName);
+              $("#sex").val(['男','女'][data.sex]);
+              $("#cardType").val(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
+              $("#cardNo2").val(data.cardNo);
+              $("#birthDay").val(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
+              $("#testDay").val(util.getTimeFromNum(data.createTime));
+              $("#gestationalWeeks").val(data.gestationalWeeks);
+              $("#gestationalDays").val(data.gestationalDays);
+              $("#consignorName").val(data.consignorName);
+              $("#consignorType").val(data.consignorType);
+              $("#weight").val(data.birthWeight);
+              $("#address").val(data.address);
+              $("#tel").val(data.tel);
+              $("#motnerCultureDegree").val(data.motnerCultureDegree);
+              $("#fatherCultureDegree").val(data.fatherCultureDegree);
+              $("#remark").text(data.remark);
+              $("#fatherCareerCategory").text('第'+data.fatherCareerCategory+'大类');
+              $("#motherCareerCategory").text('第'+data.motherCareerCategory+'大类');
+
+              if(data.births){
+                var births = data.births.split(';');
+                var map = ['足月','早产','顺产','剖腹产','产钳助产','吸引器助产','双胎','其他异常情况'];
+                var html = '';
+                births.map(function(val,i){
+                  html += map[val]+' , ';
+                });
+                html = html.substring(0,html.length-2);
+                $("#births").text(html);
+              }
+              $(".r_form").find('input').attr('disabled','disabled');
+              $(".r_form").find('select').attr('disabled','disabled');
+            }
+          })
+          
         }
       })
     });
