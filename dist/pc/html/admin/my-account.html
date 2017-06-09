@@ -332,31 +332,39 @@ $(function(){
                        </div> -->
                        <div class="account_f">
                            <p>登录账号：</p>
-                           <p><input id="account" disabled="disabled" class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p>
+                            
+                              <span id="account"></span>
+                            </p>
                            <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
                        </div>
                        <div class="account_f">
                            <p>密码：</p>
-                           <p><input id="password" disabled="disabled" class="account_f_input" value="******" style="height:30px; width:200px;" /></p>
-                           <p><input class="account_f_btn" type="button" id="changePwd" value="修改"  /></p>
+                           <p><input id="password" disabled="disabled" class="account_f_input" value="******" style="height:30px; width:200px; margin-top:5px;" /></p>
+                           <p><input class="account_f_btn" type="button" id="changePwd" style="margin-top:8px;" value="修改"  /></p>
                        </div>
-                       <div class="account_f">
+                       <!-- <div class="account_f">
                            <p>Emai：</p>
                            <p><input id="email"  class="account_f_input" style="height:30px; width:200px;" /></p>
-                           <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
-                       </div>
+                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
+                       </div> -->
                        
                        <hr class="r_hr m_top_50" />
 
                        <div class="account_f ">
                            <p>真实姓名：</p>
-                           <p><input id="realname" disabled="disabled" class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p>
+                            
+                            <span id="realname"></span>
+                            </p>
                            <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
                        </div>
                        
                        <div class="account_f">
                            <p>电话：</p>
-                           <p><input id="mobile" disabled="disabled" class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p>
+                            <span id="mobile"></span>
+                           </p>
                            <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
                        </div>
                        
@@ -380,7 +388,9 @@ $(function(){
                        
                        <div class="account_f">
                            <p>单位名称：</p>
-                           <p><input id="company" disabled="disabled" class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p>
+                            <span id="company"></span>
+                            </p>
                            <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
                        </div>
                        
@@ -431,14 +441,14 @@ $(function(){
         success: function(data){
             if(data.code == 1){
               var data = data.data;
-              $("#account").val(data.loginName);
+              $("#account").text(data.loginName);
               $("#email").val(data.busiContactEmail);
-              $("#realname").val(data.fullName);
-              $("#mobile").val(data.busiContactMobileNo);
+              $("#realname").text(data.fullName);
+              $("#mobile").text(data.busiContactMobileNo);
               //$("#sex").val("--");
               //$("#province").val(data.enterpriseInfo.province);
               //$("#city").val(data.enterpriseInfo.city);
-              $("#company").val(data.address);
+              $("#company").text(data.address);
             }else{
                 layer.msg(data.msg);
             }

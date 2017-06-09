@@ -11,7 +11,7 @@
 </style>
 <div class="r_title">
                 <p id="tap2" class="tap1">用户列表</p>
-                <p id="tap1" class="tap2">公告发布</p>
+                <p id="tap1" class="tap2">公告</p>
                 <p id="tap3" class="tap3"></p>
             </div>
             <div class="r_article">
@@ -20,7 +20,7 @@
                 <div class="article_list">
                     <div class="clearfix">
                     <h4 class="article_list_title f_l fl-10" >信息总览：</h4>
-                    <p class="article_info_date fl-10 f_l" id="quality">M-CHAT报告：23 | 剩余M-CHAT报告：87</p>
+                    <p class="article_info_date fl-10 f_l" id="quality">已创建报告总量：0 | 剩余可用数量：0</p>
                   </div>
                     
                   
@@ -130,7 +130,7 @@ $(function(){
       <p id="cardNo"></p>
     </li>
     <li>
-      <span>证书编号：</span>
+      <span>M-CHAT报告数量:</span>
       <p id="zs"></p>
     </li>
     <li class="ac-hide">
@@ -159,7 +159,7 @@ $(function(){
       <input id="adCard" type="text" >
     </li>
     <li>
-      <span>证书编号：</span>
+      <span>证书编号:</span>
       <input id="adNo" type="text" >
     </li>
     <li>
@@ -258,8 +258,8 @@ $(function(){
               //console.log(data.data)
               var html = '';
               data.data.map(function(val,i){
-                    html += val.scaleProducts.scaleName+'报告：'+val.consumption;
-                    html += ' | '+'剩余'+ val.scaleProducts.scaleName+'报告：'+val.remainingAmount
+                    html += '已创建报告总量：'+val.consumption;
+                    html += ' | '+'剩余剩余可用数量'+val.remainingAmount
               });
               $("#quality").html(html);  
             }else{  
@@ -312,7 +312,24 @@ $(function(){
                   success: function(){
                     $("#username").text(data.realName);
                     $("#cardNo").text(data.cardNo);
-                    $("#zs").text("--");
+                    
+                    util.client({
+                      url: util.requestURL+'/web/v1/enterprise/getMedicScaleDosageByMedicNo',
+                      type: 'POST',
+                      data:{
+                        medicNo: no
+                      },
+                      success: function(data){
+                        var data = data.data;
+                        var num = 0;
+                        if(data.length == 0){
+                          num = 0;
+                        }else{
+                          num = data[0].consumption;
+                        }
+                        $("#zs").text(num);
+                      }
+                    })
                   },
                   yes: function(index){
                     var newPwd = $("#newPwd").val();

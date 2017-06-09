@@ -225,40 +225,54 @@
 <script id="checkPop" type="text/html" >
   <div class="r_form" id="check" >
         <div>儿童姓名:</div>
-        <div><input class="chat_input" id="testeeName" style="width:350px" type="text" /></div>
+        <div>
+        <!-- <input class="chat_input" id="testeeName" style="width:350px" type="text" /> -->
+        <span id="testeeName"></span>
+        </div>
     </div>
     
     <div class="r_form">
         <div>性别:</div>
         <div>
-          <input class="chat_input" id="sex" style="width:350px" />
+          <!-- <input class="chat_input" id="sex" style="width:350px" /> -->
+          <span id="sex"></span>
         </div>
     </div>
     
     <div class="r_form">
         <div>身份信息:</div>
         <div>
-        <input  id="cardType" class="chat_input" style="width:120px" />
-        <input class="chat_input" id="cardNo2" style="width:225px" type="text" />
+        <!-- <input  id="cardType" class="chat_input" style="width:120px" /> -->
+        <span id="cardType"></span>
+        <!-- <input class="chat_input" id="cardNo2" style="width:225px" type="text" /> -->
+        <span id="cardNo2"></span>
         </div>
     </div> 
     
     <BR />
     <div class="r_form">
         <div>出生日期:</div>
-        <div><input class="chat_input" id="birthDay" style="width:350px; height:37px;"/></div>
+        <div>
+        <!-- <input class="chat_input" id="birthDay" style="width:350px; height:37px;"/> -->
+        <span id="birthDay"></span>
+        </div>
     </div> 
     <div class="r_form">
         <div>完成问卷日期:</div>
-        <div><input class="chat_input" id="testDay" style="width:350px; height:37px;"/></div>
+        <div>
+        <!-- <input class="chat_input" id="testDay" style="width:350px; height:37px;"/> -->
+        <span id="testDay"></span>
+        </div>
     </div> 
    
     <BR />
     <div class="r_form">
         <div>宝宝的孕周:</div>
         <div>
-        <input id="gestationalWeeks" class="chat_input r_form_week" style="width:155px" type="text" />
-        <input id="gestationalDays" class="chat_input r_form_day" style="width:155px" type="text" />
+        <!-- <input id="gestationalWeeks" class="chat_input r_form_week" style="width:155px" type="text" /> -->
+        <span id="gestationalWeeks"></span> 周
+        <!-- <input id="gestationalDays" class="chat_input r_form_day" style="width:155px" type="text" /> -->
+        <span id="gestationalDays"></span> 天
         </div>
     </div>         
     <div class="r_form">
@@ -269,41 +283,58 @@
 
     <div class="r_form">
         <div>完成问卷人姓名:</div>
-        <div><input class="chat_input" id="consignorName" style="width:350px" type="text" /></div>
+        <div>
+        <!-- <input class="chat_input" id="consignorName" style="width:350px" type="text" /> -->
+        <span id="consignorName"></span>
+        </div>
     </div>
     <div class="r_form">
         <div>与儿童的关系:</div>
         <div>
-          <select class="chat_input" id="consignorType" style="width:300px" type="text" >
+          <!-- <select class="chat_input" id="consignorType" style="width:300px" type="text" >
             <option selected="selected"  value="0">未选择</option>
             <option  value="1">父母</option>
             <option  value="2">祖父母</option>
             <option  value="3">照看人</option>
             <option  value="4">老师</option>
             <option  value="5">其他</option>
-          </select>
+          </select> -->
+          <span id="consignorType"></span>
         </div>
     </div>
     <div class="r_form">
         <div>儿童出生时的体重:</div>
-        <div><input class="chat_input" id="weight" style="width:300px" type="text" /></div>
+        <div>
+        <!-- <input class="chat_input" id="weight" style="width:300px" type="text" /> -->
+        <span id="weight"></span>
+        </div>
     </div>
     <div class="r_form">
         <div>通讯地址:</div>
-        <div><input class="chat_input" id="address" style="width:300px" type="text" /></div>
+        <div>
+        <!-- <input class="chat_input" id="address" style="width:300px" type="text" /> -->
+        <span id="address"></span>
+        </div>
     </div>
     <div class="r_form">
         <div>邮政编码:</div>
-        <div><input class="chat_input" id="zip" style="width:300px" type="text" /></div>
+        <div>
+        <!-- <input class="chat_input" id="zip" style="width:300px" type="text" /> -->
+        <span id="zip"></span>
+        </div>
     </div>
     <div class="r_form">
         <div>联系电话:</div>
-        <div><input id="tel" class="chat_input" style="width:300px" type="text" /></div>
+        <div>
+        <!-- <input id="tel" class="chat_input" style="width:300px" type="text" /> -->
+        <span id="tel"></span>
+        </div>
     </div>
     <div class="r_form">
         <div>母亲文化程度:</div>
         <div>
-          <select id="motnerCultureDegree" class="chat_input" style="width:300px">
+          <span id="motherCultureDegree"></span>
+          <!-- <select id="motnerCultureDegree" class="chat_input" style="width:300px">
               <option value="0">未选择</option>
               <option value="1">小学</option>
               <option value="8">完成部分初中课程</option>
@@ -313,7 +344,7 @@
               <option value="5">完成部分大学课程(至少一年)</option>
               <option value="6">大学毕业(大专或大学)</option>
               <option value="7">硕士毕业或以上</option>
-          </select>
+          </select> -->
         </div>
     </div>
     <div class="r_form">
@@ -324,7 +355,7 @@
     <div class="r_form">
         <div>父亲文化程度:</div>
         <div>
-          <select id="fatherCultureDegree" class="chat_input" style="width:300px">
+          <!-- <select id="fatherCultureDegree" class="chat_input" style="width:300px">
             <option value="0">未选择</option>
               <option value="1">小学</option>
               <option value="8">完成部分初中课程</option>
@@ -334,7 +365,8 @@
               <option value="5">完成部分大学课程(至少一年)</option>
               <option value="6">大学毕业(大专或大学)</option>
               <option value="7">硕士毕业或以上</option>
-          </select>
+          </select> -->
+          <span id="fatherCultureDegree"></span>
         </div>
     </div>
     <div class="r_form">
@@ -345,7 +377,7 @@
     <div class="r_form">
         <div>主要照顾者文化程度:</div>
         <div>
-          <select id="caregiversCultureDegree" class="chat_input" style="width:300px">
+          <!-- <select id="caregiversCultureDegree" class="chat_input" style="width:300px">
             <option value="0">未选择</option>
               <option value="1">小学</option>
               <option value="8">完成部分初中课程</option>
@@ -355,26 +387,34 @@
               <option value="5">完成部分大学课程(至少一年)</option>
               <option value="6">大学毕业(大专或大学)</option>
               <option value="7">硕士毕业或以上</option>
-          </select>
+          </select> -->
+          <span id="caregiversCultureDegree"></span>
         </div>
     </div>
     <div class="r_form">
         <div>母亲出生日期:</div>
-        <div><input id="motherBirthDay" class="chat_input" style="width:300px" /></div>
+        <div>
+        <!-- <input id="motherBirthDay" class="chat_input" style="width:300px" /> -->
+        <span id="motherBirthDay"></span>
+        </div>
     </div>
     <div class="r_form">
         <div>父亲出生日期:</div>
-        <div><input id="fatherBirthDay" class="chat_input" style="width:300px" /></div>
+        <div>
+        <!-- <input id="fatherBirthDay" class="chat_input" style="width:300px" /> -->
+        <span id="fatherBirthDay"></span>
+        </div>
     </div>
     <div class="r_form">
         <div>婚姻状况:</div>
         <div>
-        <select id="maritalStatus" class="chat_input" style="width:300px">
+        <!-- <select id="maritalStatus" class="chat_input" style="width:300px">
         <option value="0">未选择</option>
               <option value="1">未婚</option>
               <option value="2">已婚</option>
               <option value="3">离异</option>  
-        </select>
+        </select> -->
+        <span id="maritalStatus"></span>
         </div>
     </div>
     <div class="r_form">
@@ -423,6 +463,9 @@
 
 <script>
   $(document).ready(function(){
+
+    
+
     var obj = {};
     var respData = {};
       $("#search").on('click',function(){
@@ -468,6 +511,30 @@
 
     $("#search").trigger('click');
 
+    var jobData = {  // 职业信息
+        Career1 : ['请选择','按日计酬的散工','公共空间清洁工','家庭清洁工','农场工人','食品零售','后厨食物制备工','餐馆楼面杂工'],
+        Career2 : ['请选择','垃圾收集工','快餐厨子','出租车司机','鞋类销售员','流水线工人','泥瓦匠','行李搬运工'],
+        Career3 : ['请选择','油漆工','建筑技工','售货员','卡车司机','厨师','销售柜台','办公室文员'],
+        Career4 : ['请选择','汽车修理工','打字员','锁匠','农场工','木工','前台接待/总机','建筑工人','理发/发型师'],
+        Career5 : ['请选择','机械师/机工','乐手/音乐制作人','簿记员/档案管理员','秘书','保险销售员','家具木工','人事管理','焊工'],
+        Career6 : ['请选择','部门主管','图书管理员','航空机械师','视觉艺术工作者','电工','行政管理人员','现役军人','采购员'],
+        Career7 : ['请选择','护士','熟练技工','医疗卫生专业技术员','顾问/咨询师','经理/经纪','警察','消防员','财务经理','物理治疗师','作业治疗师','言语治疗师'],
+        Career8 : ['请选择','机械工程师','原子能工程师','电子工程师','教育行政人员','兽医','军官','中学教师','小学教师','特殊教育教师'],
+        Career9 : ['请选择','医生','律师','大学任教老师','化工工程师','航天工程师','法官','首席执行官','高级管理人员','公务员','心理师','药剂师','会计师'],
+        Career10 : ['请选择','未受雇佣','其它']
+    }
+
+    var edu = [
+        '未选择',
+        '小学',
+        '完成部分初中课程',
+        '初中毕业',
+        '完成部分高中课程',
+        '高中毕业',
+        '完成部分大学课程(至少一年)',
+        '大学毕业(大专或大学)',
+        '硕士毕业或以上'
+    ];
 
     $("body").delegate('.ac-check','click',function(){
       var scoreNo = $(this).attr('data-scoreNo');
@@ -487,24 +554,34 @@
             },
             success: function(data){
               var data = data.data;
-              $("#testeeName").val(data.testeeName);
-              $("#sex").val(['男','女'][data.sex]);
-              $("#cardType").val(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
-              $("#cardNo2").val(data.cardNo);
-              $("#birthDay").val(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
-              $("#testDay").val(util.getTimeFromNum(data.createTime));
-              $("#gestationalWeeks").val(data.gestationalWeeks);
-              $("#gestationalDays").val(data.gestationalDays);
-              $("#consignorName").val(data.consignorName);
-              $("#consignorType").val(data.consignorType);
-              $("#weight").val(data.birthWeight);
-              $("#address").val(data.address);
-              $("#tel").val(data.tel);
-              $("#motnerCultureDegree").val(data.motnerCultureDegree);
-              $("#fatherCultureDegree").val(data.fatherCultureDegree);
+              $("#testeeName").text(data.testeeName);
+              $("#sex").text(['男','女'][data.sex]);
+              $("#cardType").text(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
+              $("#cardNo2").text(data.cardNo);
+              $("#birthDay").text(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
+              $("#testDay").text(util.getTimeFromNum(data.createTime));
+              $("#gestationalWeeks").text(data.gestationalWeeks);
+              $("#gestationalDays").text(data.gestationalDays);
+              $("#consignorName").text(data.patronnInfo);
+              $("#consignorType").text(['','父母','祖父母','照看人','老师','其他'][data.consignorType]);
+              $("#weight").text(data.birthWeight);
+              $("#address").text(data.address);
+              $("#tel").text(data.tel);
+              $("#zip").text(data.zip);
+              $("#motnerCultureDegree").text(edu[data.motnerCultureDegree]);
+              $("#fatherCultureDegree").text(edu[data.fatherCultureDegree]);
+              $("#caregiversCultureDegree").text(edu[data.caregiversCultureDegree]);
               $("#remark").text(data.remark);
-              $("#fatherCareerCategory").text('第'+data.fatherCareerCategory+'大类');
-              $("#motherCareerCategory").text('第'+data.motherCareerCategory+'大类');
+              if(data.fatherCareerCategory && data.fatherCareer){
+                $("#fatherCareerCategory").text(jobData['Career'+data.fatherCareerCategory][data.fatherCareer]);
+              }
+              if(data.motherCareerCategory && data.motherCareer){
+                $("#motherCareerCategory").text(jobData['Career'+data.motherCareerCategory][data.motherCareer]);
+              }
+
+              $("#fatherBirthDay").text(data.fatherBirthday);
+              $("#motherBirthDay").text(data.motherBirthday);
+              $("#maritalStatus").text(['未选择','未婚','已婚','离异'][data.maritalStatus]);
 
               if(data.births){
                 var births = data.births.split(';');
@@ -516,8 +593,6 @@
                 html = html.substring(0,html.length-2);
                 $("#births").text(html);
               }
-              $(".r_form").find('input').attr('disabled','disabled');
-              $(".r_form").find('select').attr('disabled','disabled');
             }
           })
           

@@ -215,14 +215,14 @@
                   <input type="text" class="login_tex lbg1" id="for-name" placeholder="请输入您的账号" />
               </p>
               
-              <p class="forget_p1"><img src="../images/forget2.png" />新密码</p>
+              <p class="forget_p1"><img src="../images/forget2.png" />真实姓名</p>
               <p class="forget_p">
-                  <input type="password" class="login_tex lbg2" id="for-pwd" placeholder="请输入您的密码" />
+                  <input type="text" class="login_tex lbg2" id="for-pwd" placeholder="请输入真实姓名" />
               </p>
               
-              <p class="forget_p1"><img src="../images/forget2.png" />PUK码</p>
+              <p class="forget_p1"><img src="../images/forget2.png" />证书编号</p>
               <p class="forget_p">
-                  <input type="password" class="login_tex lbg2" id="for-p" placeholder="请输入您的密码" />
+                  <input type="text" class="login_tex lbg2" id="for-p" placeholder="请输入您的证书编号" />
               </p>
               <p  class="forget_p" style="margin-top:20px !important;">
                   <input type="submit" class="login_btn" id="reset1" value="重置密码" />
@@ -323,11 +323,11 @@ $(function(){
             return false;
         }
         if(password == ''){
-            layer.msg('请输入新密码！');
+            layer.msg('请输入真实姓名！');
             return false;
         }
         if(p == ''){
-            layer.msg('请输入PUK码！');
+            layer.msg('请输入证书编号！');
             return false;
         }
         $.ajax({

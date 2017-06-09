@@ -332,13 +332,15 @@ $(function(){
                        </div> -->
                        <div class="account_f">
                            <p>登录账号：</p>
-                           <p><input id="account" disabled="disabled"  class="account_f_input" style="height:30px; width:200px;" /></p>
+                           <p>
+                              <span id="account"></span>
+                           </p>
                            <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
                        </div>
                        <div class="account_f">
                            <p>密码：</p>
-                           <p><input id="password" disabled="disabled" value="******"  class="account_f_input" style="height:30px; width:200px;" /></p>
-                           <p><input class="account_f_btn" type="button" value="修改" id="changePwd"  /></p>
+                           <p><input id="password" disabled="disabled" value="******"  class="account_f_input" style="height:30px; width:200px; margin-top:5px" /></p>
+                           <p><input class="account_f_btn" type="button" value="修改" id="changePwd" style="margin-top:7px"  /></p>
                        </div>
                       <!--  <div class="account_f">
                            <p>Emai：</p>
@@ -431,7 +433,7 @@ $(function(){
         success: function(data){
             if(data.code == 1){
               var data = data.data;
-              $("#account").val(data.loginName);
+              $("#account").text(data.loginName);
               $("#email").val(data.bindEmail);
               $("#realname").text(data.realName);
               $("#tele").text(data.bindMobileNo);

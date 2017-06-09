@@ -177,7 +177,15 @@ var util = {
         obj.complete = function(e){
             if(e.responseJSON.code == '10002'){
                 layer.msg('登录超时，请重新登录！');
-                setTimeout(function(){window.location.href = "login.html";},1000);
+                setTimeout(function(){
+                    var url = window.location.href;
+                    if(url.indexOf('/admin/') > 0){
+                        window.location.href = "../login.html";
+                    }else{
+                        window.location.href = "login.html";
+                    }
+                    
+                },1000);
             }
             clearTimeout(time);
             layer.close(index);
@@ -208,7 +216,15 @@ var util = {
         obj.complete = function(e){
             if(e.responseJSON.code == '10002'){
                 layer.msg('登录超时，请重新登录！');
-                setTimeout(function(){window.location.href = "login.html";},1000);
+                setTimeout(function(){
+                    var url = window.location.href;
+                    if(url.indexOf('/admin/') > 0){
+                        window.location.href = "../login.html";
+                    }else{
+                        window.location.href = "login.html";
+                    }
+                    
+                },1000);
             }
             clearTimeout(time);
             layer.close(index);

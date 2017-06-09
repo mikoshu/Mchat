@@ -404,8 +404,8 @@ select::-ms-expand {
 
 .ac-bind{
 	position: absolute;
-	right:20px;
-	top:360px;
+	left:527px;
+	top:62px;
 	width:196px;
 	line-height: 40px;
 	text-align: center;
