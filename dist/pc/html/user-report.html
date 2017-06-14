@@ -72,7 +72,7 @@
     </td>
     <td>
       {{if $value.mchatScoreRevisedFollow.length != 0}}
-        <a data-index="{{$index}}" data-scoreNo="{{$value.scoreNo}}" class="table-btn blue ac-cz" href="javascript:;">操作</a>
+        <a data-index="{{$index}}" data-parentNo="{{$value.scoreNo}}" class="table-btn blue ac-cz" href="javascript:;">操作</a>
       {{else}}
         <a data-index="{{$index}}" data-scoreNo="{{$value.scoreNo}}" class="table-btn ac-create" href="javascript:;">创建</a>
       {{/if}}
@@ -439,7 +439,7 @@
       </tr>
     </thead>
     <tbody>
-      {{each mchatScoreRevisedFollow}}
+      {{each recordList}}
       
       <tr>
         <td>{{$value.reportNo}}</td>
@@ -673,24 +673,37 @@
     var cz;
     $("body").delegate('.ac-cz','click',function(){
       var n = $(this).attr('data-index');
-      var scoreNo = $(this).attr("data-scoreNo");
-      cz = layer.open({
-        title: '查看MCHAT-R/F报告',
-        content: '<div id="mchat-r" ></div>',
-        area: ['600px','400px'],
-        type: 1,
-        success: function(){
-          var html = template.render($("#table2").text(), respData.data.recordList[n]);
-          $("#mchat-r").html(html);
-          
+      var parentNo = $(this).attr("data-parentNo");
+      util.client({
+        url: util.requestURL+'/web/v1/medicMchat/listMchatScoreRevisedFollow',
+        type: 'POST',
+        data:{
+          pageNum: 1,
+          parentNo: parentNo,
+          numPerPage: 100,
         },
-        btn: ['创建报告','取消'],
-        yes: function(layers){
-          createReport(n,scoreNo);
-          layer.close(layers);
-        }
+        success: function(resp){
+          console.log(resp.data.recordList)
+          cz = layer.open({
+            title: '查看MCHAT-R/F报告',
+            content: '<div id="mchat-r" ></div>',
+            area: ['600px','400px'],
+            type: 1,
+            success: function(){
+              var html = template.render($("#table2").text(), resp.data);
+              $("#mchat-r").html(html);
+              
+            },
+            btn: ['创建报告','取消'],
+            yes: function(layers){
+              createReport(n,parentNo);
+              layer.close(layers);
+            }
 
+          })
+        }
       })
+      
     });
     // 弹窗表格事件绑定
     $("body").delegate('.ac-table-check','click',function(){

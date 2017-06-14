@@ -43,7 +43,7 @@
     <div class="s_mid">
         <div class="s_mid_t">
             <div style="height:195px;">
-                <p><img src="../../images/l_1.jpg" /></p>
+                <p><img src="../../images/l_1.png" /></p>
                 <p class="s_mid_t_adm" >系统管理员</p>
             </div>
             <div class="l_menu">
@@ -114,9 +114,12 @@
     $(window).bind('hashchange', function(e, triggered) { // 绑定hash值
             getHash();
     });
-    getHash();
+   getHash();
     function getHash(){
       var hash = location.hash.replace(/^#/, '');
+      if(hash.indexOf('?')){
+        hash = hash.split('?')[0]
+      }
             if(hash != ''){
                 $.ajax({
                   url: hash+'.html',

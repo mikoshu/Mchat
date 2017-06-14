@@ -21,6 +21,7 @@
                     <div class="clearfix">
                     <h4 class="article_list_title f_l fl-10" >信息总览：</h4>
                     <p class="article_info_date fl-10 f_l" id="quality">已创建报告总量：0 | 剩余可用数量：0</p>
+                    <a class="ac-bind" href="javascript:;">快速绑定用户</a>
                   </div>
                     
                   
@@ -65,7 +66,7 @@
                     <div class="announcement_tip">
                     <img src="../../images/announcement.png" />&nbsp;公告
                     </div>
-                    <p class="announcement_more" style=""><a id="nextPage" href="javascript:;">MORE ></a>&nbsp;&nbsp;</p>
+                    <p class="announcement_more" style=""><a href="#list">MORE ></a>&nbsp;&nbsp;</p>
                     
                     <div class="announcement_line" style="margin:0 5px;clear:both"></div>
                     
@@ -76,7 +77,7 @@
                     
                 </div>   
 
-                <a class="ac-bind" href="javascript:;">快速绑定用户</a>
+                
                 
 
  
@@ -209,6 +210,14 @@ $(function(){
 
 <script>
   $(document).ready(function(){
+    var url = window.location.href;
+        if(url.indexOf('id=') > 0){
+            var article_id = url.split('id=').pop();
+            if(article_id){
+              getArticle(article_id);
+              $("#tap1").trigger('click');
+            }
+        }
         var currentPage = 1;
         var total = 0;
         var obj = {
@@ -280,7 +289,9 @@ $(function(){
               total = data.data.totalCount;
               var html = template.render($("#ggList").text(), data.data);
               $("#gg").html(html);
-              getArticle(data.data.recordList[0].id);
+              if(url.indexOf('id=') < 0){
+                getArticle(data.data.recordList[0].id);
+              }
             }else{  
               layer.msg(data.msg);
             }
@@ -290,6 +301,7 @@ $(function(){
         $("body").delegate('.ac-gg','click',function(){
           var id = $(this).attr("data-id");
           getArticle(id);
+          window.location.href = '#sys-index?id='+id;
           $("#tap1").trigger('click');
         });
 
@@ -419,32 +431,6 @@ $(function(){
           })
         });
 
-        $("body").delegate('#nextPage','click',function(){
-          if(6*currentPage < total){
-            util.client({ // 获取文章列表
-              url: util.requestURL+'/web/v1/enterprise/listArticle',
-              type: 'POST',
-              data: {
-                pageNum: currentPage+1,
-                numPerPage: 6
-              },
-              success: function(data){
-                if(data.code == 1){
-                  currentPage = data.data.currentPage;
-                  var html = template.render($("#ggList").text(), data.data);
-                  $("#gg").html(html);
-                  total = data.data.totalCount;
-                  //getArticle(data.data.recordList[0].id);
-                }else{  
-                  layer.msg(data.msg);
-                }
-              }
-            });
-          }else{
-            layer.msg('已经是最后一页了！');
-          }
-          
-        });
 
         $("body").delegate('.ac-bind', 'click', function(event) {
           layer.open({

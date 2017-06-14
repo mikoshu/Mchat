@@ -83,6 +83,25 @@
     border-radius: 4px; 
 }
 
+.login_tex2:hover
+{
+	width:164px;
+	height:23px;
+	line-height:23px;
+	border:1px #469ca5 solid;
+}
+
+.login_tex2{
+	width:166px;
+    padding-left: 70px;
+	background-color:#FFF;
+	height:25px;
+	line-height:25px;
+	border:0;
+	-moz-border-radius:4px; 
+    border-radius: 4px; 
+}
+
 .login_tex:hover
 {
 	width:164px;
@@ -90,6 +109,7 @@
 	line-height:43px;
 	border:1px #469ca5 solid;
 }
+
 
 .login_btn{
 	width:237px;
@@ -162,6 +182,14 @@
   margin-right:5px;
 }
 
+.yzm-img{
+  display: inline-block;
+  width:78px;
+  height: 24px;
+  position: relative;
+  top:8px;
+}
+
 </style>
 </head>
 
@@ -212,21 +240,27 @@
           <form method="post" id="forget1" class="forget-con" >
               <p class="forget_p1"><img src="../images/forget1.png" />施测者账号</p>
               <p class="forget_p">
-                  <input type="text" class="login_tex lbg1" id="for-name" placeholder="请输入您的账号" />
+                  <input type="text" class="login_tex2 lbg1" id="for-name" placeholder="请输入您的账号" />
               </p>
               
               <p class="forget_p1"><img src="../images/forget2.png" />真实姓名</p>
               <p class="forget_p">
-                  <input type="text" class="login_tex lbg2" id="for-pwd" placeholder="请输入真实姓名" />
+                  <input type="text" class="login_tex2 lbg2" id="for-pwd" placeholder="请输入真实姓名" />
               </p>
               
-              <p class="forget_p1"><img src="../images/forget2.png" />证书编号</p>
+              <p class="forget_p1"><img src="../images/forget2.png" />身份证号码</p>
               <p class="forget_p">
-                  <input type="text" class="login_tex lbg2" id="for-p" placeholder="请输入您的证书编号" />
+                  <input type="text" class="login_tex2 lbg2" id="for-p" placeholder="请输入您的身份证号码" />
+              </p>
+              <p class="forget_p1"><img src="../images/forget2.png" />验证码</p>
+              <p class="forget_p">
+                  <input type="text" class="login_tex2 lbg2" style="padding-left:0px; width:150px;" id="for-code" placeholder="请输入验证码" />
+                  <span id="v_container" class="yzm-img">  </span>
               </p>
               <p  class="forget_p" style="margin-top:20px !important;">
                   <input type="submit" class="login_btn" id="reset1" value="重置密码" />
               </p>
+
           </form>
               
           </div>
@@ -249,17 +283,22 @@
           <form method="post" id="forget2" class="forget-con" >
               <p class="forget_p1"><img src="../images/forget1.png" />管理员账号</p>
               <p class="forget_p">
-                  <input type="text" class="login_tex lbg1" id="for-name2" placeholder="请输入您的账号" />
+                  <input type="text" class="login_tex2 lbg1" id="for-name2" placeholder="请输入您的账号" />
               </p>
               
               <p class="forget_p1"><img src="../images/forget2.png" />新密码</p>
               <p class="forget_p">
-                  <input type="password" class="login_tex lbg2" id="for-pwd2" placeholder="请输入您的密码" />
+                  <input type="password" class="login_tex2 lbg2" id="for-pwd2" placeholder="请输入您的密码" />
               </p>
               
               <p class="forget_p1"><img src="../images/forget2.png" />PUK码</p>
               <p class="forget_p">
-                  <input type="password" class="login_tex lbg2" id="for-p2" placeholder="请输入您的密码" />
+                  <input type="password" class="login_tex2 lbg2" id="for-p2" placeholder="请输入您的密码" />
+              </p>
+              <p class="forget_p1"><img src="../images/forget2.png" />验证码</p>
+              <p class="forget_p">
+                  <input type="text" class="login_tex2 lbg2" style="padding-left:0px; width:150px;" id="for-code2" placeholder="请输入验证码" />
+                  <span id="v_container2" class="yzm-img">  </span>
               </p>
               <p  class="forget_p" style="margin-top:20px !important;">
                   <input type="submit" class="login_btn" value="重置密码" />
@@ -275,8 +314,15 @@
 </div>
 <script src="../js/layer/layer.js" ></script>
 <script src="../js/util.js" ></script>
+<script src="../js/yzm.js" ></script>
 <script type="text/javascript">
 $(function(){ 
+
+var verifyCode1 = new GVerify("v_container");
+var verifyCode2 = new GVerify({
+    id: "v_container2",
+    canvasId: 'verifyCanvas2'
+});
 
     $(window).resize(function(){
         $('.l_login').css({
@@ -318,6 +364,8 @@ $(function(){
       var username = $("#for-name").val();
       var password = $("#for-pwd").val();
       var p = $("#for-p").val();
+      var code = $("#for-code").val();
+      flag = verifyCode1.validate(code);
       if(username == ''){
             layer.msg('请输入施测者账号！');
             return false;
@@ -327,7 +375,11 @@ $(function(){
             return false;
         }
         if(p == ''){
-            layer.msg('请输入证书编号！');
+            layer.msg('请输入身份证号码！');
+            return false;
+        }
+        if(!flag){
+          layer.msg('验证码错误，请重新输入！');
             return false;
         }
         $.ajax({
@@ -357,6 +409,8 @@ $(function(){
       var username = $("#for-name2").val();
       var password = $("#for-pwd2").val();
       var p = $("#for-p2").val();
+      var code = $("#for-code2").val();
+      flag = verifyCode2.validate(code);
       if(username == ''){
             layer.msg('请输入施测者账号！');
             return false;
@@ -367,6 +421,10 @@ $(function(){
         }
         if(p == ''){
             layer.msg('请输入PUK码！');
+            return false;
+        }
+        if(!flag){
+          layer.msg('验证码错误，请重新输入！');
             return false;
         }
         $.ajax({

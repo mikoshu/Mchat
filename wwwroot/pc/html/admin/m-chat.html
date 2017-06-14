@@ -3,20 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>M-CHAT系统</title>
-<script src="../js/jquery.min.js"></script>
-<!--[if lte IE 9]><script src="../js/selectivizr-min.js"></script><![endif]-->
-<link rel="Stylesheet" type="text/css" href="../css/style.css" />
-<link rel="Stylesheet" type="text/css" href="../css/pc_2.css" />
-<script src="../js/layer/layer.js"></script>
-<script src="../js/template-web.min.js" ></script>
-<script src="../js/jquery.pagination.min.js"></script>
-<script src="../js/My97DatePicker/WdatePicker.js" ></script>
-<script src="../js/util.js"></script>
-<style type="text/css">
-#content{
-	background-size:100%; 
-}
-</style>
+<script src="../../js/jquery.min.js"></script>
+<!--[if lte IE 9]><script src="../../js/selectivizr-min.js"></script><![endif]-->
+<link rel="Stylesheet" type="text/css" href="../../css/style.css" />
+<link rel="Stylesheet" type="text/css" href="../../css/pc_2.css" />
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/template-web.min.js" ></script>
+<script src="../../js/jquery.pagination.min.js"></script>
+<script src="../../js/My97DatePicker/WdatePicker.js" ></script>
+<script src="../../js/util.js"></script>
+
 </head>
 
 <body>
@@ -25,13 +21,13 @@
     
         <div id="head_top">
             <div style="float:left">
-                <div class="head_logo"><img src="../images/logo.jpg" /></div>
+                <div class="head_logo"><img src="../../images/logo.jpg" /></div>
                 <div class="head_title">欢迎您使用平台管理系统！</div>
             </div>
             
             <div id="login_out">
                 <div id="login_out_btn" class="b_white">
-                <a href="javascript:;" id="logout" ><img src="../images/out.png" align="absmiddle" />&nbsp;&nbsp;退出系统</a>
+                <a id="logout" href="javascript:;"><img src="../../images/out.png" align="absmiddle"/>&nbsp;&nbsp;退出系统</a>
                 </div>
             </div>
         </div>
@@ -47,24 +43,24 @@
     <div class="s_mid">
         <div class="s_mid_t">
             <div style="height:195px;">
-                <p><img src="../images/l_1.jpg" /></p>
+                <p><img src="../../images/l_1.png" /></p>
                 <p class="s_mid_t_adm" >系统管理员</p>
             </div>
             <div class="l_menu">
               <p class="l_menu_1"><a href="#sys-index">我的首页</a></p>
-              <p class="l_menu_2 l_menu_current"><a href="javascript:;">报告管理</a></p>
+              <p class="l_menu_2 l_menu_current"><a href="javascript:;">用户档案</a></p>
               <div class="l_m_2" style="display:none">
-                  <p class="l_menu_2_1 l_m_current"><a href="#user-child">儿童查询</a></p>
+                  <p class="l_menu_2_1 l_m_current"><a href="#user-child">用户查询</a></p>
                   <p class="l_menu_2_2"><a href="#user-report">报告查询</a></p>
                   <p class="l_menu_2_3"><a href="#user-cancel">作废查询</a></p>
                   <!-- <p class="l_menu_2_4"><a href="#user-replenish">补充表格</a></p> -->
               </div>
-              <p class="l_menu_3"><a href="#report-query">全国查询</a></p>
+              <!-- <p class="l_menu_3"><a href="#report-query">报告查询</a></p> -->
               <p class="l_menu_4"><a href="#my-account">我的账号</a></p>
-              <p class="l_menu_5"><a href="#create-report">创建报告</a></p>
+              <!-- <p class="l_menu_5"><a href="#create-report">创建报告</a></p> -->
             </div>
             <div>
-                <img src="../images/bg2.jpg" />
+                <img src="../../images/bg2.jpg" />
             </div>
         </div>
     </div> 
@@ -75,13 +71,11 @@
 
 <script type="text/javascript">
   $(function(){ 
-
-    template.defaults.imports.getTimeFromNum = util.getTimeFromNum;
-    template.defaults.imports.requestURL = util.requestURL;
-
+  template.defaults.imports.getTimeFromNum = util.getTimeFromNum;
+  template.defaults.imports.requestURL = util.requestURL;
     if(!sessionStorage.token){
-//      layer.alert('请先登录！');
-//      window.location.href = 'login.html';
+      layer.alert('请先登录！');
+      window.location.href = '../login.html';
     }else{
       window.token = sessionStorage.token;
     }
@@ -105,12 +99,12 @@
 
     $("#logout").on('click',function(e){
       util.client({
-        url: util.requestURL+'/web/v1/medic/token/logout',
+        url: util.requestURL+'/web/v1/enterprise/token/logout',
         type: 'POST',
         success: function(data){
           if(data.code == 1){
             layer.msg('退出登录成功！');
-            setTimeout(function(){window.location.href = 'login.html';},1000)
+            setTimeout(function(){window.location.href = '../login.html';},1000)
             
           }
         }
@@ -120,7 +114,7 @@
     $(window).bind('hashchange', function(e, triggered) { // 绑定hash值
             getHash();
     });
-    getHash();
+   getHash();
     function getHash(){
       var hash = location.hash.replace(/^#/, '');
       if(hash.indexOf('?')){

@@ -434,7 +434,7 @@ font-size:14px;
 			left:0;
 			width:100%;
 			img{
-				width:350px;
+				width:300px;
 				display:block;
 				margin:0px auto auto auto;
 			}
@@ -652,7 +652,13 @@ input{
 	font-size:14px;
 }
 
-
+.create-report{
+	.r_form{
+		div{
+			margin-top:25px;
+		}
+	}
+}
 
 
 

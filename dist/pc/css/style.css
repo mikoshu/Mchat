@@ -524,7 +524,7 @@ img {
     left: 0;
     width: 100%; }
     .question .q-content .tab-con img {
-      width: 350px;
+      width: 300px;
       display: block;
       margin: 0px auto auto auto; }
 .question .choose {
@@ -691,3 +691,6 @@ input {
   margin-left: 10px;
   color: #000 !important;
   font-size: 14px; }
+
+.create-report .r_form div {
+  margin-top: 25px; }
