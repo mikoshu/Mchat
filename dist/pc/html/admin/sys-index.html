@@ -159,10 +159,10 @@ $(function(){
       <span>身份证号码：</span>
       <input id="adCard" type="text" >
     </li>
-    <li>
+    <!-- <li>
       <span>证书编号:</span>
       <input id="adNo" type="text" >
-    </li>
+    </li> -->
     <li>
       <span>请输入您的密码：</span>
       <input id="adPwd" type="password" >
@@ -441,7 +441,7 @@ $(function(){
             yes: function(index){
               var name = $("#adName").val();
               var card = $("#adCard").val();
-              var no = $("#adNo").val();
+              //var no = $("#adNo").val();
               var pwd = $("#adPwd").val();
               if(name == "" || card == "" || no == "" || pwd == ""){
                 layer.msg("填写参数不能为空！");
@@ -454,7 +454,7 @@ $(function(){
                   realName: name,
                   cardNo: card,
                   managerPwd: pwd,
-                  scoreNo: no
+                  //scoreNo: no
                 },
                 success: function(data){
                   layer.msg(data.msg);

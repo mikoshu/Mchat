@@ -8,7 +8,10 @@
                        儿童姓名：<input id="name" class="chat_input" style="height:30px; width:200px;" type="text" />
                    </div>
                    <div>
-                       出生日期：<input id="birth" class="chat_input Wdate" onClick="WdatePicker()" style="height:30px;width:200px" />
+                       出生日期：<input type="text" id="birthYear" class="year"> 年
+                        <input type="text" id="birthMonth" class="month"> 月
+                        <input type="text" id="birthDay" class="day"> 日
+                       <!-- <input id="birth" class="chat_input Wdate" onClick="WdatePicker()" style="height:30px;width:200px" /> -->
                    </div>
                    
                </div>
@@ -17,7 +20,10 @@
                        报告编号：<input id="reportNo" class="chat_input" style="height:30px; width:200px;" type="text" />
                    </div>
                    <div>
-                       施测日期：<input id="testDate" class="chat_input Wdate" onClick="WdatePicker()" style="height:30px;width:200px" />
+                       施测日期：<input type="text" id="testYear" class="year"> 年
+                        <input type="text" id="testMonth" class="month"> 月
+                        <input type="text" id="testDay" class="day"> 日
+                       <!-- <input id="testDate" class="chat_input Wdate" onClick="WdatePicker()" style="height:30px;width:200px" /> -->
                    </div>
                </div>
                <div class="r_search_r">
@@ -469,6 +475,25 @@
     var obj = {};
     var respData = {};
       $("#search").on('click',function(){
+        var y = $("#birthYear").val();
+        var m = $("#birthMonth").val();
+        var d = $("#birthDay").val();
+        var y2 = $("#testYear").val();
+        var m2 = $("#testMonth").val();
+        var d2 = $("#testDay").val();
+        var birth = '';
+        var test = '';
+        if(y==''&&m==''&&d==''){
+           birth = ''
+        }else{
+          birth = (y!=""?y:'0') + '-' + (m!=""?m:'0') + '-' + (d!=""?d:'0');
+        }
+
+        if(y2==''&&m2==''&&d2==''){
+          test = ''
+        }else{
+          test = (y2!=""?y2:'0') + '-' + (m2!=""?m2:'0') + '-' + (d2!=""?d2:'0');
+        }
         obj = {
           url: util.requestURL+'/web/v1/medicMchat/listMchatScoreAndMchatScoreRevisedFollowListPage',
           type: 'POST',
@@ -477,9 +502,9 @@
             numPerPage: 10,
             testeeName: $("#name").val(),
             reportNo: $("#reportNo").val(),
-            birth: util.getDateStr($("#birth").val()),
+            birth: birth,
             delete: 0,
-            testDate: util.getDateStr($("#testDate").val())
+            testDate: test
           },
           success: function(data){
             if(data.code == 1){
@@ -554,6 +579,11 @@
             },
             success: function(data){
               var data = data.data;
+              for(key in data){
+                if(data[key] == null){
+                  data[key] = '';
+                }
+              }
               $("#testeeName").text(data.testeeName);
               $("#sex").text(['男','女'][data.sex]);
               $("#cardType").text(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
@@ -592,6 +622,7 @@
                 });
                 html = html.substring(0,html.length-2);
                 $("#births").text(html);
+
               }
             }
           })

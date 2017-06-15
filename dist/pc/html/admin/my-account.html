@@ -441,6 +441,11 @@ $(function(){
         success: function(data){
             if(data.code == 1){
               var data = data.data;
+              for(key in data){
+                if(data[key] == null){
+                  data[key] = '';
+                }
+              }
               $("#account").text(data.loginName);
               $("#email").val(data.busiContactEmail);
               $("#realname").text(data.fullName);

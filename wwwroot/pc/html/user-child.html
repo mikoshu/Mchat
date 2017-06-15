@@ -103,7 +103,10 @@ ul{
                        儿童姓名：<input class="chat_input" style="height:30px; width:200px;" type="text" id="name" />
                    </div>
                    <div>
-                       出生日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" />
+                       出生日期：<input type="text" id="birthYear" class="year"> 年
+                        <input type="text" id="birthMonth" class="month"> 月
+                        <input type="text" id="birthDay" class="day"> 日
+                       <!-- <input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" /> -->
                    </div>
                    
                </div>
@@ -112,7 +115,10 @@ ul{
                        身份信息：<input class="chat_input" style="height:30px; width:200px;" type="text" id="cardNo" />
                    </div>
                    <div>
-                       施测日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDay" onClick="WdatePicker()" />
+                       施测日期：<input type="text" id="testYear" class="year"> 年
+                        <input type="text" id="testMonth" class="month"> 月
+                        <input type="text" id="testDay" class="day"> 日
+                       <!-- <input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDay" onClick="WdatePicker()" /> -->
                    </div>
                </div>
                <div class="r_search_r">
@@ -190,6 +196,25 @@ ul{
   $(document).ready(function(){
     
     $("#search").on('click',function(){
+        var y = $("#birthYear").val();
+        var m = $("#birthMonth").val();
+        var d = $("#birthDay").val();
+        var y2 = $("#testYear").val();
+        var m2 = $("#testMonth").val();
+        var d2 = $("#testDay").val();
+        var birth = '';
+        var test = '';
+        if(y==''&&m==''&&d==''){
+           birth = ''
+        }else{
+          birth = (y!=""?y:'0') + '-' + (m!=""?m:'0') + '-' + (d!=""?d:'0');
+        }
+
+        if(y2==''&&m2==''&&d2==''){
+          test = ''
+        }else{
+          test = (y2!=""?y2:'0') + '-' + (m2!=""?m2:'0') + '-' + (d2!=""?d2:'0');
+        }
         var obj = {
           url: util.requestURL+'/web/v1/medicMchat/listMchatScoreUnique',
           type: 'POST',
@@ -198,14 +223,13 @@ ul{
             numPerPage: 10,
             testeeName: $("#name").val(),
             cardNo: $("#cardNo").val(),
-            birth: util.getDateStr($("#birth").val()),
-            testDate: util.getDateStr($("#testDay").val())
+            birth: birth,
+            testDate: test
           },
           success: function(data){
             if(data.code == 1){
               var html = template.render($("#table").text(), data.data);
               $("#list").html(html);
-              console.log(data.data.totalCount)
               $("#page").pagination({
                   totalData: data.data.totalCount,
                   showData: 10,

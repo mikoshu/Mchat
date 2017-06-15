@@ -52,7 +52,10 @@ ul{
                        儿童姓名：<input class="chat_input" style="height:30px; width:200px;" type="text" id="name" />
                    </div>
                    <div>
-                       出生日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" />
+                       出生日期：<input type="text" id="birthYear" class="year"> 年
+                        <input type="text" id="birthMonth" class="month"> 月
+                        <input type="text" id="birthDay" class="day"> 日
+                       <!-- <input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" /> -->
                    </div>
                    
                </div>
@@ -61,7 +64,10 @@ ul{
                        报告编号：<input class="chat_input" id="reportNo" style="height:30px; width:200px;" type="text" />
                    </div>
                    <div>
-                       施测日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDate" onClick="WdatePicker()" />
+                       施测日期：<input type="text" id="testYear" class="year"> 年
+                        <input type="text" id="testMonth" class="month"> 月
+                        <input type="text" id="testDay" class="day"> 日
+                       <!-- <input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDate" onClick="WdatePicker()" /> -->
                    </div>
                </div>
                <div class="r_search_r">
@@ -79,6 +85,7 @@ ul{
                          <th>报告编号</th>
                          <th>儿童姓名</th>
                          <th>MCHAT-R</th>
+                         <th>MCHAT-R/F</th>
                          <th>创建时间</th>
                          <th>基本信息</th>
                          <th>问卷信息</th>
@@ -118,10 +125,13 @@ ul{
      <td>{{$value.reportNo}}</td>
      <td>{{$value.testeeName}}</td>
      <td>
-       {{if $value.downloadCount}}
         {{$value.downloadCount}}
+     </td>
+     <td>
+      {{if $value.mchatScoreRevisedFollow.length != 0}}
+        <a data-index="{{$index}}" data-parentNo="{{$value.scoreNo}}" class="table-btn blue ac-cz" href="javascript:;">操作</a>
       {{else}}
-        <a class="table-btn" target="_blank" href="{{$imports.requestURL+'/web/v1/enterpriseMchat/downloadReport?scoreNo='+$value.scoreNo}}">下载</a>
+        <a class="table-btn gray" href="javascript:;">操作</a>
       {{/if}}
      </td>
      <td>{{$imports.getTimeFromNum($value.createTime,1)}}</td>
@@ -341,10 +351,54 @@ ul{
 
 </script>
 
+<script id="table2" type="text/html" >
+  <table class="m-table" cellspacing="0" >
+    <thead>
+      <tr>
+        <th>报告编号</th>
+        <th>创建时间</th>
+        <th>问卷信息</th>
+        <th>查看</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{each recordList}}
+      
+      <tr>
+        <td>{{$value.reportNo}}</td>
+        <td>{{$imports.getTimeFromNum($value.createTime,1)}}</td>
+        <td><a data-scoreNo="{{$value.scoreNo}}"  class="table-btn ac-table-check" href="javascript:;" >查看</a></td>
+        <td><a target="_blank" href="{{$imports.requestURL+'/web/v1/enterpriseMchat/downloadRevisedFollowReport?scoreNo='+$value.scoreNo}}"><img src="../../images/s_2.png" /></a></td>
+      </tr>
+
+      {{/each}}
+    </tbody>
+  </table>
+</script>
+
 <script>
   $(document).ready(function(){
       var obj = {}
       $("#search").on('click',function(){
+        var y = $("#birthYear").val();
+        var m = $("#birthMonth").val();
+        var d = $("#birthDay").val();
+        var y2 = $("#testYear").val();
+        var m2 = $("#testMonth").val();
+        var d2 = $("#testDay").val();
+        var birth = '';
+        var test = '';
+        if(y==''&&m==''&&d==''){
+           birth = ''
+        }else{
+          birth = (y!=""?y:'0') + '-' + (m!=""?m:'0') + '-' + (d!=""?d:'0');
+        }
+
+        if(y2==''&&m2==''&&d2==''){
+          test = ''
+        }else{
+          test = (y2!=""?y2:'0') + '-' + (m2!=""?m2:'0') + '-' + (d2!=""?d2:'0');
+        }
         obj = {
           url: util.requestURL+'/web/v1/enterpriseMchat/listMchatScoreListPage',
           type: 'POST',
@@ -353,8 +407,8 @@ ul{
             numPerPage: 10,
             testeeName: $("#name").val(),
             reportNo: $("#reportNo").val(),
-            birth: util.getDateStr($("#birth").val()),
-            testDate: util.getDateStr($("#testDate").val())
+            birth: birth,
+            testDate: test
           },
           success: function(data){
             if(data.code == 1){
@@ -448,6 +502,11 @@ ul{
             },
             success: function(data){
               var data = data.data;
+              for(key in data){
+                if(data[key] == null){
+                  data[key] = '';
+                }
+              }
               $("#testeeName").text(data.testeeName);
               $("#sex").text(['男','女'][data.sex]);
               $("#cardType").text(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
@@ -531,6 +590,78 @@ ul{
 
         }
 
+      })
+    });
+
+    $("body").delegate('.ac-cz','click',function(){
+      var n = $(this).attr('data-index');
+      var parentNo = $(this).attr("data-parentNo");
+      util.client({
+        url: util.requestURL+'/web/v1/enterpriseMchat/listMchatScoreRevisedFollow',
+        type: 'POST',
+        data:{
+          pageNum: 1,
+          parentNo: parentNo,
+          numPerPage: 100,
+        },
+        success: function(resp){
+          console.log(resp.data.recordList)
+          cz = layer.open({
+            title: '查看MCHAT-R/F报告',
+            content: '<div id="mchat-r" ></div>',
+            area: ['600px','400px'],
+            type: 1,
+            success: function(){
+              var html = template.render($("#table2").text(), resp.data);
+              $("#mchat-r").html(html);
+              
+            },
+            btn: ['取消'],
+            yes: function(layers){
+              //createReport(n,parentNo);
+              layer.close(layers);
+            }
+
+          })
+        }
+      })
+      
+    });
+
+    // 弹窗表格事件绑定
+    $("body").delegate('.ac-table-check','click',function(){
+      var scoreNo = $(this).attr("data-scoreNo");
+      util.client({
+        url: util.requestURL+'/web/v1/enterpriseMchat/getMchatQuestionnaireResponseRevisedFollow',
+        type: 'POST',
+        data:{
+          scoreNo: scoreNo,
+        },
+        success: function(data){
+          if(data.code == 1){
+            layer.open({
+              title: '问卷填写信息',
+              content: '<div id="wj"></div>',
+              success: function(){
+                var list = data.data;
+                var html = '';
+                for(key in list){
+                  if(key.indexOf('topic_') == 0){
+                    var num = key.split('_')[1];
+                    var an = list[key] == 'Y' ? '通过' : '不通过';
+                    html += '<p> '+num+'.'+questions[num-1]+'</p>'+
+                            '<p> 回答： '+an+'</p><br/>';
+                  }
+                }
+                $("#wj").html(html);
+              },
+              area: ["700px",'500px'],
+              btn: ["返回"]
+            })
+          }else{
+            layer.msg(data.msg);
+          }
+        }
       })
     });
 

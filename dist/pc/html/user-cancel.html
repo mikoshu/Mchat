@@ -15,10 +15,16 @@
                        儿童姓名：<input class="chat_input" style="height:30px; width:200px;" type="text" id="name" />
                    </div>
                    <div>
-                       出生日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" />
+                       出生日期：<input type="text" id="birthYear" class="year"> 年
+                        <input type="text" id="birthMonth" class="month"> 月
+                        <input type="text" id="birthDay" class="day"> 日
+                       <!-- <input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" /> -->
                    </div>
                    <div>
-                       施测日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDate" onClick="WdatePicker()" />
+                       施测日期：<input type="text" id="testYear" class="year"> 年
+                        <input type="text" id="testMonth" class="month"> 月
+                        <input type="text" id="testDay" class="day"> 日
+                       <!-- <input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDate" onClick="WdatePicker()" /> -->
                    </div>
                    
                    
@@ -335,6 +341,25 @@
       })
 
       $("#search").on('click',function(){
+        var y = $("#birthYear").val();
+        var m = $("#birthMonth").val();
+        var d = $("#birthDay").val();
+        var y2 = $("#testYear").val();
+        var m2 = $("#testMonth").val();
+        var d2 = $("#testDay").val();
+        var birth = '';
+        var test = '';
+        if(y==''&&m==''&&d==''){
+           birth = ''
+        }else{
+          birth = (y!=""?y:'0') + '-' + (m!=""?m:'0') + '-' + (d!=""?d:'0');
+        }
+
+        if(y2==''&&m2==''&&d2==''){
+          test = ''
+        }else{
+          test = (y2!=""?y2:'0') + '-' + (m2!=""?m2:'0') + '-' + (d2!=""?d2:'0');
+        }
         var obj = {
           url: url,
           type: 'POST',
@@ -344,8 +369,8 @@
             testeeName: $("#name").val(),
             reportNo: $("#reportNo").val(),
             deleted: 1,
-            birth: util.getDateStr($("#birth").val()),
-            testDate: util.getDateStr($("#testDate").val())
+            birth: birth,
+            testDate: test
           },
           success: function(data){
             respData = data;
@@ -406,6 +431,13 @@
       var scoreNo = $(this).attr('data-scoreNo');
       var height = parseInt(window.innerHeight);
       height = height > 532 ? '532px' : height+'px';
+      var url 
+      if(type == 1){
+        url = util.requestURL+'/web/v1/medicMchat/getMchatScoreByScoreNo'
+      }else{
+        url = util.requestURL+'/web/v1/medicMchat/getMchatScoreRevisedFollowByScoreNo'
+        var scoreNo = $(this).attr('data-parentNo');
+      }
       var myLayer = layer.open({
         title: '基本信息',
         content: $("#checkPop").html(),
@@ -420,6 +452,11 @@
             },
             success: function(data){
               var data = data.data;
+              for(key in data){
+                if(data[key] == null){
+                  data[key] = '';
+                }
+              }
               $("#testeeName").text(data.testeeName);
               $("#sex").text(['男','女'][data.sex]);
               $("#cardType").text(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);

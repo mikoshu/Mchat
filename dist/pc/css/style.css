@@ -694,3 +694,23 @@ input {
 
 .create-report .r_form div {
   margin-top: 25px; }
+
+.year, .month, .day {
+  border: 1px #eeeeee solid;
+  height: 30px;
+  vertical-align: 3px; }
+
+.year {
+  width: 45px; }
+
+.month {
+  width: 32px; }
+
+.day {
+  width: 32px; }
+
+.gray {
+  background: #b1b1b1;
+  cursor: default; }
+  .gray:hover {
+    opacity: 1; }

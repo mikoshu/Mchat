@@ -15,7 +15,16 @@
                        儿童姓名：<input class="chat_input" style="height:30px; width:200px;" type="text" id="name" />
                    </div>
                    <div>
-                       出生日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" />
+                       出生日期：<input type="text" id="birthYear" class="year"> 年
+                        <input type="text" id="birthMonth" class="month"> 月
+                        <input type="text" id="birthDay" class="day"> 日
+                       <!-- <input name="" class="chat_input Wdate " style="height:30px;width:200px" id="birth" onClick="WdatePicker()" /> -->
+                   </div>
+                   <div>
+                       施测日期：<input type="text" id="testYear" class="year"> 年
+                        <input type="text" id="testMonth" class="month"> 月
+                        <input type="text" id="testDay" class="day"> 日
+                       <!-- <input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDate" onClick="WdatePicker()" /> -->
                    </div>
                    
                    
@@ -25,7 +34,10 @@
                        报告编号：<input name="" class="chat_input" style="height:30px;width:200px" id="reportNo" />
                    </div>
                    <div>
-                       施测日期：<input name="" class="chat_input Wdate " style="height:30px;width:200px" id="testDate" onClick="WdatePicker()" />
+                       查询类型：<select id="type" name="" class="chat_input" style="height:30px;width:200px"  >
+                         <option value="1">MCHAT-R</option>
+                         <option value="2">MCHAT-R/F</option>
+                       </select>
                    </div>
                </div>
                <div class="r_search_r">
@@ -40,43 +52,28 @@
 
 
                    <div class="search_list_content">
-                      <table class="m-table" cellspacing="0" >
-                        <thead>
-                          <tr>
-                            <th>报告编号</th>
-                            <th>MCHAT-R</th>
-                            <th>创建时间</th>
-                            <th>基本信息</th>
-                            <th>问卷信息</th>
-                            <th>下载</th>
-                          </tr>
-                        </thead>
-                        <tbody id="list">
-                          
-                        </tbody>
-                      </table>
-
-                     <!-- <div class="search_list_th">
-                       <p>报告编号</p>
-                       <p>姓名</p>
-                       <p>出生日期</p>
-                       <p>施测日期</p>
-                       <p>姓别</p>
-                       <p>问卷</p>
-                       <p>类型</p>
-                       <p>创建时间</p>
-                       <p>基本信息</p>
-                       <p>发育问卷</p>
-                       <p>信息汇总</p>
-                       <p>亲子活动</p>
-                     </div> -->
+                    <table class="m-table" cellspacing="0" >
+                      <thead>
+                        <tr>
+                          <th>报告编号</th>
+                          <th id="t">MCHAT-R</th>
+                          <th>创建时间</th>
+                          <th>基本信息</th>
+                          <th>问卷信息</th>
+                          <th>下载</th>
+                        </tr>
+                      </thead>
+                      <tbody id="list">
+                        
+                      </tbody>
+                    </table>
                      
-                     <!-- <div class="search_list_th_ul">
-                         <ul class="search_ul" id="list">
-                           
-                         </ul>
-                     </div> -->
+                     
+                     
                    
+                     
+
+                     
                      
                      <div class="s_page m_top_90">
                          <div class="s_page_num" id="page">
@@ -99,23 +96,21 @@
   {{each recordList}}
   <tr>
      <td>{{$value.reportNo}}</td>
+     <!-- <span>{{$value.testeeName}}</span> -->
      <td>
-       {{if $value.downloadCount}}
         {{$value.downloadCount}}
-      {{else}}
-        <a class="table-btn" target="_blank" href="{{$imports.requestURL+'/web/v1/enterpriseMchat/downloadReport?scoreNo='+$value.scoreNo}}">下载</a>
-      {{/if}}
-     </td>
+    </td>
      <td>{{$imports.getTimeFromNum($value.createTime,1)}}</td>
-     <td><a data-scoreNo="{{$value.scoreNo}}" class="ac-check" href="javascript:;"><img src="../../images/looks.png" /></a></td>
-     <td><a data-scoreNo="{{$value.scoreNo}}" class="ac-check-wj" href="javascript:;"><img src="../../images/looks.png" /></a></td>
-     <td><a target="_blank" href="{{$imports.requestURL+'/web/v1/enterpriseMchat/downloadReport?scoreNo='+$value.scoreNo}}"><img src="../../images/s_2.png" /></a></td>
+     <td><a data-scoreNo="{{$value.scoreNo}}" data-parentNo="{{$value.parentNo}}" class="ac-check" href="javascript:;"><img class="looks" src="../../images/looks.png" /></a></td>
+    <td><a data-scoreNo="{{$value.scoreNo}}"  class="ac-check-wj" href="javascript:;"><img class="looks" src="../../images/looks.png" /></a></td>
+    <td><a target="_blank" href="{{$imports.downloadURL+$value.scoreNo}}"><img class="looks" src="../../images/s_2.png" /></a></td>
    </tr>
   {{/each}}
 {{else}}
-  <tr><td colspan="6">没有查询到相关信息，请检查搜索条件！</td></tr>
+  <tr><td colspan="5" >没有查询到相关信息，请检查搜索条件！</td></tr>
 {{/if}}
 </script>
+
 
 <script src="../../js/question.js"></script>
 <script id="checkPop" type="text/html" >
@@ -323,11 +318,50 @@
 
 </script>
 
+
 <script>
   $(document).ready(function(){
+      var respData = {};
+      var url = util.requestURL+'/web/v1/enterpriseMchat/listMchatScoreListPage';
+      var type = 1;
+      template.defaults.imports.downloadURL = util.requestURL+'/web/v1/enterpriseMchat/downloadReport?scoreNo=';
+      $("#type").change(function(){
+        type = $(this).val();
+        if(type == 1){
+          $("#t").text('MCHAT-R');
+          url = util.requestURL+'/web/v1/enterpriseMchat/listMchatScoreListPage';
+          $("#search").trigger('click');
+          template.defaults.imports.downloadURL = util.requestURL+'/web/v1/enterpriseMchat/downloadReport?scoreNo=';
+        }else{
+          $("#t").text('MCHAT-R/F');
+          url = util.requestURL+'/web/v1/enterpriseMchat/listMchatScoreRevisedFollow';
+          $("#search").trigger('click');
+          template.defaults.imports.downloadURL = util.requestURL+'/web/v1/enterpriseMchat/downloadRevisedFollowReport?scoreNo=';
+        }
+      })
+
       $("#search").on('click',function(){
+        var y = $("#birthYear").val();
+        var m = $("#birthMonth").val();
+        var d = $("#birthDay").val();
+        var y2 = $("#testYear").val();
+        var m2 = $("#testMonth").val();
+        var d2 = $("#testDay").val();
+        var birth = '';
+        var test = '';
+        if(y==''&&m==''&&d==''){
+           birth = ''
+        }else{
+          birth = (y!=""?y:'0') + '-' + (m!=""?m:'0') + '-' + (d!=""?d:'0');
+        }
+
+        if(y2==''&&m2==''&&d2==''){
+          test = ''
+        }else{
+          test = (y2!=""?y2:'0') + '-' + (m2!=""?m2:'0') + '-' + (d2!=""?d2:'0');
+        }
         var obj = {
-          url: util.requestURL+'/web/v1/enterpriseMchat/listMchatScoreListPage',
+          url: url,
           type: 'POST',
           data:{
             pageNum: 1,
@@ -335,10 +369,11 @@
             testeeName: $("#name").val(),
             reportNo: $("#reportNo").val(),
             deleted: 1,
-            birth: util.getDateStr($("#birth").val()),
-            testDate: util.getDateStr($("#testDate").val())
+            birth: birth,
+            testDate: test
           },
           success: function(data){
+            respData = data;
             if(data.code == 1){
               var html = template.render($("#table").text(), data.data);
               $("#list").html(html);
@@ -394,8 +429,16 @@
 
     $("body").delegate('.ac-check','click',function(){
       var scoreNo = $(this).attr('data-scoreNo');
+
       var height = parseInt(window.innerHeight);
       height = height > 532 ? '532px' : height+'px';
+      var url 
+      if(type == 1){
+        url = util.requestURL+'/web/v1/enterpriseMchat/getMchatScoreByScoreNo'
+      }else{
+        url = util.requestURL+'/web/v1/enterpriseMchat/getMchatScoreRevisedFollowByScoreNo'
+        scoreNo = $(this).attr('data-parentNo');
+      }
       var myLayer = layer.open({
         title: '基本信息',
         content: $("#checkPop").html(),
@@ -410,6 +453,11 @@
             },
             success: function(data){
               var data = data.data;
+              for(key in data){
+                if(data[key] == null){
+                  data[key] = '';
+                }
+              }
               $("#testeeName").text(data.testeeName);
               $("#sex").text(['男','女'][data.sex]);
               $("#cardType").text(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
@@ -456,11 +504,11 @@
       })
     });
 
-
     $("body").delegate('.ac-check-wj','click',function(){
       var scoreNo = $(this).attr('data-scoreNo');
+      var u = type == 1 ? 'getMchatQuestionnaireResponse' : 'getMchatQuestionnaireResponseRevisedFollow'
       util.client({
-        url: util.requestURL+'/web/v1/enterpriseMchat/getMchatQuestionnaireResponse',
+        url: util.requestURL+'/web/v1/enterpriseMchat/'+u,
         type: 'POST',
         data: {
           scoreNo: scoreNo
@@ -494,6 +542,7 @@
 
       })
     });
+
 
   });
 </script>
