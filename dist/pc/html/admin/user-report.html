@@ -137,7 +137,13 @@ ul{
      <td>{{$imports.getTimeFromNum($value.createTime,1)}}</td>
      <td><a data-scoreNo="{{$value.scoreNo}}" class="ac-check" href="javascript:;" ><img src="../../images/looks.png" /></a></td>
      <td><a data-scoreNo="{{$value.scoreNo}}" class="ac-check-wj" href="javascript:;" ><img src="../../images/looks.png" /></a></td>
-     <td><a target="_blank" href="{{$imports.requestURL+'/web/v1/enterpriseMchat/downloadReport?scoreNo='+$value.scoreNo}}"><img src="../../images/s_2.png" /></a></td>
+     <td>
+        {{if $value.downloadCount != 0}}
+        <a target="_blank" href="{{$imports.requestURL+'/web/v1/enterpriseMchat/downloadReport?scoreNo='+$value.scoreNo}}"><img src="../../images/s_2.png" /></a>
+        {{else}}
+        <a target="_blank" href="javascript:;" class="ac-down" ><img src="../../images/s_2.png" /></a>
+        {{/if}}
+      </td>
    </tr>
   {{/each}}
 {{else}}
@@ -368,7 +374,13 @@ ul{
         <td>{{$value.reportNo}}</td>
         <td>{{$imports.getTimeFromNum($value.createTime,1)}}</td>
         <td><a data-scoreNo="{{$value.scoreNo}}"  class="table-btn ac-table-check" href="javascript:;" >查看</a></td>
-        <td><a target="_blank" href="{{$imports.requestURL+'/web/v1/enterpriseMchat/downloadRevisedFollowReport?scoreNo='+$value.scoreNo}}"><img src="../../images/s_2.png" /></a></td>
+        <td>
+          {{if $value.downloadCount != 0}}
+          <a target="_blank" href="{{$imports.requestURL+'/web/v1/enterpriseMchat/downloadRevisedFollowReport?scoreNo='+$value.scoreNo}}"><img src="../../images/s_2.png" /></a>
+          {{else}}
+          <a target="_blank" href="javascript:;" class="ac-down"><img src="../../images/s_2.png" /></a>
+          {{/if}}
+        </td>
       </tr>
 
       {{/each}}
@@ -664,6 +676,11 @@ ul{
         }
       })
     });
+
+    $("body").delegate('.ac-down','click',function(){
+      layer.msg('需要报告所属施测者先下载才能查看')
+      return
+    })
 
   });
 </script>

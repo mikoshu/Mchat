@@ -96,18 +96,24 @@
   {{each recordList}}
   <tr>
      <td>{{$value.reportNo}}</td>
-     <!-- <span>{{$value.testeeName}}</span> -->
+
      <td>
         {{$value.downloadCount}}
     </td>
      <td>{{$imports.getTimeFromNum($value.createTime,1)}}</td>
      <td><a data-scoreNo="{{$value.scoreNo}}" data-parentNo="{{$value.parentNo}}" class="ac-check" href="javascript:;"><img class="looks" src="../../images/looks.png" /></a></td>
     <td><a data-scoreNo="{{$value.scoreNo}}"  class="ac-check-wj" href="javascript:;"><img class="looks" src="../../images/looks.png" /></a></td>
-    <td><a target="_blank" href="{{$imports.downloadURL+$value.scoreNo}}"><img class="looks" src="../../images/s_2.png" /></a></td>
+    <td>
+      {{if $value.downloadCount != 0}}
+      <a target="_blank" href="{{$imports.downloadURL+$value.scoreNo}}"><img class="looks" src="../../images/s_2.png" /></a>
+      {{else}}
+      <a target="_blank" href="javascript:;" class="ac-down" ><img src="../../images/s_2.png" /></a>
+      {{/if}}
+    </td>
    </tr>
   {{/each}}
 {{else}}
-  <tr><td colspan="5" >没有查询到相关信息，请检查搜索条件！</td></tr>
+  <tr><td colspan="6" >没有查询到相关信息，请检查搜索条件！</td></tr>
 {{/if}}
 </script>
 
@@ -542,6 +548,11 @@
 
       })
     });
+
+    $("body").delegate('.ac-down','click',function(){
+      layer.msg('需要报告所属施测者先下载才能查看')
+      return
+    })
 
 
   });
