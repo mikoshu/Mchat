@@ -562,7 +562,7 @@ select::-ms-expand {
 .table-btn{
 	display:inline-block;
 	margin-top:3px;
-	padding:0 10px;
+	padding:2px 14px;
 	font-size:12px;
 	color:#fff;
 	background:#feaa48;
@@ -596,6 +596,10 @@ input{
 		color:#fff;
 		font-weight: normal;
 		font-size:16px;
+	}
+	td{
+		word-wrap:break-word;
+		max-width: 300px;
 	}
 }
 

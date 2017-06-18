@@ -618,7 +618,7 @@ img {
 .table-btn {
   display: inline-block;
   margin-top: 3px;
-  padding: 0 10px;
+  padding: 2px 14px;
   font-size: 12px;
   color: #fff;
   background: #feaa48;
@@ -646,6 +646,9 @@ input {
     color: #fff;
     font-weight: normal;
     font-size: 16px; }
+  .m-table td {
+    word-wrap: break-word;
+    max-width: 300px; }
 
 .search_list_content {
   margin-top: 40px;

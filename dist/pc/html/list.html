@@ -75,7 +75,7 @@ ul{
                      </div>
                      
                      <div class="search_list_th_ul">
-                         <ul class="search_ul" id="list">
+                         <ul class="search_ul" id="lists">
                           
                          </ul>
                      </div>
@@ -122,7 +122,7 @@ ul{
           success: function(data){
             if(data.code == 1){
               var html = template.render($("#table").text(), data.data);
-              $("#list").html(html);
+              $("#lists").html(html);
               respData = data;
               $("#page").pagination({
                   totalData: data.data.totalCount,

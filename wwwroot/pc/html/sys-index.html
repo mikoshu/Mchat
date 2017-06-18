@@ -26,7 +26,7 @@
                           <th>下载</th>
                         </tr>
                       </thead>
-                      <tbody id="list">
+                      <tbody id="lists">
                         
                       </tbody>
                       
@@ -162,7 +162,7 @@ $(function(){
             if(data.code == 1){
               data.data.url = util.requestURL;
               var html = template.render($("#table").text(), data.data);
-              $("#list").html(html);
+              $("#lists").html(html);
               $("#page").pagination({
                   totalData: data.data.totalCount,
                   showData: 10,

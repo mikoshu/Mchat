@@ -126,6 +126,9 @@
                   success: function(html){
                     $('body').undelegate();
                     $("#con").html(html);
+                    $("body").delegate('#reset','click',function(){
+                      $("body").find('.r_search').find('input[type=text]').val('');
+                    })
                   },
                   error: function(e){
                     //alert(e);
