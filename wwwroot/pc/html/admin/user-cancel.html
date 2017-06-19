@@ -153,14 +153,14 @@
         <div>出生日期:</div>
         <div>
         <!-- <input class="chat_input" id="birthDay" style="width:350px; height:37px;"/> -->
-        <span id="birthDay"></span>
+        <span id="birthDays"></span>
         </div>
     </div> 
     <div class="r_form">
         <div>完成问卷日期:</div>
         <div>
         <!-- <input class="chat_input" id="testDay" style="width:350px; height:37px;"/> -->
-        <span id="testDay"></span>
+        <span id="testDays"></span>
         </div>
     </div> 
    
@@ -233,7 +233,7 @@
         <div>母亲文化程度:</div>
         <div>
           <span id="motherCultureDegree"></span>
-          <!-- <select id="motnerCultureDegree" class="chat_input" style="width:300px">
+          <!-- <select id="motherCultureDegree" class="chat_input" style="width:300px">
               <option value="0">未选择</option>
               <option value="1">小学</option>
               <option value="8">完成部分初中课程</option>
@@ -318,7 +318,7 @@
     </div>
     <div class="r_form">
         <div>备注:</div>
-        <div id="remarks"> 
+        <div id="remark"> 
         </div>
     </div>
 
@@ -470,17 +470,17 @@
               $("#sex").text(['男','女'][data.sex]);
               $("#cardType").text(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
               $("#cardNo2").text(data.cardNo);
-              $("#birthDay").text(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
-              $("#testDay").text(util.getTimeFromNum(data.createTime));
+              $("#birthDays").text(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
+              $("#testDays").text(util.getTimeFromNum(data.createTime));
               $("#gestationalWeeks").text(data.gestationalWeeks);
               $("#gestationalDays").text(data.gestationalDays);
-              $("#consignorName").text(data.patronnInfo);
-              $("#consignorType").text(['','父母','祖父母','照看人','老师','其他'][data.consignorType]);
+              $("#consignorName").text(data.consignorName);
+              $("#consignorType").text(['','父母','祖父母','照看人','老师','其他'][parseInt(data.consignorType)]);
               $("#weight").text(data.birthWeight);
               $("#address").text(data.address);
               $("#tel").text(data.tel);
               $("#zip").text(data.zip);
-              $("#motnerCultureDegree").text(edu[data.motnerCultureDegree]);
+              $("#motherCultureDegree").text(edu[data.motherCultureDegree]);
               $("#fatherCultureDegree").text(edu[data.fatherCultureDegree]);
               $("#caregiversCultureDegree").text(edu[data.caregiversCultureDegree]);
               $("#remark").text(data.remark);
@@ -491,8 +491,8 @@
                 $("#motherCareerCategory").text(jobData['Career'+data.motherCareerCategory][data.motherCareer]);
               }
 
-              $("#fatherBirthDay").text(data.fatherBirthday);
-              $("#motherBirthDay").text(data.motherBirthday);
+              $("#fatherBirthDay").text(util.getTimeFromNum(data.fatherBirthday));
+              $("#motherBirthDay").text(util.getTimeFromNum(data.motherBirthday));
               $("#maritalStatus").text(['未选择','未婚','已婚','离异'][data.maritalStatus]);
 
               if(data.births){

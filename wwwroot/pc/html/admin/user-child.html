@@ -169,10 +169,10 @@ ul{
       <span>身份证号码：</span>
       <p id="cardNo"></p>
     </li>
-    <li>
+    <!-- <li>
       <span>证书编号：</span>
       <p id="zs"></p>
-    </li>
+    </li> -->
     <li class="ac-hide">
       <span>请输入新密码：</span>
       <input id="newPwd" type="password" >
@@ -329,7 +329,7 @@ ul{
                   success: function(){
                     $("#username").text(data.realName);
                     $("#cardNo").text(data.cardNo);
-                    $("#zs").text("--");
+                    //$("#zs").text("--");
                     $(".ac-hide").hide();
                   },
                   yes: function(index){

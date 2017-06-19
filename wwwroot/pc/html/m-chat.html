@@ -16,10 +16,62 @@
 #content{
 	background-size:100%; 
 }
+#zoomimg_bg {
+        position:fixed;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.8);
+        z-index:99999999;
+        text-align:center;
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+    #zoomimg_img{
+        max-height:100%;
+        max-width:100%;
+        z-index:99999998;
+         
+    }
 </style>
+<script>
+
+        $(document).on("click", ".zoomimg", function () { 
+            var _imgPath = $(this).attr("src");
+            $("#zoomimg_img").attr("src", _imgPath);
+            $("#zoomimg_bg").fadeIn(); 
+        });
+        $(document).on("click", "#zoomimg_img", function (e) {
+            //$(this).fadeOut();
+            try {
+                if (e && e.stopPropagation)
+                    e.stopPropagation();
+                else
+                    window.event.cancelBubble = true;
+
+                if (e && e.preventDefault)
+                    e.preventDefault();
+                else
+                    window.event.returnValue = false;
+            }
+            catch (ex)
+            {
+                    
+            }
+            var nowzoom = $("#zoomimg_img").css("max-height") == "100%" ? "150%" : "100%";
+            $("#zoomimg_img").css("max-height", nowzoom);
+   
+        });
+
+        $(document).on("click", "#zoomimg_bg", function () {
+            $(this).fadeOut();
+        });
+    </script>
 </head>
 
 <body>
+<div id="zoomimg_bg" style="display:none;">
+        <img id="zoomimg_img" />
+    </div>
 <div id="content" style="" >
     <div id="head" class="b_blues" style="height:60px; width:100%">
     

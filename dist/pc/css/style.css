@@ -530,7 +530,12 @@ img {
 .question .choose {
   text-align: center; }
   .question .choose label {
-    margin: 0 50px; }
+    margin: 0 50px;
+    font-size: 18px; }
+    .question .choose label input {
+      width: 24px;
+      height: 24px;
+      vertical-align: -5px; }
 .question .q-btn {
   margin-top: 10px;
   text-align: center;
@@ -695,8 +700,9 @@ input {
   color: #000 !important;
   font-size: 14px; }
 
-.create-report .r_form div {
-  margin-top: 25px; }
+.create-report .r_form {
+  height: 35px;
+  margin-top: 8px; }
 
 .year, .month, .day {
   border: 1px #eeeeee solid;

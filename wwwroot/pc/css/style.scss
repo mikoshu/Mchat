@@ -444,6 +444,12 @@ font-size:14px;
 		text-align: center;
 		label{
 			margin: 0 50px;
+			font-size:18px;
+			input{
+				width:24px;
+				height:24px;
+				vertical-align:-5px;
+			}
 		}
 	}
 	.q-btn{
@@ -658,9 +664,9 @@ input{
 
 .create-report{
 	.r_form{
-		div{
-			margin-top:25px;
-		}
+			height:35px;
+			margin-top:8px;
+		
 	}
 }
 

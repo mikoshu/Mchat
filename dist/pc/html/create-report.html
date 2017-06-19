@@ -49,11 +49,19 @@
               <BR />
               <div class="r_form">
                   <div>出生日期:</div>
-                  <div><input class="chat_input Wdate" id="birthDay" onClick="WdatePicker()" style="width:350px; height:37px;"/></div>
+                  <div><input type="text" id="birthYear" class="year"> 年
+                      <input type="text" id="birthMonth" class="month"> 月
+                      <input type="text" id="birthToday" class="day"> 日
+                  <!--<input class="chat_input Wdate" id="birthDay" onClick="WdatePicker()" style="width:350px; height:37px;"/>-->
+                  </div>
               </div> 
               <div class="r_form">
                   <div>完成问卷日期:</div>
-                  <div><input class="chat_input Wdate" id="testDay" onClick="WdatePicker()" style="width:350px; height:37px;"/></div>
+                  <div><input type="text" id="testYear" class="year"> 年
+                      <input type="text" id="testMonth" class="month"> 月
+                      <input type="text" id="testToday" class="day"> 日
+                  <!--<input class="chat_input Wdate" id="testDay" onClick="WdatePicker()" style="width:350px; height:37px;"/>-->
+                  </div>
               </div> 
               <div class="r_form">
                   <div>&nbsp;</div>
@@ -118,7 +126,7 @@
                     </li>
                     <li>
                       <label>
-                        <input class="births" value="7" type="checkbox">
+                        <input class="births" value="7" type="checkbox" id="yc">
                         <span>其他异常情况</span>
                       </label>
                     </li>
@@ -129,6 +137,7 @@
                   </div>
                   </div>
               </div>
+                
               <!-- <div class="r_form">
                   <div>&nbsp;</div>
                   <div><p class="check_history f_l"  style="width:125px;">计算矫正年龄</p><p>&nbsp;&nbsp;&nbsp;&nbsp;早起矫正年龄：一月一天</p></div>
@@ -139,6 +148,12 @@
                   <div>&nbsp;</div>
                   <div>温馨提示：上面信息为必填信息，请全部填写，谢谢</div>
               </div>
+              <div class="r_form" id="yc-box" style="display: none">
+                  <div>异常情况:</div>
+                  <div>
+                  <input id="Abnormalities" class="chat_input" style="width:350px" type="text" />
+                  </div>
+              </div>  
               
               <BR />
               <div class="r_form">
@@ -146,15 +161,21 @@
                   <div><p class="check_history f_l" id="add" style="width:350px;">+增加填写问卷人信息填写</p></div>
               </div>
                 
-
+              <div class="r_form">
+                    <div>&nbsp;</div>
+                    <div>
+                        <input type="button" id="sure" style="float:left;" class="r_form_s r_form_submit" value="确认" />
+                        <input type="button" style="float:left;" class="r_form_s r_form_reset" value="取消" /> 
+                    </div>
+                </div>
  
             </div>
             
             
-            <div class="r_form_sub">
+          <!--   <div class="r_form_sub">
                 <p><input type="button" id="sure" class="r_form_s r_form_submit" value="确认" /></p>
                 <p><input type="button" class="r_form_s r_form_reset" value="取消" /></p>
-            </div>
+            </div> -->
             
             
         </div>
@@ -314,7 +335,7 @@
     </div>
     <div class="p_form">
         <div>儿童出生时的体重:</div>
-        <div><input class="chat_input" id="weight" style="width:300px" type="text" /></div>
+        <div><input class="chat_input" id="birthWeight" style="width:300px" type="text" /></div>
     </div>
     <div class="p_form">
         <div>通讯地址:</div>
@@ -334,7 +355,7 @@
     </div>
     <div>
         <p style="text-align:center;font-size:14px;">
-          <textarea id="remarks" class="chat_input" style="width:300px; height:100px;"></textarea>
+          <textarea id="remark" class="chat_input" style="width:300px; height:100px;"></textarea>
         </p>
     </div>
     <div class="p_form">
@@ -429,11 +450,21 @@
     </div> 
     <div class="p_form">
         <div>母亲出生日期:</div>
-        <div><input id="motherBirthDay" class="chat_input Wdate" onClick="WdatePicker()" style="width:300px" /></div>
+        <div>
+        <input type="text" id="motherYear" class="year"> 年
+        <input type="text" id="motherMonth" class="month"> 月
+        <input type="text" id="motherDay" class="day"> 日
+        <!-- <input id="motherBirthday" class="chat_input Wdate" onClick="WdatePicker()" style="width:300px" /> -->
+        </div>
     </div> 
     <div class="p_form">
         <div>父亲出生日期:</div>
-        <div><input id="fatherBirthDay" class="chat_input Wdate" onClick="WdatePicker()" style="width:300px" /></div>
+        <div>
+        <input type="text" id="fatherYear" class="year"> 年
+        <input type="text" id="fatherMonth" class="month"> 月
+        <input type="text" id="fatherDay" class="day"> 日
+        <!-- <input id="fatherBirthday" class="chat_input Wdate" onClick="WdatePicker()" style="width:300px" /> -->
+        </div>
     </div> 
      <div class="p_form">
         <div>婚姻状况:</div>
@@ -485,38 +516,49 @@
           yes: function(index){
             var consignorName = $("#consignorName").val();
             var consignorType = $("#consignorType").val();
-            var weight = $("#weight").val();
+            var weight = $("#birthWeight").val();
             var address = $("#address").val();
             var zip = $("#zip").val();
             var tel = $("#tel").val();
-            var remarks = $("#remarks").val();
-            var motnerCultureDegree = $("#motnerCultureDegree").val();
+            var remark = $("#remark").val();
+            var motherCultureDegree = $("#motherCultureDegree").val();
             var motherCareerCategory = $("#motherCareerCategory").val();
             var motherCareer = $("#motherCareer").val();
             var fatherCultureDegree = $("#fatherCultureDegree").val();
             var fatherCareerCategory = $("#fatherCareerCategory").val();
             var fatherCareer = $("#fatherCareer").val();
             var caregiversCultureDegree = $("#caregiversCultureDegree").val();
-            var motherBirthDay = $("#motherBirthDay").val();
-            var fatherBirthDay = $("#fatherBirthDay").val();
+            var motherYear = $("#motherYear").val();
+            var motherMonth = $("#motherMonth").val();
+            var motherDay = $("#motherDay").val();
+            var fatherYear = $("#fatherYear").val();
+            var fatherMonth = $("#fatherMonth").val();
+            var fatherDay = $("#fatherDay").val();
+
+            //var motherBirthDay = $("#motherBirthday").val();
+            //var fatherBirthDay = $("#fatherBirthday").val();
             var maritalStatus = $("#maritalStatus").val();
             obj2 = {
               consignorName: consignorName,
-              patronnInfo: consignorType,
-              weight: weight,
+              consignorType: consignorType,
+              birthWeight : weight,
               address: address,
               zip: zip,
               tel: tel,
-              remarks: remarks,
-              motnerCultureDegree: motnerCultureDegree,
+              remark: remark,
+              motherCultureDegree : motherCultureDegree,
               motherCareerCategory: motherCareerCategory,
               motherCareer: motherCareer,
               fatherCultureDegree: fatherCultureDegree,
               fatherCareerCategory: fatherCareerCategory,
               fatherCareer: fatherCareer,
               caregiversCultureDegree: caregiversCultureDegree,
-              motherBirthDay: motherBirthDay,
-              fatherBirthDay: fatherBirthDay,
+              motherYear: motherYear,
+              motherMonth: motherMonth,
+              motherDay: motherDay,
+              fatherYear: fatherYear,
+              fatherMonth: fatherMonth,
+              fatherDay: fatherDay,
               maritalStatus: maritalStatus
             }
             layer.close(index);
@@ -531,11 +573,16 @@
     });
 
     $("body").delegate('#getAge','click',function(){
-      var birth = $("#birthDay").val();
-      if(birth == ''){
+      var year = $("#birthYear").val();
+      var month = $("#birthMonth").val();
+      var day = $("#birthToday").val();
+      if(year && month && day){
+        var birth = year+'-'+month+'-'+day;
+      }else{
         layer.msg('请填写出生时间');
         return false;
       }
+
       var age = util.getAge(birth);
       $("#age").text(age);
     });
@@ -560,11 +607,16 @@
       var sex = $("#sex").val();
       var cardType = $("#cardType").val();
       var cardNo = $("#cardNo").val();
-      var birthDay = $("#birthDay").val();
-      var testDay = $("#testDay").val();
+      var birthYear = $("#birthYear").val();
+      var birthMonth = $("#birthMonth").val();
+      var birthToday = $("#birthToday").val();
+      var testYear = $("#testYear").val();
+      var testMonth = $("#testMonth").val();
+      var testToday = $("#testToday").val();
       var gestationalWeeks = $("#gestationalWeeks").val();
       var gestationalDays = $("#gestationalDays").val();
       var births = [];
+      var Abnormalities = $("#Abnormalities").val();
       $(".births:checked").each(function(i,dom){
         births.push($(dom).val());
       });
@@ -607,18 +659,17 @@
         sex: sex,
         cardType: cardType,
         cardNo: cardNo,
-        birthDay: birthDay,
-        birthYear: birthDay.split("-")[0],
-        birthMonth: birthDay.split("-")[1],
-        birthToday: birthDay.split("-")[2],
-        testDay: testDay,
-        testYear: testDay.split("-")[0],
-        testMonth: testDay.split("-")[1],
-        testToday: testDay.split("-")[2],
+        birthYear: birthYear,
+        birthMonth: birthMonth,
+        birthToday: birthTody,
+        testYear: testYear,
+        testMonth: testMonth,
+        testToday: testToday,
         gestationalWeeks: gestationalWeeks,
         gestationalDays: gestationalDays,
         births: births,
-        level: 1
+        level: 1,
+        Abnormalities: Abnormalities
       }
       var obj = obj1;
       for(key in obj2){
@@ -745,6 +796,15 @@
       })
     }
 
+    $("#yc").on('change',function(){
+      var flag = $(this).prop('checked');
+      console.log(flag)
+      if(flag){
+        $("#yc-box").show();
+      }else{
+        $("#yc-box").hide();
+      }
+    })
 
   });
 </script>
