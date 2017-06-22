@@ -130,7 +130,7 @@ $(function(){
      <td>{{$value.testeeName}}</td>
      <td>{{$value.birthYear+'-'+$value.birthMonth+'-'+$value.birthToday}}</td>
      <td>{{$imports.getTimeFromNum($value.createTime)}}</td>
-     <td>{{['男','女'][$value.sex]}}</td>
+     <td>{{['女','男'][$value.sex]}}</td>
      <td><a target="_blank"  href="{{url+'/web/v1/medicMchat/downloadReport?scoreNo='+$value.scoreNo}}"><img src="../images/down1.png" /></a></td>
    </tr>
   {{/each}}

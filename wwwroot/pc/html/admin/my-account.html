@@ -351,22 +351,22 @@ $(function(){
                        
                        <hr class="r_hr m_top_50" />
 
-                       <div class="account_f ">
+                       <!-- <div class="account_f ">
                            <p>真实姓名：</p>
                            <p>
                             
                             <span id="realname"></span>
                             </p>
-                           <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
-                       </div>
+                           
+                       </div> -->
                        
-                       <div class="account_f">
+                       <!-- <div class="account_f">
                            <p>电话：</p>
                            <p>
                             <span id="mobile"></span>
                            </p>
-                           <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
-                       </div>
+                           
+                       </div> -->
                        
                        <!-- <div class="account_f">
                            <p>性别：</p>
@@ -386,13 +386,13 @@ $(function(){
                            <p><input class="account_f_btn" type="button" value="修改"  /></p>
                        </div> -->
                        
-                       <!-- <div class="account_f">
+                       <div class="account_f">
                            <p>单位名称：</p>
                            <p>
                             <span id="company"></span>
                             </p>
-                           <p><input class="account_f_btn" type="button" value="修改"  /></p>
-                       </div> -->
+                           <!-- <p><input class="account_f_btn" type="button" value="修改"  /></p> -->
+                       </div>
                        
                       <!--  <div class="account_f">
                            <p>每页显示条数设置：</p>
@@ -437,7 +437,7 @@ $(function(){
 $(function(){ 
     //$('#tap2').click();
     util.client({
-        url: util.requestURL+'/web/v1/enterprise/getInformation',
+        url: util.requestURL+'/web/v1/enterprise/getEnterpriseOperator',
         success: function(data){
             if(data.code == 1){
               var data = data.data;
@@ -453,7 +453,7 @@ $(function(){
               //$("#sex").val("--");
               //$("#province").val(data.enterpriseInfo.province);
               //$("#city").val(data.enterpriseInfo.city);
-              $("#company").text(data.address);
+              $("#company").text(data.enterpriseName);
             }else{
                 layer.msg(data.msg);
             }

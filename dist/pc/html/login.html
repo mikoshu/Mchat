@@ -189,14 +189,25 @@
   position: relative;
   top:8px;
 }
+html{
+    height:100%;
+}
+    body {
+        height:100%;
+    }
+    .Absolute-Center {  
+  margin: auto;  
+  position: absolute;  
+  top: 0; left: 0; bottom: 0; right: 0;  
+}  
 
 </style>
 </head>
 
-<body>
+<body style=" display:block; overflow:auto;">
 
 
-<div id="content">
+<div id="content" style="background-size:100% 100%; ">
 
     <!--jx_head S-->
     <div id="head" class="b_blues" style="height:60px; width:100%">
@@ -216,125 +227,228 @@
 	</div>
     <!--jx_head E-->
     
-      <div class="l_login">
-      
-          <div class="l_login_cho">
-              <p id="tab_1"><img src="../images/login_3.png"/>&nbsp;&nbsp;施测者登录</p>
-              <p id="tab_2"><img src="../images/login_4.png" />&nbsp;&nbsp;管理员登录</p>
-          </div>
-          
-          <div class="log_form" id="tab1">
-          <form method="post" id="test" >
-              <p>
-                  <input type="text" class="login_tex lbg1" id="testAccount" placeholder="请输入您的账号" />
-              </p>
-              <p>
-                  <input type="password" class="login_tex lbg2" id="testPwd" placeholder="请输入您的密码" />
-                  <span class="forget"><a href="javascript:;" id="toForget1">忘记密码?</a></span>
-              </p>
-              <p>
-                  <input type="submit" class="login_btn" value="登录" />
-              </p>
-          </form>
+    <div class="l_login Absolute-Center">
 
-          <form method="post" id="forget1" class="forget-con" >
-              <p class="forget_p1"><img src="../images/forget1.png" />施测者账号</p>
-              <p class="forget_p">
-                  <input type="text" class="login_tex2 lbg1" id="for-name" placeholder="请输入您的账号" />
-              </p>
-              
-              <p class="forget_p1"><img src="../images/forget2.png" />真实姓名</p>
-              <p class="forget_p">
-                  <input type="text" class="login_tex2 lbg2" id="for-pwd" placeholder="请输入真实姓名" />
-              </p>
-              
-              <p class="forget_p1"><img src="../images/forget2.png" />身份证号码</p>
-              <p class="forget_p">
-                  <input type="text" class="login_tex2 lbg2" id="for-p" placeholder="请输入您的身份证号码" />
-              </p>
-              <p class="forget_p1"><img src="../images/forget2.png" />验证码</p>
-              <p class="forget_p">
-                  <input type="text" class="login_tex2 lbg2" style="padding-left:0px; width:150px;" id="for-code" placeholder="请输入验证码" />
-                  <span id="v_container" class="yzm-img">  </span>
-              </p>
-              <p  class="forget_p" style="margin-top:20px !important;">
-                  <input type="submit" class="login_btn" id="reset1" value="重置密码" />
-              </p>
+        <div class="l_login_cho">
+            <p id="tab_1"><img src="../images/login_3.png" />&nbsp;&nbsp;施测者登录</p>
+            <p id="tab_2"><img src="../images/login_4.png" />&nbsp;&nbsp;管理员登录</p>
+        </div>
 
-          </form>
-              
-          </div>
+        <div class="log_form" id="tab1">
+            <form method="post" id="test">
+                <p>
+                    <input type="text" class="login_tex lbg1" id="testAccount" placeholder="请输入您的账号" />
+                </p>
+                <p>
+                    <input type="password" class="login_tex lbg2" id="testPwd" placeholder="请输入您的密码" />
+                    <span class="forget"><a href="javascript:;" id="toForget1">忘记密码?</a></span>
+                </p>
+                <p>
+                    <input type="submit" class="login_btn" value="登录" />
+                </p>
+            </form>
 
+            <form method="post" id="forget1" class="forget-con">
+                <p class="forget_p1"><img src="../images/forget1.png" />施测者账号</p>
+                <p class="forget_p">
+                    <input type="text" class="login_tex2 lbg1" id="for-name" placeholder="请输入您的账号" />
+                </p>
 
-          <div class="log_form" id="tab2" style="display:none">
-          <form method="post" id="admin">
-              <p>
-                  <input type="text" class="login_tex lbg1" id="adminAccount" placeholder="请输入您的账号" />
-              </p>
-              <p>
-                  <input type="password" class="login_tex lbg2" id="adminPwd" placeholder="请输入您的密码" />
-                  <span class="forget"><a href="javascript:;" id="toForget2">忘记密码?</a></span>
-              </p>
-              <p>
-                  <input type="submit" class="login_btn2 " value="登录" />
-              </p>
-          </form>
+                <p class="forget_p1"><img src="../images/forget2.png" />真实姓名</p>
+                <p class="forget_p">
+                    <input type="text" class="login_tex2 lbg2" id="for-pwd" placeholder="请输入真实姓名" />
+                </p>
 
-          <form method="post" id="forget2" class="forget-con" >
-              <p class="forget_p1"><img src="../images/forget1.png" />管理员账号</p>
-              <p class="forget_p">
-                  <input type="text" class="login_tex2 lbg1" id="for-name2" placeholder="请输入您的账号" />
-              </p>
-              
-              <p class="forget_p1"><img src="../images/forget2.png" />新密码</p>
-              <p class="forget_p">
-                  <input type="password" class="login_tex2 lbg2" id="for-pwd2" placeholder="请输入您的密码" />
-              </p>
-              
-              <p class="forget_p1"><img src="../images/forget2.png" />PUK码</p>
-              <p class="forget_p">
-                  <input type="password" class="login_tex2 lbg2" id="for-p2" placeholder="请输入您的PUK码" />
-              </p>
-              <p class="forget_p1"><img src="../images/forget2.png" />验证码</p>
-              <p class="forget_p">
-                  <input type="text" class="login_tex2 lbg2" style="padding-left:0px; width:150px;" id="for-code2" placeholder="请输入验证码" />
-                  <span id="v_container2" class="yzm-img">  </span>
-              </p>
-              <p  class="forget_p" style="margin-top:20px !important;">
-                  <input type="submit" class="login_btn" value="重置密码" />
-              </p>
-          </form>
-              
-          </div>
+                <p class="forget_p1"><img src="../images/forget2.png" />身份证号码</p>
+                <p class="forget_p">
+                    <input type="text" class="login_tex2 lbg2" id="for-p" placeholder="请输入您的身份证号码" />
+                </p>
+                <p class="forget_p1"><img src="../images/forget2.png" />验证码</p>
+                <p class="forget_p">
+                    <input type="text" class="login_tex2 lbg2" style="padding-left:0px; width:150px;" id="for-code" placeholder="请输入验证码" />
+                    <span id="v_container" class="yzm-img">  </span>
+                </p>
+                <p class="forget_p" style="margin-top:20px !important;">
+                    <input type="submit" class="login_btn" id="reset1" value="重置密码" />
+                </p>
+
+            </form>
+
+        </div>
 
 
-      </div>
+        <div class="log_form" id="tab2" style="display:none">
+            <form method="post" id="admin">
+                <p>
+                    <input type="text" class="login_tex lbg1" id="adminAccount" placeholder="请输入您的账号" />
+                </p>
+                <p>
+                    <input type="password" class="login_tex lbg2" id="adminPwd" placeholder="请输入您的密码" />
+                    <span class="forget"><a href="javascript:;" id="toForget2">忘记密码?</a></span>
+                </p>
+                <p>
+                    <input type="submit" class="login_btn2 " value="登录" />
+                </p>
+            </form>
+
+            <form method="post" id="forget2" class="forget-con">
+                <p class="forget_p1"><img src="../images/forget1.png" />管理员账号</p>
+                <p class="forget_p">
+                    <input type="text" class="login_tex2 lbg1" id="for-name2" placeholder="请输入您的账号" />
+                </p>
+
+                <p class="forget_p1"><img src="../images/forget2.png" />新密码</p>
+                <p class="forget_p">
+                    <input type="password" class="login_tex2 lbg2" id="for-pwd2" placeholder="请输入您的密码" />
+                </p>
+
+                <p class="forget_p1"><img src="../images/forget2.png" />PUK码</p>
+                <p class="forget_p">
+                    <input type="password" class="login_tex2 lbg2" id="for-p2" placeholder="请输入您的PUK码" />
+                </p>
+                <p class="forget_p1"><img src="../images/forget2.png" />验证码</p>
+                <p class="forget_p">
+                    <input type="text" class="login_tex2 lbg2" style="padding-left:0px; width:150px;" id="for-code2" placeholder="请输入验证码" />
+                    <span id="v_container2" class="yzm-img">  </span>
+                </p>
+                <p class="forget_p" style="margin-top:20px !important;">
+                    <input type="submit" class="login_btn" value="重置密码" />
+                </p>
+            </form>
+
+        </div>
+
+
+    </div>
 
 
 </div>
 <script src="../js/layer/layer.js" ></script>
 <script src="../js/util.js" ></script>
-<script src="../js/yzm.js" ></script>
+ <script src="../js/yzm.js" ></script> 
+  
+    <script type="text/javascript">
+    /**
+     * 解决IE下不支持placeholder属性
+     * author : MR chen  370489175@qq.com
+     * Date: 16-01-19
+     * 可以根据自己的需要去扩展
+     * ps:写的很简单  根据自己的需求来  不喜勿喷
+     */
+    ; (function ($) {
+        $.fn.placeholder = function (options) {
+            var opts = $.extend({}, $.fn.placeholder.defaults, options);
+            var isIE = document.all ? true : false;
+            return this.each(function () {
+                var _this = this,
+                    placeholderValue = _this.getAttribute("placeholder"); //缓存默认的placeholder值
+                    typeValue = _this.getAttribute("type"); //缓存默认的placeholder值
+                    if (isIE) {
+
+                    if (typeValue == "password" && $.trim(_this.value)== "")
+                    {
+                        _this.setAttribute("type", "text");
+                        _this.setAttribute("data-type", typeValue);
+                        _this.value = placeholderValue;
+                    }
+
+                    _this.setAttribute("value", placeholderValue);
+                    $(_this).css("color", "#777");
+                    _this.onfocus = function () {
+                        $.trim(_this.value) == placeholderValue ? _this.value = "" : '';
+
+                        //alert(_this.getAttribute("data-type"));
+                        if (_this.getAttribute("data-type") == "password")
+                        {
+                            _this.setAttribute("type", "password");
+                        }
+                        $(_this).css("color", "#000");
+                        
+                    };
+                    _this.onblur = function () {
+                        
+
+                        if (_this.getAttribute("data-type") == "password" && ($.trim(_this.value) == "" || $.trim(_this.value) == _this.getAttribute("placeholder"))) {
+                            _this.setAttribute("type", "text");
+                            _this.value = placeholderValue; 
+                        }
+                        else if ($.trim(_this.value) == "") {
+                            _this.value = placeholderValue;
+                            $(_this).css("color", "#777");
+                        }
+
+                    };
+                }
+            });
+        };
+    })(jQuery);
+    </script>
+
 <script type="text/javascript">
+
+
+
+
+
+
+
 $(function(){ 
+   
+    try {
+        var verifyCode1 = new GVerify("v_container");
+        var verifyCode2 = new GVerify({
+            id: "v_container2",
+            canvasId: 'verifyCanvas2'
+        });
 
-var verifyCode1 = new GVerify("v_container");
-var verifyCode2 = new GVerify({
-    id: "v_container2",
-    canvasId: 'verifyCanvas2'
-});
 
+    }
+    catch (e)
+    {
+
+    }
+    try {
+        
+        $("#testAccount").placeholder();
+        $("#testPwd").placeholder();
+
+        $("#adminAccount").placeholder();
+        $("#adminPwd").placeholder();
+
+
+        $("#for-name2").placeholder();
+        $("#for-pwd2").placeholder();
+        $("#for-p2").placeholder();
+        $("#for-code2").placeholder();
+         
+        $("#for-name").placeholder();
+        $("#for-pwd").placeholder();
+        $("#for-p").placeholder();
+        $("#for-code").placeholder();
+
+
+        
+
+    }
+    catch (e) {
+
+    }
+    
+
+
+ 
     $(window).resize(function(){
+        /*
         $('.l_login').css({
             position:'absolute',
             left:($(window).width() - $('.l_login').outerWidth())/2,
             top:($(window).height() - $('.l_login').outerHeight())/2 + $(document).scrollTop()
         });
-		
-		$("#content").css({height:$(window).height()});
+        */
+		//$("#content").css({height:$(window).height()+"px"});
     });
 
-    $(window).resize();
+    //$(window).resize();
 
 	$("#tab_1").click(function(){
 		$(".log_form").hide();
@@ -344,11 +458,12 @@ var verifyCode2 = new GVerify({
 	});
 	
 	$("#tab_2").click(function(){
-		$(".log_form").hide();
-		$("#tab2").show();
-    $("#admin").show();
-    $("#forget2").hide();
+	    $(".log_form").hide();
+	    $("#tab2").show();
+	    $("#admin").show();
+	    $("#forget2").hide();
 	});
+ 
 
   $("#toForget1").click(function(){
     $("#test").hide();

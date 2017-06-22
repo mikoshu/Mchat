@@ -1,4 +1,8 @@
 
+<style>
+         .r_form select::-ms-expand { display: none; }          
+ select::-ms-expand { display: none; }    
+</style>
 
         <div class="r_content">
             <div class="r_title">
@@ -16,8 +20,8 @@
                   <div>性别:</div>
                   <div>
                     <select class="chat_input" id="sex" style="width:350px">
-                      <option value="0">男</option>
-                      <option value="1">女</option>
+                      <option value="1">男</option>
+                      <option value="0">女</option>
                     </select>
                   </div>
               </div>
@@ -151,7 +155,7 @@
               <div class="r_form" id="yc-box" style="display: none">
                   <div>异常情况:</div>
                   <div>
-                  <input id="Abnormalities" class="chat_input" style="width:350px" type="text" />
+                  <input id="abnormalities" class="chat_input" style="width:350px" type="text" />
                   </div>
               </div>  
               
@@ -355,7 +359,7 @@
     </div>
     <div>
         <p style="text-align:center;font-size:14px;">
-          <textarea id="remark" class="chat_input" style="width:300px; height:100px;"></textarea>
+          <input type="text" id="remark" class="chat_input" style="width:300px;" />
         </p>
     </div>
     <div class="p_form">
@@ -616,7 +620,7 @@
       var gestationalWeeks = $("#gestationalWeeks").val();
       var gestationalDays = $("#gestationalDays").val();
       var births = [];
-      var Abnormalities = $("#Abnormalities").val();
+      var abnormalities = $("#abnormalities").val();
       $(".births:checked").each(function(i,dom){
         births.push($(dom).val());
       });
@@ -669,7 +673,7 @@
         gestationalDays: gestationalDays,
         births: births,
         level: 1,
-        Abnormalities: Abnormalities
+        abnormalities: abnormalities
       }
       var obj = obj1;
       for(key in obj2){
@@ -708,10 +712,12 @@
     
     
     function showQuestion(){
+      var height = parseInt(window.innerHeight);
+      height = height > 835 ? 'auto' : height+'px';
       var lay = layer.open({
         title: '请回答下列问题以完善问卷',
         content: $("#q").html(),
-        area: ["900px",'640px'],
+        area: ["900px",height],
         type: 1,
         success: function(l){
           var $tab = $(".tab-head"),

@@ -59,6 +59,7 @@
                       <thead>
                         <tr>
                           <th>报告编号</th>
+                          <th>儿童姓名</th>
                           <th id="t">MCHAT-R</th>
                           <th>创建时间</th>
                           <th>基本信息</th>
@@ -100,6 +101,7 @@
   <tr>
      <td>{{$value.reportNo}}</td>
      <!-- <span>{{$value.testeeName}}</span> -->
+     <td>{{$value.testeeName}}</td>
      <td>
         {{$value.downloadCount}}
     </td>
@@ -110,7 +112,7 @@
    </tr>
   {{/each}}
 {{else}}
-  <tr><td colspan="6" >没有查询到相关信息，请检查搜索条件！</td></tr>
+  <tr><td colspan="7" >没有查询到相关信息，请检查搜索条件！</td></tr>
 {{/if}}
 </script>
 
@@ -461,7 +463,7 @@
                 }
               }
               $("#testeeName").text(data.testeeName);
-              $("#sex").text(['男','女'][data.sex]);
+              $("#sex").text(['女','男'][data.sex]);
               $("#cardType").text(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
               $("#cardNo2").text(data.cardNo);
               $("#birthDays").text(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);

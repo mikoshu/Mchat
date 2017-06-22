@@ -586,7 +586,7 @@
                 }
               }
               $("#testeeName").text(data.testeeName);
-              $("#sex").text(['男','女'][data.sex]);
+              $("#sex").text(['女','男'][data.sex]);
               $("#cardType").text(['儿童身份证','父亲身份证','母亲身份证','诊疗卡号','','','','','','其他'][data.cardType]);
               $("#cardNo2").text(data.cardNo);
               $("#birthDays").text(data.birthYear+'-'+data.birthMonth+'-'+data.birthToday);
@@ -803,7 +803,7 @@
 
 function createReport(n,scoreNo){
   var height = parseInt(window.innerHeight);
-      height = height > 532 ? 'auto' : height+'px';
+      height = height > 835 ? 'auto' : height+'px';
       // var myLayer = layer.open({
       //   title: '基本信息',
       //   content: $("#checkPop").html(),
