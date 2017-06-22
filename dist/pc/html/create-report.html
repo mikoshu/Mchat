@@ -634,12 +634,12 @@
         layer.msg('身份信息不能为空！');
         return false;
       }
-      if(birthDay == ''){
-        layer.msg('出生日期不能为空！');
+      if(birthYear==''||birthMonth==''||birthToday==''){
+        layer.msg('出生日期格式错误！');
         return false;
       }
-      if(testDay == ''){
-        layer.msg('完成问卷日期不能为空！');
+      if(testYear==''||testMonth==''||testToday==''){
+        layer.msg('完成问卷日期格式错误！');
         return false;
       }
 
@@ -665,7 +665,7 @@
         cardNo: cardNo,
         birthYear: birthYear,
         birthMonth: birthMonth,
-        birthToday: birthTody,
+        birthToday: birthToday,
         testYear: testYear,
         testMonth: testMonth,
         testToday: testToday,
