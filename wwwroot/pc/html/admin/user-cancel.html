@@ -58,6 +58,7 @@
                       <thead>
                         <tr>
                           <th>报告编号</th>
+                          <th>儿童姓名</th>
                           <th id="t">MCHAT-R</th>
                           <th>创建时间</th>
                           <th>基本信息</th>
@@ -98,7 +99,7 @@
   {{each recordList}}
   <tr>
      <td>{{$value.reportNo}}</td>
-
+    <td>{{$value.testeeName}}</td>
      <td>
         {{$value.downloadCount}}
     </td>

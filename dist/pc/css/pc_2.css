@@ -305,13 +305,15 @@ ul{
 	background-color:#fff !important;
 }
 
+
+
 .r_form select{
-    appearance:none;
+   appearance:none;
     -moz-appearance:none;
     -webkit-appearance:none;
-   
-    background: url(../images/selectbg.jpg) no-repeat scroll right center transparent;
-    padding-right: 14px;
+    -ms-appearance:none;
+    background: url(../images/selectbg.jpg) no-repeat scroll right center #fff;
+    padding-right: 0px;
 }
 
 
@@ -321,7 +323,7 @@ ul{
     -webkit-appearance:none;
    
     background: url(../images/selectbg.jpg) no-repeat scroll right center transparent;
-    padding-right: 14px;
+   /* padding-right: 14px;*/
 }
 
 .r_form_week{
@@ -425,9 +427,9 @@ select::-ms-expand {
 
 }
 
-/*.create-report .r_form div {
+.create-report .r_form div {
     margin-top:5px;
-}*/
+}
 
 
 

@@ -185,7 +185,7 @@ ul{
      <span>{{$value.birthYear+'-'+$value.birthMonth+'-'+$value.birthToday}}</span>
      <span>{{['女','男'][$value.sex]}}</span>
      <span>{{$value.gestationalWeeks+'周'+$value.gestationalDays+'天'}}</span>
-     <span><a class="ac-check" href="javascript:;" data-reportNo="{{$value.reportNo}}" ><img src="../images/looks.png" /></a></span>
+     <span><a class="ac-check" href="javascript:;" data-cardNo="{{$value.cardNo}}" ><img src="../images/looks.png" /></a></span>
    </li>
   {{/each}}
 {{else}}
@@ -254,8 +254,8 @@ ul{
     $("#search").trigger('click');
 
     $("body").delegate('.ac-check','click',function(){
-      var reportNo = $(this).attr('data-reportNo');
-      window.location.href = '#user-report?reportNo='+reportNo;
+      var cardNo = $(this).attr('data-cardNo');
+      window.location.href = '#user-report?cardNo='+cardNo;
     });
 
   });

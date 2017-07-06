@@ -1,6 +1,6 @@
 jQuery.support.cors=true;
 var util = {
-    requestURL: 'http://aliyun.mikoshu.me:8055',
+    requestURL: 'http://aliyun.mikoshu.me:8055/mchat-web',
     getCurrentDateTime: function () { 
         var d = new Date(); 
         var year = d.getFullYear(); 
@@ -258,6 +258,9 @@ var util = {
        return  y+'月'+d+'天';
    },
    getTimeFromNum: function(inputTime,type){ 
+        if(!inputTime){
+            return ''
+        }
         var date = new Date(inputTime);  
         var y = date.getFullYear();    
         var m = date.getMonth() + 1;    
