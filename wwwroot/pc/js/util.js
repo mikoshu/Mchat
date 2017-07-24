@@ -247,15 +247,20 @@ var util = {
         });
         return dateArr.join('-');
     },
-    getAge: function(sDate1){    //sDate1和sDate2是2006-12-18格式  
+    getAge: function(sDate1,sDate2){    //sDate1和sDate2是2006-12-18格式  
        var  aDate,  oDate1,  oDate2,  iDays  
        aDate  =  sDate1.split("-")  
-       oDate1  =  new  Date(aDate[1]  +  '-'  +  parseInt(aDate[2])  +  '-'  +  parseInt(aDate[0]))    //转换为12-18-2006格式   
-       oDate2  =  new  Date(); 
-       iDays  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24)    //把相差的毫秒数转换为天数  
-       var y = parseInt(iDays/30);
-       var d = iDays%30;
-       return  y+'月'+d+'天';
+       bDate = sDate2.split("-")
+       var y = bDate[0];
+       var m = bDate[1];
+       var d = bDate[2];
+
+       var years = y - aDate[0];
+       var months = m - aDate[1];
+       var days = d - aDate[2];
+       var ss = years * 12 * 30 + months * 30 + days; 
+
+       return  parseInt(ss/30)+'月'+parseInt(ss%30)+'天';
    },
    getTimeFromNum: function(inputTime,type){ 
         if(!inputTime){

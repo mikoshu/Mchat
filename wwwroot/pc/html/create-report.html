@@ -1,7 +1,12 @@
 
 <style>
          .r_form select::-ms-expand { display: none; }          
- select::-ms-expand { display: none; }    
+ select::-ms-expand { display: none; }   
+ #yes,#no{
+    width:20px;
+    height:20px;
+    vertical-align: -5px;
+  } 
 </style>
 
         <div class="r_content">
@@ -580,14 +585,24 @@
       var year = $("#birthYear").val();
       var month = $("#birthMonth").val();
       var day = $("#birthToday").val();
+      var cy = $("#testYear").val();
+      var cm = $("#testMonth").val();
+      var cd = $("#testToday").val();
+
       if(year && month && day){
         var birth = year+'-'+month+'-'+day;
       }else{
-        layer.msg('请填写出生时间');
+        layer.msg('请填写出生日期');
+        return false;
+      }
+      if(cy && cm && cd){
+        var test = cy+'-'+cm+'-'+cd;
+      }else{
+        layer.msg('请填写完成问卷日期');
         return false;
       }
 
-      var age = util.getAge(birth);
+      var age = util.getAge(birth,test);
       $("#age").text(age);
     });
     
@@ -695,16 +710,45 @@
 
     $("body").delegate('#birthsBox','click',function(){
       var y = $("#birthYear").val();
-      var date = new Date().getFullYear();
+      var m = $("#birthMonth").val();
+      var d = $("#birthToday").val();
+      var Y = $("#testYear").val();
+      var M = $("#testMonth").val();
+      var D = $("#testToday").val();
       if(y == ''){
         layer.msg('请填写出生日期')
         return
       }
-      if(date - y > 1){
+      if(m == ''){
+        layer.msg('请填写出生日期')
+        return
+      }
+      if(d == ''){
+        layer.msg('请填写出生日期')
+        return
+      }
+      if(Y == ''){
+        layer.msg('请填写完成问卷日期')
+        return
+      }
+      if(M == ''){
+        layer.msg('请填写完成问卷日期')
+        return
+      }
+      if(D == ''){
+        layer.msg('请填写完成问卷日期')
+        return
+      }
+
+      var flag = (Y - y)*12;
+      flag = flag + (M - m);
+      
+      flag = (D - d) >= 0 ? flag : flag - 1; 
+
+      if(flag > 23){
         layer.msg('大于24个月0天的儿童不用选择“出生时情况”')
         return
       }
-      console.log(y,date)
       $(".births-pop").show();
 
     })
@@ -720,7 +764,6 @@
       $(".births-pop").hide();
     });
 
-    
     
     function showQuestion(){
       var height = parseInt(window.innerHeight);
@@ -794,9 +837,9 @@
                 $con.eq(index).fadeIn().siblings('div').fadeOut();
                 $tab.find('li').eq(index).addClass('active').siblings('li').removeClass('active');
                 $choose.find('input').prop('checked',false);
-                if(answer.hasOwnProperty(index+1)){
-                    answer[index+1] == 1 ? $yes.prop('checked','checked') :  $no.prop('checked','checked') ;
-                }
+                if(answer.hasOwnProperty('topic_'+(index+1))){
+                        answer['topic_'+(index+1)] == 'Y' ? $yes.prop('checked','checked') :  $no.prop('checked','checked') ;
+                    }
                 if(index == 19){
                   $next.text("完成");
                 }else{

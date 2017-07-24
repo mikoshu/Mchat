@@ -126,7 +126,7 @@ ul{
      <td>{{$value.reportNo}}</td>
      <td>{{$value.testeeName}}</td>
      <td>
-        {{$value.downloadCount}}
+        {{$value.downloadCount == '0' ? '请先下载' : $value.score}}
      </td>
      <td>
       {{if $value.mchatScoreRevisedFollow.length != 0}}

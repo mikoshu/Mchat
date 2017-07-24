@@ -261,15 +261,13 @@ $(function(){
         
         // 获取表信息
         util.client({
-          url: util.requestURL+'/web/v1/enterprise/listEnterpriseScaleDosage',
+          url: util.requestURL+'/web/v1/enterprise/getEnterpriseScaleDosage',
           success: function(data){
             if(data.code == 1){
               //console.log(data.data)
               var html = '';
-              data.data.map(function(val,i){
-                    html += '已创建报告总量：'+val.consumption;
-                    html += ' | '+'剩余剩余可用数量'+val.remainingAmount
-              });
+              html += '已创建报告总量：'+data.data.consumption;
+              html += ' | '+'剩余剩余可用数量'+data.data.remainingAmount
               $("#quality").html(html);  
             }else{  
               layer.msg(data.msg);
@@ -480,7 +478,7 @@ $(function(){
                 var data = data.data;
                 $("#title").text(data.title);
                 $("#article").html(data.content);
-                $("#time").text(data.editTime);
+                $("#time").text(util.getTimeFromNum(data.editTime,1));
 
               }else{  
                 layer.msg(data.msg);

@@ -101,9 +101,9 @@
   <tr>
      <td>{{$value.reportNo}}</td>
      <!-- <span>{{$value.testeeName}}</span> -->
-     <td>{{$value.testeeName}}</td>
+     <td>{{$value.testeeName ? $value.testeeName : '--'}}</td>
      <td>
-        {{$value.downloadCount}}
+        {{$value.downloadCount == '0' ? '请先下载' : $value.score}}
     </td>
      <td>{{$imports.getTimeFromNum($value.createTime,1)}}</td>
      <td><a data-scoreNo="{{$value.scoreNo}}" data-parentNo="{{$value.parentNo}}" class="ac-check" href="javascript:;"><img class="looks" src="../images/looks.png" /></a></td>
